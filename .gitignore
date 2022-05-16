@@ -14,7 +14,7 @@ build
 #################
 # Eclipse .gitignore
 # Source: https://github.com/github/gitignore/blob/master/Global/Eclipse.gitignore
-
+build/
 .metadata
 bin/
 tmp/
