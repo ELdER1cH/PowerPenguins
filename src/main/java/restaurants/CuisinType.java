@@ -1,4 +1,4 @@
-package Restaurants;
+package restaurants;
 
 public enum CuisinType {ITALAN,CHINESE,GERMAN
 }

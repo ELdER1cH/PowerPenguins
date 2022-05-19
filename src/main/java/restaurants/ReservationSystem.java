@@ -1,7 +1,7 @@
-package Restaurants;
+package restaurants;
 
-import User.Reservation;
-import User.TimeSlot;
+import user.Reservation;
+import user.TimeSlot;
 
 import java.util.HashMap;
 import java.util.List;
