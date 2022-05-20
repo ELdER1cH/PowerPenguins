@@ -1,7 +1,4 @@
-package restaurants;
-
-import user.Reservation;
-import user.TimeSlot;
+package ReservationSystem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,18 +44,18 @@ public class ReservationSystem {
         this.numberOfTables = numberOfTables;
     }
 
-    public boolean cancelReservation(Reservation reservation){
-        //TODO implement
+    public boolean deleteReservation(Reservation reservation){
+        //TODO implement deleteReservation
         return false;
     }
 
     public boolean addReservation(Reservation reservation){
-        //TODO implement
+        //TODO implement addReservation
         return false;
     }
 
     public List<Table> getFreeTables(TimeSlot timeSlot){
-        //TODO implement
+        //TODO implement getFreeTables
         return null;
     }
 }

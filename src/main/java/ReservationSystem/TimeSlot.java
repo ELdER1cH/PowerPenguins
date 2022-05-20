@@ -1,4 +1,4 @@
-package user;
+package ReservationSystem;
 
 import java.sql.Date;
 import java.util.Objects;

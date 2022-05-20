@@ -1,4 +1,4 @@
-package restaurants;
+package ReservationSystem;
 
 public class Table {
     private final int tableNumber;

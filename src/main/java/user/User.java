@@ -1,5 +1,7 @@
 package user;
 
+import ReservationSystem.Reservation;
+
 import java.util.ArrayList;
 import java.util.List;
 

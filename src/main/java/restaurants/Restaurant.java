@@ -1,5 +1,6 @@
 package restaurants;
 
+import ReservationSystem.ReservationSystem;
 import user.Review;
 
 import java.util.ArrayList;
@@ -47,6 +48,6 @@ public class Restaurant {
     }
 
     public void addReview(Review review){
-        //TODO implement addReview with updating sumOfRating
+        //TODO implement addReview with updating sumOfRating and average Rating
     }
 }

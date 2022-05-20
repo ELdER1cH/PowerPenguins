@@ -1,8 +1,4 @@
-package user;
-
-
-import restaurants.ReservationSystem;
-import restaurants.Table;
+package ReservationSystem;
 
 
 public class Reservation {
@@ -16,8 +12,8 @@ public class Reservation {
         this.reservationSystem = reservationSystem;
     }
 
-    boolean cancelReservation(){
-        //TODO implement
+    public boolean cancelReservation(){
+        //TODO cancelthisReservation
         return false;
     }
 }
