@@ -45,4 +45,8 @@ public class Restaurant {
     public double getAverageRating() {
         return averageRating;
     }
+
+    public void addReview(Review review){
+        //TODO implement addReview with updating sumOfRating
+    }
 }

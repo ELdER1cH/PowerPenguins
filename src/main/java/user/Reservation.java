@@ -10,6 +10,12 @@ public class Reservation {
     private Table table;
     private ReservationSystem reservationSystem;
 
+    public Reservation(TimeSlot timeSlot, Table table, ReservationSystem reservationSystem) {
+        this.timeSlot = timeSlot;
+        this.table = table;
+        this.reservationSystem = reservationSystem;
+    }
+
     boolean cancelReservation(){
         //TODO implement
         return false;
