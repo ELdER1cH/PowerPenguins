@@ -1,31 +1,30 @@
-package Restaurants;
+package restaurants;
 
-import User.Reservation;
-import User.TimeSlot;
+import user.Reservation;
+import user.TimeSlot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class ReservationSystem {
     private int numberOfSeats;
     private int numberOfTables;
-    private HashMap<Integer,Table> tables;
-    private int tablesindex;
+    private List<Table> tables;
     private HashMap<TimeSlot, List<Reservation>> reservations;
 
     public ReservationSystem(int numberOfSeats, int numberOfTables) {
         this.numberOfSeats = numberOfSeats;
         this.numberOfTables = numberOfTables;
-        this.tablesindex = 0;
-        this.tables = new HashMap<>();
+        this.tables = new ArrayList<>();
         this.reservations = new HashMap<>();
     }
 
     public void addTable(int numberOfSeats){
-        Table temp = new Table(tablesindex++, numberOfSeats);
+        Table temp = new Table(tables.toArray().length, numberOfSeats);
         this.numberOfSeats += numberOfSeats;
         this.numberOfTables++;
-        tables.put(temp.getTableNumber(),temp);
+        this.tables.add(temp);
     }
 
     public int getNumberOfSeats() {
@@ -36,7 +35,7 @@ public class ReservationSystem {
         return numberOfTables;
     }
 
-    public HashMap<Integer, Table> getTables() {
+    public List<Table> getTables() {
         return tables;
     }
 
