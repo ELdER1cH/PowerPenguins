@@ -1,6 +1,6 @@
 package restaurants;
 
-import ReservationSystem.ReservationSystem;
+import ReservationModel.ReservationSystem;
 import user.Review;
 
 import java.util.ArrayList;

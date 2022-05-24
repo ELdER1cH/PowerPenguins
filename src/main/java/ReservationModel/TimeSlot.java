@@ -1,10 +1,10 @@
-package ReservationSystem;
+package ReservationModel;
 
 import java.sql.Date;
 import java.util.Objects;
 
 public class TimeSlot {
-    private Date startTime;
+    private final Date startTime;
 
     public TimeSlot(Date startTime) {
         this.startTime = startTime;
@@ -21,5 +21,9 @@ public class TimeSlot {
     @Override
     public int hashCode() {
         return Objects.hash(startTime);
+    }
+
+    public Date getStartTime() {
+        return startTime;
     }
 }

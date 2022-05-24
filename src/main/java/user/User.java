@@ -1,6 +1,6 @@
 package user;
 
-import ReservationSystem.Reservation;
+import ReservationModel.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +26,9 @@ public class User {
     public boolean makeReservation(Reservation reservation){
         //TODO implement makeReservation
         return false;
+    }
+
+    public boolean confirmReservation(Reservation reservation){
+        return reservation.confirm();
     }
 }
