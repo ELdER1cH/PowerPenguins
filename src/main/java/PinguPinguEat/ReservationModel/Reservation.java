@@ -1,16 +1,14 @@
 package PinguPinguEat.ReservationModel;
 
+
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalTime;
 
 public class Reservation {
     private TimeSlot timeSlot;
     private Table table;
     private ReservationSystem reservationSystem;
     private boolean confirmed;
-
-
 
     public Reservation(TimeSlot timeSlot, Table table, ReservationSystem reservationSystem) {
         this.timeSlot = timeSlot;
@@ -20,25 +18,22 @@ public class Reservation {
     }
 
     public boolean cancelReservation(){
-        //TODO cancel this Reservation
+        //TODO cancelthisReservation
         return false;
-    }
-
-    public boolean confirm() {
-        // this has to be in seconds, so you can still confirm let's say 12:10:13 before the reservation
-        long twelveHoursInSeconds = 43200;
-        long secondsUntilReservation = (Duration.between(LocalTime.now(),timeSlot.getStartTime()))
-                                    .toSeconds();
-        if (!this.isConfirmed() && secondsUntilReservation > twelveHoursInSeconds) {
-            this.confirmed = true;
-            return true;
-        }
-        else {
-            return false;
-        }
     }
 
     public boolean isConfirmed() {
         return confirmed;
+    }
+
+    public boolean confirm() {
+        if (!this.confirmed && Duration.between(Instant.now(),timeSlot.getStartTime().toInstant()).toHours() > 12){
+            this.confirmed = true;
+            return true;
+        }else{
+            return false;
+        }
+
+
     }
 }

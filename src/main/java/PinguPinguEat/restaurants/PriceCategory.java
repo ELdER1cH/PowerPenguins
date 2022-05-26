@@ -1,5 +1,4 @@
 package PinguPinguEat.restaurants;
 
-public enum PriceCategory {
-    INEXPENSIVE, MODERATE, EXPENSIVE, VERY_EXPENSIVE
+public enum PriceCategory {LOW,MID,HIGH,HIGH_END
 }
