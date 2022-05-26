@@ -1,7 +1,11 @@
+<<<<<<< HEAD:src/main/java/restaurants/Restaurant.java
 package Restaurants;
+=======
+package PinguPinguEat.restaurants;
+>>>>>>> Another_New_Structure:src/main/java/PinguPinguEat/restaurants/Restaurant.java
 
-import ReservationModel.ReservationSystem;
-import user.Review;
+import PinguPinguEat.ReservationModel.ReservationSystem;
+import PinguPinguEat.user.Review;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +33,11 @@ public class Restaurant {
 
     public String getName() { return name; }
 
+<<<<<<< HEAD:src/main/java/restaurants/Restaurant.java
     public CuisineType getCuisineType() {
+=======
+    public CuisineType getCuisinType() {
+>>>>>>> Another_New_Structure:src/main/java/PinguPinguEat/restaurants/Restaurant.java
         return cuisineType;
     }
 

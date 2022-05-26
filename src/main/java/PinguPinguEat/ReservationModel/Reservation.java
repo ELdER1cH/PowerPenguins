@@ -1,4 +1,4 @@
-package ReservationModel;
+package PinguPinguEat.ReservationModel;
 
 import java.time.Duration;
 import java.time.Instant;
