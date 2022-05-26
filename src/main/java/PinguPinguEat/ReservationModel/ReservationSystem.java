@@ -1,8 +1,4 @@
-package PinguPinguEat.Service;
-
-import PinguPinguEat.ReservationModel.Reservation;
-import PinguPinguEat.ReservationModel.Table;
-import PinguPinguEat.ReservationModel.TimeSlot;
+package PinguPinguEat.ReservationModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
