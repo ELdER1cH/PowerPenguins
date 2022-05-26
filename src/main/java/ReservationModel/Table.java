@@ -1,4 +1,4 @@
-package ReservationSystem;
+package ReservationModel;
 
 public class Table {
     private final int tableNumber;

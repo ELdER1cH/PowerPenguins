@@ -1,4 +1,4 @@
-package ReservationSystem;
+package ReservationModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
