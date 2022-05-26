@@ -5,6 +5,6 @@ module Java.PinguPinguEat {
     requires spring.boot.autoconfigure;
 
 
-    opens PinguPinguEat to javafx.fxml;
+    opens PinguPinguEat.Controller to javafx.fxml;
     exports PinguPinguEat;
 }
