@@ -1,4 +1,5 @@
-package restaurants;
+package Restaurants;
 
-public enum PriceCategory {LOW,MID,HIGH,HIGH_END
+public enum PriceCategory {
+    INEXPENSIVE, MODERATE, EXPENSIVE, VERY_EXPENSIVE
 }
