@@ -20,7 +20,7 @@ public class ClientApplication extends Application {
         URL url = new File("src/client/resources/PinguPinguEat/ClientBase.fxml").toURI().toURL();
         this.stage =  primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(),1080,720);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Build 0.0.0.1");
         stage.setScene(scene);
         stage.show();
