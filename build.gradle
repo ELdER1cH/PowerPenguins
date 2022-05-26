@@ -7,7 +7,7 @@ plugins {
 }
 
 
-mainClassName = 'Java/PinguPinguEat'
+mainClassName = 'client/Java/PinguPinguEat'
 group = 'PinguPinguEat'
 version = '0x.0.0'
 sourceCompatibility = '17'
@@ -79,6 +79,9 @@ processResources {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
+processClientResources{
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
 test {
     defaultCharacterEncoding = 'UTF-8'
     useJUnitPlatform()
