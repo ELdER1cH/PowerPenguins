@@ -3,10 +3,9 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.8'
+    id 'org.openjfx.javafxplugin' version '0.0.12'
 }
 
-mainClassName = 'hello.world.demo'
 
 group = 'PinguPinguEat'
 version = '0x.0.0'
@@ -18,6 +17,11 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    serverImplementation.extendsFrom(implementation)
+    clientImplementation.extendsFrom(implementation)
+}
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-test'
@@ -27,9 +31,12 @@ dependencies {
 }
 
 javafx {
-    version = "11"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    version = "17.0.2"
+    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media'  ]
+    configuration = 'clientImplementation'
 }
+
+
 
 
 sourceSets {
@@ -47,6 +54,22 @@ sourceSets {
         }
         resources {
             'src/test/resources'
+        }
+    }
+    client{
+        java{
+            srcDir 'src/client/Java'
+        }
+        resources{
+            srcDir 'src/client/resources'
+        }
+    }
+    server{
+        java {
+            srcDir 'src/server/java'
+        }
+        resources {
+            srcDir 'src/server/resources'
         }
     }
 }

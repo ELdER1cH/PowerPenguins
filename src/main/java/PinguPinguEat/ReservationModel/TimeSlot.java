@@ -1,4 +1,4 @@
-package ReservationModel;
+package PinguPinguEat.ReservationModel;
 
 import java.sql.Date;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package user;
+package PinguPinguEat.user;
 
 public class Review {
     private final int rating;
@@ -19,7 +19,7 @@ public class Review {
         return comment;
     }
 
-    public User getAuthor() {
-        return author;
+    public String getAuthorName() {
+        return author.getName();
     }
 }

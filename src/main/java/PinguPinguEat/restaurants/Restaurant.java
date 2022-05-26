@@ -1,14 +1,14 @@
-package restaurants;
+package PinguPinguEat.restaurants;
 
-import ReservationModel.ReservationSystem;
-import user.Review;
+import PinguPinguEat.ReservationModel.ReservationSystem;
+import PinguPinguEat.user.Review;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
     private final String name;
-    private final CuisinType cuisinType;
+    private final CuisineType cuisineType;
     private final PriceCategory priceCategory;
     private final ReservationSystem reservationSystem;
     private List<Review> reviews;
@@ -16,9 +16,9 @@ public class Restaurant {
     private int sumOfRatings;
     private List<String> images;
 
-    public Restaurant(String name, CuisinType cuisinType, PriceCategory priceCategory, ReservationSystem seatingPlan) {
+    public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, ReservationSystem seatingPlan) {
         this.name = name;
-        this.cuisinType = cuisinType;
+        this.cuisineType = cuisineType;
         this.priceCategory = priceCategory;
         this.reservationSystem = seatingPlan;
         reviews = new ArrayList<>();
@@ -31,8 +31,8 @@ public class Restaurant {
         return name;
     }
 
-    public CuisinType getCuisinType() {
-        return cuisinType;
+    public CuisineType getCuisinType() {
+        return cuisineType;
     }
 
     public PriceCategory getPriceCategory() {
