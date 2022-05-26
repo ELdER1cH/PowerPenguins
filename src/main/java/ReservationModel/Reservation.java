@@ -25,6 +25,7 @@ public class Reservation {
     }
 
     public boolean confirm() {
+        // this has to be in seconds, so you can still confirm let's say 12:10:13 before the reservation
         long twelveHoursInSeconds = 43200;
         long secondsUntilReservation = (Duration.between(LocalTime.now(),timeSlot.getStartTime()))
                                     .toSeconds();
