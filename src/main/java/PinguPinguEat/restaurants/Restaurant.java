@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/main/java/restaurants/Restaurant.java
+package Restaurants;
+=======
 package PinguPinguEat.restaurants;
+>>>>>>> Another_New_Structure:src/main/java/PinguPinguEat/restaurants/Restaurant.java
 
 import PinguPinguEat.ReservationModel.ReservationSystem;
 import PinguPinguEat.user.Review;
@@ -27,11 +31,13 @@ public class Restaurant {
         images = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
+<<<<<<< HEAD:src/main/java/restaurants/Restaurant.java
+    public CuisineType getCuisineType() {
+=======
     public CuisineType getCuisinType() {
+>>>>>>> Another_New_Structure:src/main/java/PinguPinguEat/restaurants/Restaurant.java
         return cuisineType;
     }
 

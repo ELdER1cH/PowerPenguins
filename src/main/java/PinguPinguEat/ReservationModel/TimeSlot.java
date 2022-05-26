@@ -1,21 +1,24 @@
 package PinguPinguEat.ReservationModel;
 
-import java.sql.Date;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class TimeSlot {
-    private final Date startTime;
+    private final LocalTime startTime;
+    private final static Duration duration = Duration.ofHours(1);
 
-    public TimeSlot(Date startTime) {
+    public TimeSlot(LocalTime startTime) {
         this.startTime = startTime;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TimeSlot timeSlot = (TimeSlot) o;
-        return Objects.equals(startTime, timeSlot.startTime);
+    //TODO does this really need to work for "Object" and not just other TimeSlots?
+    public boolean equals(Object other) {
+        if (other == null || other.getClass() != this.getClass()) {
+            return false;
+        }
+        return startTime.equals(((TimeSlot)other).getStartTime());
     }
 
     @Override
@@ -23,7 +26,7 @@ public class TimeSlot {
         return Objects.hash(startTime);
     }
 
-    public Date getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 }
