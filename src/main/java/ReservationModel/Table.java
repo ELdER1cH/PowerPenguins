@@ -2,14 +2,10 @@ package ReservationModel;
 
 public class Table {
     private final int tableNumber;
-    private int numberOfSeats;
+    private final int numberOfSeats;
 
     public Table(int tableNumber, int numberOfSeats) {
         this.tableNumber = tableNumber;
-        this.numberOfSeats = numberOfSeats;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
 
