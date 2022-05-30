@@ -1,21 +1,23 @@
 package PinguPinguEat.ReservationModel;
 
+import PinguPinguEat.restaurants.Restaurant;
+
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalTime;
+import java.util.UUID;
 
 public class Reservation {
-    private TimeSlot timeSlot;
-    private Table table;
-    private ReservationSystem reservationSystem;
+    private final TimeSlot timeSlot;
+    private final Table table;
+    private final Restaurant restaurant;
     private boolean confirmed;
+    private UUID reservationId;
 
 
-
-    public Reservation(TimeSlot timeSlot, Table table, ReservationSystem reservationSystem) {
+    public Reservation(TimeSlot timeSlot, Table table, Restaurant restaurant) {
         this.timeSlot = timeSlot;
         this.table = table;
-        this.reservationSystem = reservationSystem;
+        this.restaurant = restaurant;
         this.confirmed = false;
     }
 
@@ -36,6 +38,30 @@ public class Reservation {
         else {
             return false;
         }
+    }
+
+    public TimeSlot getTimeSlot() {
+        return timeSlot;
+    }
+
+    public Table getTable() {
+        return table;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public UUID getReservationId() {
+        return reservationId;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    public void setReservationId(UUID reservationId) {
+        this.reservationId = reservationId;
     }
 
     public boolean isConfirmed() {

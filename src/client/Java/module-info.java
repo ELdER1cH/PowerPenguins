@@ -7,4 +7,5 @@ module Java.PinguPinguEat {
 
     opens PinguPinguEat.Controller to javafx.fxml;
     exports PinguPinguEat;
+    opens PinguPinguEat.View to javafx.fxml;
 }
