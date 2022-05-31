@@ -1,7 +1,7 @@
 package PinguPinguEat.rest;
 
 import PinguPinguEat.ReservationModel.Reservation;
-import PinguPinguEat.Service.ReservationService;
+import PinguPinguEat.service.ReservationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package PinguPinguEat.Service;
+package PinguPinguEat.service;
 
 import PinguPinguEat.ReservationModel.Reservation;
 import org.springframework.stereotype.Service;
