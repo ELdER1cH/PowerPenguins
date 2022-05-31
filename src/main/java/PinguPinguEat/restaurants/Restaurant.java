@@ -12,10 +12,10 @@ public class Restaurant {
     private final CuisineType cuisineType;
     private final PriceCategory priceCategory;
     private final ReservationSystem reservationSystem;
-    private List<Review> reviews;
-    private double averageRating;
-    private int sumOfRatings;
-    private List<String> images;
+    private final List<Review> reviews;
+    private final double averageRating;
+    private final int sumOfRatings;
+    private final List<String> images;
 
     public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, ReservationSystem seatingPlan) {
         this.name = name;

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class User {
     private final String name;
-    private List<Reservation> reservations;
+    private final List<Reservation> reservations;
 
     public User(String name, String username, String password) {
         this.name = name;

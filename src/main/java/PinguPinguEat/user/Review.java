@@ -3,7 +3,7 @@ package PinguPinguEat.user;
 public class Review {
     private final int rating;
     private final String comment;
-    private User author;
+    private final User author;
 
     public Review(int rating, String comment, User author) {
         this.rating = rating;

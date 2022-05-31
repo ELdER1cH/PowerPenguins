@@ -7,8 +7,8 @@ import java.util.List;
 public class ReservationSystem {
     private int numberOfSeats;
     private int numberOfTables;
-    private List<Table> tables;
-    private HashMap<TimeSlot, List<Reservation>> reservations;
+    private final List<Table> tables;
+    private final HashMap<TimeSlot, List<Reservation>> reservations;
 
     public ReservationSystem(int numberOfSeats, int numberOfTables) {
         this.numberOfSeats = numberOfSeats;
@@ -17,7 +17,7 @@ public class ReservationSystem {
         this.reservations = new HashMap<>();
     }
 
-    public void addTable(int numberOfSeats){
+    public void addTable(int numberOfSeats) {
         Table temp = new Table(tables.toArray().length, numberOfSeats);
         this.numberOfSeats += numberOfSeats;
         this.numberOfTables++;
