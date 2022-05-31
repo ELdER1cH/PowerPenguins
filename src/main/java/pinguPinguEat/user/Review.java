@@ -1,4 +1,4 @@
-package PinguPinguEat.user;
+package pinguPinguEat.user;
 
 public class Review {
     private final int rating;

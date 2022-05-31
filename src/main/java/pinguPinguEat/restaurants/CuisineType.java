@@ -1,4 +1,4 @@
-package PinguPinguEat.restaurants;
+package pinguPinguEat.restaurants;
 
 public enum CuisineType {ITALIAN,CHINESE,GERMAN
 }

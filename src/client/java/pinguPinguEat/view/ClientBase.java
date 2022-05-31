@@ -1,4 +1,4 @@
-package PinguPinguEat.View;
+package pinguPinguEat.view;
 
 
 import javafx.fxml.FXML;

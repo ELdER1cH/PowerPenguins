@@ -1,4 +1,4 @@
-package PinguPinguEat.ReservationModel;
+package pinguPinguEat.ReservationModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

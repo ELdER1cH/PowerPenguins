@@ -1,7 +1,7 @@
-package PinguPinguEat.service;
+package pinguPinguEat.service;
 
-import PinguPinguEat.ReservationModel.Reservation;
 import org.springframework.stereotype.Service;
+import pinguPinguEat.ReservationModel.Reservation;
 
 import java.util.List;
 import java.util.UUID;

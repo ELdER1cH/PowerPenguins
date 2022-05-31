@@ -1,11 +1,11 @@
-package PinguPinguEat.rest;
+package pinguPinguEat.rest;
 
-import PinguPinguEat.ReservationModel.Reservation;
-import PinguPinguEat.service.ReservationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pinguPinguEat.ReservationModel.Reservation;
+import pinguPinguEat.service.ReservationService;
 
 import java.util.List;
 import java.util.UUID;
