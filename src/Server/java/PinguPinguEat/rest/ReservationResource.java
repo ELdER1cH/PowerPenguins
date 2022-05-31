@@ -16,7 +16,7 @@ public class ReservationResource {
     //initiert Reservation Service
     private final ReservationService reservationService;
 
-    //Construktor
+    //
     public ReservationResource(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
