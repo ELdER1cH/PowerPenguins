@@ -7,7 +7,7 @@ plugins {
 }
 
 
-mainClassName = 'client/Java/PinguPinguEat'
+mainClassName = 'client/java/pinguPinguEat'
 group = 'PinguPinguEat'
 version = '0x.0.0'
 sourceCompatibility = '17'

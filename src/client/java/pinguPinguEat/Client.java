@@ -1,4 +1,4 @@
-package PinguPinguEat;
+package pinguPinguEat;
 
 import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

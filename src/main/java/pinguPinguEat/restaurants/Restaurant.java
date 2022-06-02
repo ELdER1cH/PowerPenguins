@@ -1,11 +1,8 @@
-<<<<<<< HEAD:src/main/java/restaurants/Restaurant.java
-package Restaurants;
-=======
-package PinguPinguEat.restaurants;
->>>>>>> Another_New_Structure:src/main/java/PinguPinguEat/restaurants/Restaurant.java
+package pinguPinguEat.restaurants;
 
-import PinguPinguEat.ReservationModel.ReservationSystem;
-import PinguPinguEat.user.Review;
+
+import pinguPinguEat.ReservationModel.ReservationSystem;
+import pinguPinguEat.user.Review;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +12,10 @@ public class Restaurant {
     private final CuisineType cuisineType;
     private final PriceCategory priceCategory;
     private final ReservationSystem reservationSystem;
-    private List<Review> reviews;
-    private double averageRating;
-    private int sumOfRatings;
-    private List<String> images;
+    private final List<Review> reviews;
+    private final double averageRating;
+    private final int sumOfRatings;
+    private final List<String> images;
 
     public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, ReservationSystem seatingPlan) {
         this.name = name;
@@ -33,11 +30,8 @@ public class Restaurant {
 
     public String getName() { return name; }
 
-<<<<<<< HEAD:src/main/java/restaurants/Restaurant.java
+
     public CuisineType getCuisineType() {
-=======
-    public CuisineType getCuisinType() {
->>>>>>> Another_New_Structure:src/main/java/PinguPinguEat/restaurants/Restaurant.java
         return cuisineType;
     }
 
