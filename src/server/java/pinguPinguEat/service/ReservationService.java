@@ -3,25 +3,32 @@ package pinguPinguEat.service;
 import org.springframework.stereotype.Service;
 import pinguPinguEat.ReservationModel.Reservation;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public class ReservationService {
+    //
+    private final HashMap<UUID, Reservation> reservations;
 
-    public Reservation saveReservation(Reservation reservation){
-        //TODO implement mit access zur Database
-        return reservation;
+    public ReservationService() {
+        reservations = new HashMap<>();
     }
 
-    public boolean confirmReservation(UUID reservationID){
+    public Reservation saveReservation(Reservation reservation) {
+        reservation.setReservationId(UUID.randomUUID());
+        return reservations.put(reservation.getReservationId(), reservation);
+    }
+
+    public boolean confirmReservation(UUID reservationID) {
         //TODO implement mit access zur Database
-        return false;
+        return reservations.get(reservationID).confirm();
     }
 
     public boolean deleteReservation(UUID reservationID){
         //TODO implement mit access zur Database
-        return false;
+        return reservations.remove(reservationID) != null;
     }
 
     public List<Reservation> getAllReservations(UUID userID){
