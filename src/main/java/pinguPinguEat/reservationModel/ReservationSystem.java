@@ -24,9 +24,6 @@ public class ReservationSystem {
         this.tables.add(temp);
     }
 
-    public HashMap<TimeSlot, List<Reservation>> getReservations() {
-        return reservations;
-    }
 
     public int getNumberOfSeats() {
         return numberOfSeats;

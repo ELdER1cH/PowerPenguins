@@ -1,8 +1,8 @@
 package pinguPinguEat.service;
 
-import pinguPinguEat.ReservationModel.Reservation;
-import pinguPinguEat.ReservationModel.Table;
-import pinguPinguEat.ReservationModel.TimeSlot;
+import pinguPinguEat.reservationModel.Reservation;
+import pinguPinguEat.reservationModel.Table;
+import pinguPinguEat.reservationModel.TimeSlot;
 import pinguPinguEat.restaurants.Restaurant;
 
 import java.util.HashMap;

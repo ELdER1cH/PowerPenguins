@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pinguPinguEat.ReservationModel.Table;
-import pinguPinguEat.ReservationModel.TimeSlot;
+import pinguPinguEat.reservationModel.Table;
+import pinguPinguEat.reservationModel.TimeSlot;
 import pinguPinguEat.restaurants.Restaurant;
 import pinguPinguEat.service.RestaurantService;
 
@@ -20,8 +20,8 @@ public class RestaurantController {
 
     private final RestaurantService restaurantService;
 
-    public RestaurantController(RestaurantService restaurantService) {
-        this.restaurantService = restaurantService;
+    public RestaurantController() {
+        this.restaurantService = new RestaurantService();
     }
 
     @GetMapping("/restaurant")
