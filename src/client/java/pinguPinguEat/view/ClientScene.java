@@ -1,5 +1,5 @@
 /**
- * Sample Skeleton for 'ClientBase.fxml' Controller Class
+ * Sample Skeleton for 'ClientScene.fxml' Controller Class
  */
 
 package pinguPinguEat.view;
@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import pinguPinguEat.restaurants.Restaurant;
 
-public class ClientBase {
+public class ClientScene {
 
     @FXML // fx:id="HelloSign"
     private Label HelloSign; // Value injected by FXMLLoader
