@@ -29,7 +29,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
+    }
 
 javafx {
     version = "17.0.2"
@@ -45,9 +45,6 @@ sourceSets {
         java {
             srcDir 'src/main/java'
         }
-        resources {
-            srcDir 'src/main/resources'
-        }
     }
     test {
         java {
@@ -57,21 +54,25 @@ sourceSets {
             'src/test/resources'
         }
     }
-    client{
-        java{
+    client {
+        java {
             srcDir 'src/client/Java'
         }
-        resources{
+        resources {
             srcDir 'src/client/resources'
         }
+        compileClasspath += main.output
+        runtimeClasspath += main.output
     }
-    server{
+    server {
         java {
             srcDir 'src/server/java'
         }
         resources {
             srcDir 'src/server/resources'
         }
+        compileClasspath += main.output
+        runtimeClasspath += main.output
     }
 }
 
