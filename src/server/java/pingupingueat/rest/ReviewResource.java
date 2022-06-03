@@ -1,11 +1,11 @@
-package pingupingueat.rest;
+package pinguPinguEat.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pingupingueat.service.ReviewService;
-import pingupingueat.user.Review;
+import pinguPinguEat.service.ReviewService;
+import pinguPinguEat.user.Review;
 
 import java.util.List;
 

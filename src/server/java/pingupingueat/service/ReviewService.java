@@ -1,7 +1,7 @@
-package pingupingueat.service;
+package pinguPinguEat.service;
 
 import org.springframework.stereotype.Service;
-import pingupingueat.user.Review;
+import pinguPinguEat.user.Review;
 
 import java.util.List;
 
