@@ -1,4 +1,4 @@
-package pinguPinguEat.ReservationModel;
+package pinguPinguEat.reservationModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +22,10 @@ public class ReservationSystem {
         this.numberOfSeats += numberOfSeats;
         this.numberOfTables++;
         this.tables.add(temp);
+    }
+
+    public HashMap<TimeSlot, List<Reservation>> getReservations() {
+        return reservations;
     }
 
     public int getNumberOfSeats() {

@@ -1,17 +1,23 @@
 package pinguPinguEat.user;
 
-import pinguPinguEat.ReservationModel.Reservation;
+import pinguPinguEat.reservationModel.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class User {
     private final String name;
     private final List<Reservation> reservations;
+    private UUID UserID;
 
     public User(String name, String username, String password) {
         this.name = name;
         this.reservations = new ArrayList<>();
+    }
+
+    public UUID getUserID() {
+        return UserID;
     }
 
     public String getName() {
