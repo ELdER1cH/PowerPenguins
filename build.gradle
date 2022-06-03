@@ -7,7 +7,6 @@ plugins {
 }
 
 
-mainClassName = 'client/java/pinguPinguEat'
 group = 'PinguPinguEat'
 version = '0x.0.0'
 sourceCompatibility = '17'
@@ -29,7 +28,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    }
+    serverImplementation 'org.springframework.boot:spring-boot-starter-web:2.6.7'
+    clientImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+}
 
 javafx {
     version = "17.0.2"
@@ -56,7 +58,7 @@ sourceSets {
     }
     client {
         java {
-            srcDir 'src/client/Java'
+            srcDir 'src/client/java'
         }
         resources {
             srcDir 'src/client/resources'

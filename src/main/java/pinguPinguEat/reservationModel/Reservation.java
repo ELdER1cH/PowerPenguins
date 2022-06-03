@@ -1,4 +1,4 @@
-package pinguPinguEat.ReservationModel;
+package pinguPinguEat.reservationModel;
 
 import pinguPinguEat.restaurants.Restaurant;
 
