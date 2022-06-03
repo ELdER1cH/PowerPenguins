@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pinguPinguEat.ReservationModel.Reservation;
+import pinguPinguEat.reservationModel.Reservation;
 import pinguPinguEat.service.ReservationService;
 
 import java.util.List;

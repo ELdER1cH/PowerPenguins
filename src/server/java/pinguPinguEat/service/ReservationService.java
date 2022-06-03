@@ -1,7 +1,7 @@
 package pinguPinguEat.service;
 
 import org.springframework.stereotype.Service;
-import pinguPinguEat.ReservationModel.Reservation;
+import pinguPinguEat.reservationModel.Reservation;
 
 import java.util.HashMap;
 import java.util.List;
