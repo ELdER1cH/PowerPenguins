@@ -18,7 +18,7 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         // Läd hier die fxml datei
-        URL url = new File("src/client/resources/PinguPinguEat/ClientScene.fxml").toURI().toURL();
+        URL url = new File("src/client/resources/pinguPinguEat/ClientBase.fxml").toURI().toURL();
         this.stage =  primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(url);
 
