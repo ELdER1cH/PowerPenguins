@@ -1,7 +1,7 @@
 package pinguPinguEat.restaurants;
 
 
-import pinguPinguEat.ReservationModel.ReservationSystem;
+import pinguPinguEat.reservationModel.ReservationSystem;
 import pinguPinguEat.user.Review;
 
 import java.util.ArrayList;

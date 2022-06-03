@@ -1,4 +1,4 @@
-package pinguPinguEat.ReservationModel;
+package pinguPinguEat.reservationModel;
 
 public class Table {
     private final int tableNumber;
