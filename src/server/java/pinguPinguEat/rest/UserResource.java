@@ -22,7 +22,7 @@ public class UserResource {
     }
 
     //Get a User, with userID as PathVariable and Password as RequestParam
-    @GetMapping("/user/{userID}")
+    @GetMapping("/users/{userID}")
     public ResponseEntity<User> authenticate(@PathVariable UUID userID, @RequestParam(value = "password", defaultValue = "") String password) {
         User user = userService.authenticate(userID, password);
         if (user == null) {
