@@ -23,7 +23,7 @@ public class ReservationController {
 
     public void addReservation(Reservation reservation) {
         webClient.post()
-                .uri("/reservatoion")
+                .uri("/reservations")
                 .bodyValue(reservation)
                 .retrieve()
                 .bodyToMono(Reservation.class)
@@ -33,7 +33,7 @@ public class ReservationController {
 
     public void confirmReservation(Reservation reservation) {
         webClient.put()
-                .uri("/persons" + reservation.getReservationId())
+                .uri("/reservations/" + reservation.getReservationId())
                 .retrieve()
                 .bodyToMono(Reservation.class)
                 .onErrorStop()
@@ -42,7 +42,7 @@ public class ReservationController {
 
     public void cancelReservation(Reservation reservation) {
         webClient.delete()
-                .uri("/persons/" + reservation.getReservationId())
+                .uri("/reservations/" + reservation.getReservationId())
                 .retrieve()
                 .toBodilessEntity()
                 .onErrorStop()
