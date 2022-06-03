@@ -22,7 +22,7 @@ public class ReservationResource {
     }
 
     //Ruft saved die übergebene Reservierung über reservation Service
-    @PostMapping("/reservation")
+    @PostMapping("/reservations")
     public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation){
         return ResponseEntity.ok(reservationService.saveReservation(reservation));
     }
@@ -30,7 +30,7 @@ public class ReservationResource {
 
     //Versucht die Reservierung zu confirmen,
     //Falls das nicht klappt, wegen Zeitbegrenzung oder weil die ID Falsch ist wird ein BadRequest zurückgegeben
-    @PutMapping("/reservation/{reservationId}")
+    @PutMapping("/reservations/{reservationId}")
     public ResponseEntity<Boolean> confirmReservation(@PathVariable UUID reservationId){
         if (!reservationService.confirmReservation(reservationId)){
             return ResponseEntity.badRequest().build();
@@ -41,7 +41,7 @@ public class ReservationResource {
 
     //Versucht die Reservierung zu canceln
     //Falls das nicht klappt, weil die ID nicht stimmt wird ein BadRequest zurückgegeben
-    @DeleteMapping("/reservation/{reservatioID}")
+    @DeleteMapping("/reservations/{reservatioID}")
     public ResponseEntity<HttpStatus> cancelReservation(@PathVariable UUID reservatioID){
         if (!reservationService.deleteReservation(reservatioID)){
             return ResponseEntity.badRequest().build();
