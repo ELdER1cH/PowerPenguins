@@ -36,6 +36,10 @@ public class ReservationSystem {
         return numberOfTables;
     }
 
+    public HashMap<TimeSlot, List<Reservation>> getReservations() {
+        return reservations;
+    }
+
     public List<Table> getTables() {
         return tables;
     }
