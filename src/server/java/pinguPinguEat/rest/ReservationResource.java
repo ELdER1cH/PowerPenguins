@@ -41,11 +41,11 @@ public class ReservationResource {
 
     //Versucht die Reservierung zu canceln
     //Falls das nicht klappt, weil die ID nicht stimmt wird ein BadRequest zurückgegeben
-    @DeleteMapping("/reservations/{reservatioID}")
-    public ResponseEntity<HttpStatus> cancelReservation(@PathVariable UUID reservatioID){
-        if (!reservationService.deleteReservation(reservatioID)){
+    @DeleteMapping("/reservations/{reservationID}")
+    public ResponseEntity<HttpStatus> cancelReservation(@PathVariable UUID reservationID) {
+        if (!reservationService.deleteReservation(reservationID)) {
             return ResponseEntity.badRequest().build();
-        }else{
+        } else {
             return ResponseEntity.noContent().build();
         }
     }
