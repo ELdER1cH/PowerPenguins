@@ -24,11 +24,6 @@ public class ReviewController {
         this.reviews = new ArrayList<>();
     }
 
-// All the methods below use an argument: Consumer<List<Review>> reviewsConsumer
-// I just imitated the Class PersonController of H05E01 and have no idea why we need a consumer.
-// Or maybe it is not necessary to use it.
-// I already posted a question about Consumer on Zulip and wait for the reply to make a better decision.
-
     public void addReview(Review review, Consumer<List<Review>> reviewsConsumer) {
         webClient.post()
                 .uri("reviews")
@@ -44,10 +39,7 @@ public class ReviewController {
 
     public void deleteReview(Review review, Consumer<List<Review>> reviewsConsumer) {
         webClient.delete()
-// I'm not sure if review.getComment() works, cause review has no ID attribute.
-// And it's possible that there are some reviews with the same content, author or rating.
-// But ID is never gonna have the same value.So maybe also add an attribute UUID ID for Class Review?
-                .uri("reviews/" + review.getComment())
+                .uri("reviews/" + review.getReviewID())
                 .retrieve()
                 .toBodilessEntity()
                 .onErrorStop()

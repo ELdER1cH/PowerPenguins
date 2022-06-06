@@ -2,22 +2,19 @@ package pinguPinguEat.user;
 
 import pinguPinguEat.reservationModel.Reservation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class User {
-    private final String name;
-    private final List<Reservation> reservations;
-    private UUID UserID;
+    private String name;
+    private List<Reservation> reservations;
+    private UUID userID;
 
-    public User(String name, String username, String password) {
-        this.name = name;
-        this.reservations = new ArrayList<>();
+    public User() {
     }
 
     public UUID getUserID() {
-        return UserID;
+        return userID;
     }
 
     public String getName() {
@@ -28,17 +25,17 @@ public class User {
         return reservations;
     }
 
-    public boolean cancelReservation(Reservation reservation){
+    public boolean cancelReservation(Reservation reservation) {
         //TODO implement cancel Reservation
         return false;
     }
 
-    public boolean makeReservation(Reservation reservation){
+    public boolean makeReservation(Reservation reservation) {
         //TODO implement makeReservation
         return false;
     }
 
-    public boolean confirmReservation(Reservation reservation){
+    public boolean confirmReservation(Reservation reservation) {
         return reservation.confirm();
     }
 }

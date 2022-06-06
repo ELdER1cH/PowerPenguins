@@ -3,7 +3,9 @@ package pinguPinguEat.service;
 import org.springframework.stereotype.Service;
 import pinguPinguEat.user.Review;
 
+import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ReviewService {
@@ -14,21 +16,21 @@ public class ReviewService {
     }
 
     public Review postReview(Review review) {
-        boolean isSuccessful = reviews.add(review);
-//do not allow an empty review
-        if (review.getComment() == null) {
-            isSuccessful = false;
-        }
+        var optionalNote = reviews.stream().filter(existingReview -> existingReview.getReviewID().equals(review.getReviewID())).findFirst();
 
-        if (isSuccessful) {
+        if (optionalNote.isEmpty()) {
+            review.setReviewID(UUID.randomUUID());
+            review.setCreationDate(Instant.now());
+            reviews.add(review);
             return review;
         } else {
+//already exists a review
             return null;
         }
     }
 
-    public boolean deleteReview(Review review) {
-        return reviews.remove(review);
+    public boolean deleteReview(UUID reviewID) {
+        return this.reviews.removeIf(review -> review.getReviewID().equals(reviewID));
     }
 
     public List<Review> getAllReviews() {
