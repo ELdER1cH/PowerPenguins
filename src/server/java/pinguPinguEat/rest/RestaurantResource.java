@@ -44,7 +44,7 @@ public class RestaurantResource {
     }
 
     @GetMapping("/restaurant/{restaurantID}")
-    public ResponseEntity<List<Table>> getAlltables(@PathVariable UUID restaurantID) {
+    public ResponseEntity<List<Table>> getAllTables(@PathVariable UUID restaurantID) {
         return ResponseEntity.ok(restaurantService.getAllTables(restaurantID));
     }
 }
