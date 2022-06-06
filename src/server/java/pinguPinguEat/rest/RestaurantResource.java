@@ -48,3 +48,4 @@ public class RestaurantResource {
         return ResponseEntity.ok(restaurantService.getAllTables(restaurantID));
     }
 }
+
