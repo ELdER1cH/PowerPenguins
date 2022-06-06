@@ -1,4 +1,4 @@
-package pinguPinguEat.controller;
+package pinguPinguEat.rest;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +16,15 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-public class RestaurantController {
+public class RestaurantResource {
 
-    private final RestaurantService restaurantService;
+    private RestaurantService restaurantService;
 
-    public RestaurantController() {
+    public RestaurantResource(RestaurantService restaurantService) {
+        this.restaurantService = restaurantService;
+    }
+
+    public RestaurantResource() {
         this.restaurantService = new RestaurantService();
     }
 
