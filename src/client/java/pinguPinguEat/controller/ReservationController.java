@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationController {
-    private final WebClient webClient;
-    private final List<Reservation> reservationsList;
+    WebClient webClient;
+    List<Reservation> reservationsList;
 
     public ReservationController() {
         this.reservationsList = new ArrayList<>();
