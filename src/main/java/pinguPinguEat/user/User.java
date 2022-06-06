@@ -9,7 +9,7 @@ import java.util.UUID;
 public class User {
     private final String name;
     private final List<Reservation> reservations;
-    private UUID UserID;
+    private UUID userID;
 
     public User(String name, String username, String password) {
         this.name = name;
@@ -17,7 +17,7 @@ public class User {
     }
 
     public UUID getUserID() {
-        return UserID;
+        return userID;
     }
 
     public String getName() {
