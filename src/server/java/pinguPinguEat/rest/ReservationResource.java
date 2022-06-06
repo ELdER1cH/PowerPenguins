@@ -30,11 +30,11 @@ public class ReservationResource {
 
     //Versucht die Reservierung zu confirmen,
     //Falls das nicht klappt, wegen Zeitbegrenzung oder weil die ID Falsch ist wird ein BadRequest zurückgegeben
-    @PutMapping("/reservations/{reservationId}")
-    public ResponseEntity<Boolean> confirmReservation(@PathVariable UUID reservationId){
-        if (!reservationService.confirmReservation(reservationId)){
+    @PutMapping("/reservations/{reservationID}")
+    public ResponseEntity<Boolean> confirmReservation(@PathVariable UUID reservationID) {
+        if (!reservationService.confirmReservation(reservationID)) {
             return ResponseEntity.badRequest().build();
-        }else {
+        } else {
             return ResponseEntity.ok(true);
         }
     }
