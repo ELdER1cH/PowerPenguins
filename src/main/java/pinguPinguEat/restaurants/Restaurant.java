@@ -4,10 +4,7 @@ package pinguPinguEat.restaurants;
 import pinguPinguEat.reservationModel.ReservationSystem;
 import pinguPinguEat.user.Review;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,24 +12,30 @@ import java.util.UUID;
 @Entity(name = "Restaurant")
 @Table(name = "restaurants")
 public class Restaurant {
+
+    //TODO had to make the attributes non final to check something
     @Column(name = "name", updatable = false, nullable = false, columnDefinition = "TEXT")
-    private final String name;
+    private String name;
 
     @Column(name = "cuisine_type", updatable = false)
-    private final CuisineType cuisineType;
+    private CuisineType cuisineType;
 
     @Column(name = "price_category", updatable = false)
-    private final PriceCategory priceCategory;
+    private PriceCategory priceCategory;
 
-    private final ReservationSystem reservationSystem;
-    private final List<Review> reviews;
-    private final double averageRating;
-    private final int sumOfRatings;
-    private final List<String> images;
+    @Transient //TODO what should I do with this
+    private ReservationSystem reservationSystem;
+
+    @Transient //TODO what should I do with this
+    private List<Review> reviews;
+    private double averageRating;
+    private int sumOfRatings;
+    @ElementCollection
+    private List<String> images;
 
     @Id
     @Column(name = "id", updatable = false, nullable = false, unique = true)
-    private final UUID reservationID;
+    private UUID reservationID;
 
     public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, ReservationSystem seatingPlan) {
         this.name = name;
@@ -45,6 +48,11 @@ public class Restaurant {
         images = new ArrayList<>();
         reservationID = UUID.fromString(name);
     }
+
+    public Restaurant() {
+
+    }
+
 
     public String getName() { return name; }
 
