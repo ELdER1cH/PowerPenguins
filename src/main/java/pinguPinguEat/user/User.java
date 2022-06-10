@@ -10,7 +10,7 @@ public class User {
     private final List<Reservation> reservations;
     private UUID userID;
 
-    public User(String name, String username, String password) {
+    public User(String name, String username) {
         this.name = name;
         this.reservations = new ArrayList<>();
     }
