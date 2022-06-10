@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class User {
-    private String name;
-    private List<Reservation> reservations;
+    private final String name;
+    private final List<Reservation> reservations;
     private UUID userID;
 
     public User(String name, String username, String password) {
