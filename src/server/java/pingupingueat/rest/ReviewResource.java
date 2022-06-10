@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pinguPinguEat.service.ReviewService;
 import pinguPinguEat.user.Review;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.UUID;
 
 @RestController
@@ -38,7 +38,7 @@ public class ReviewResource {
     }
 
     @GetMapping("reviews")
-    public ResponseEntity<List<Review>> getAllReviews() {
+    public ResponseEntity<HashMap<UUID, Review>> getAllReviews() {
         return ResponseEntity.ok(reviewService.getAllReviews());
     }
 

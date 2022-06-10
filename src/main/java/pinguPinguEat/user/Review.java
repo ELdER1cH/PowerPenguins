@@ -9,8 +9,10 @@ public class Review {
     private User author;
     private UUID reviewID;
 
-    public Review() {
-
+    public Review(int rating, String comment, User author) {
+        this.rating = rating;
+        this.comment = comment;
+        this.author = author;
     }
 
     public UUID getReviewID() {

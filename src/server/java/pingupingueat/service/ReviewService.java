@@ -3,37 +3,27 @@ package pinguPinguEat.service;
 import org.springframework.stereotype.Service;
 import pinguPinguEat.user.Review;
 
-import java.time.Instant;
-import java.util.List;
+import java.util.HashMap;
 import java.util.UUID;
 
 @Service
 public class ReviewService {
-    private final List<Review> reviews;
+    private final HashMap<UUID, Review> reviews;
 
-    public ReviewService(List<Review> reviews) {
-        this.reviews = reviews;
+    public ReviewService() {
+        this.reviews = new HashMap<>();
     }
 
     public Review postReview(Review review) {
-        var optionalNote = reviews.stream().filter(existingReview -> existingReview.getReviewID().equals(review.getReviewID())).findFirst();
-
-        if (optionalNote.isEmpty()) {
-            review.setReviewID(UUID.randomUUID());
-            review.setCreationDate(Instant.now());
-            reviews.add(review);
-            return review;
-        } else {
-//already exists a review
-            return null;
-        }
+        review.setReviewID(UUID.randomUUID());
+        return this.reviews.put(review.getReviewID(), review);
     }
 
     public boolean deleteReview(UUID reviewID) {
-        return this.reviews.removeIf(review -> review.getReviewID().equals(reviewID));
+        return this.reviews.remove(reviewID) != null;
     }
 
-    public List<Review> getAllReviews() {
+    public HashMap<UUID, Review> getAllReviews() {
 // Maybe add some sorting options in the future
         return this.reviews;
     }
