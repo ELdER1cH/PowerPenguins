@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 
 public class RestaurantController {
     private final WebClient webClient;
+
+    // HashMap genutzt, um aud ID leicht zuzugreifen, aber problematisch im Code
     private final HashMap<UUID, Restaurant> restaurantHashMap;
 
     public RestaurantController() {
@@ -44,18 +46,7 @@ public class RestaurantController {
                 });
     }
 
-    public void getRestaurant(Consumer<List<Restaurant>> restaurantConsumer, UUID restaurantID) {
-//        boolean isRestaurant = false;
-//        int i;
-//        for(i = 0; i < restaurantList.size(); i++){
-//            if(restaurantList.get(i).getReservationID().equals(restaurantID)){
-//                isRestaurant = true;
-//                break;
-//            }
-//        }
-//        // Restaurant mit dieser ID existiert nicht
-//        if(!isRestaurant){ return;}
-
+    public void getRestaurant(Consumer<Restaurant> restaurantConsumer, UUID restaurantID) {
         webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/restaurants")
@@ -67,7 +58,7 @@ public class RestaurantController {
                 .subscribe(newRestaurants -> {
                     restaurantHashMap.clear();
                     restaurantHashMap.putAll(newRestaurants); // muss HashMap sein, falsch
-                    restaurantConsumer.accept(restaurantHashMap.get(restaurantID).toList ?);
+                    restaurantConsumer.accept(restaurantHashMap.get(restaurantID));
 
                 });
     }
@@ -95,7 +86,6 @@ public class RestaurantController {
             if (allTables.contains(reservation.getTable())) {
                 reservation = null;
             }
-
         }
 
         webClient.get()
