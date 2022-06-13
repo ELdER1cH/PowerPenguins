@@ -3,35 +3,27 @@ package pinguPinguEat.service;
 import org.springframework.stereotype.Service;
 import pinguPinguEat.user.Review;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.UUID;
 
 @Service
 public class ReviewService {
-    private final List<Review> reviews;
+    private final HashMap<UUID, Review> reviews;
 
-    public ReviewService(List<Review> reviews) {
-        this.reviews = reviews;
+    public ReviewService() {
+        this.reviews = new HashMap<>();
     }
 
     public Review postReview(Review review) {
-        boolean isSuccessful = reviews.add(review);
-//do not allow an empty review
-        if (review.getComment() == null) {
-            isSuccessful = false;
-        }
-
-        if (isSuccessful) {
-            return review;
-        } else {
-            return null;
-        }
+        review.setReviewID(UUID.randomUUID());
+        return this.reviews.put(review.getReviewID(), review);
     }
 
-    public boolean deleteReview(Review review) {
-        return reviews.remove(review);
+    public boolean deleteReview(UUID reviewID) {
+        return this.reviews.remove(reviewID) != null;
     }
 
-    public List<Review> getAllReviews() {
+    public HashMap<UUID, Review> getAllReviews() {
 // Maybe add some sorting options in the future
         return this.reviews;
     }
