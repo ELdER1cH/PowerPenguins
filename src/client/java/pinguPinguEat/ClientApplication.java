@@ -14,12 +14,16 @@ public class ClientApplication extends Application {
     private ConfigurableApplicationContext applicationContext;
     private Stage stage;
 
+//    @Override
+//    public void init() throws Exception {
+//        super.init();
+//    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         // Läd hier die fxml datei
         URL url = new File("src/client/resources/pinguPinguEat/ClientBase.fxml").toURI().toURL();
-        this.stage =  primaryStage;
+        this.stage = primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(url);
 
         //Hier wird das Window konfiguriert
