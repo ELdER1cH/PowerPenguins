@@ -74,7 +74,7 @@ public class RestaurantController {
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
                     restaurantHashMap.clear();
-                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, r -> r)));
+                    //TODO Return Value to List
                     tableConsumer.accept(restaurantHashMap.get(restaurantID).getReservationSystem().getTables());
                 });
     }
@@ -98,7 +98,7 @@ public class RestaurantController {
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
                     restaurantHashMap.clear();
-                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, r -> r)));
+                    //TODO Return Value to List
                     tableConsumer.accept(allTables.stream().filter(x -> x != null).collect(Collectors.toList()));
                 });
     }
