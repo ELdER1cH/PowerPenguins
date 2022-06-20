@@ -28,7 +28,7 @@ public class Restaurant {
         averageRating = 0;
         sumOfRatings = 0;
         images = new ArrayList<>();
-        restaurantID = UUID.fromString(name);
+        restaurantID = UUID.randomUUID();
     }
 
     public String getName() { return name; }
