@@ -1,5 +1,5 @@
 /**
- * Sample Skeleton for 'ClientViewRestaurant.fxml' Controller Class
+ * Sample Skeleton for 'RestaurantView.fxml' Controller Class
  */
 
 package pinguPinguEat.view;
