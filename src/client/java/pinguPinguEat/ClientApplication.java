@@ -3,6 +3,7 @@ package pinguPinguEat;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -26,6 +27,13 @@ public class ClientApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.stage = primaryStage;
+
+        // resize stage to screen size of this device
+        int width = (int) Screen.getPrimary().getBounds().getWidth();
+        int height = (int) Screen.getPrimary().getBounds().getHeight();
+        this.stage.setWidth(width);
+        this.stage.setHeight(height);
+
 
         // Hier wird das Fenster für den Start konfiguriert
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource(startView)));
