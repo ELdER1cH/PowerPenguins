@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.springframework.context.ConfigurableApplicationContext;
 import pinguPinguEat.view.SceneController;
@@ -40,7 +39,6 @@ public class ClientApplication extends Application {
         this.controller = controller;
     }
 
-    // ??
     public ClientApplication() {
         startView = "ClientBase.fxml";
     }
@@ -50,15 +48,7 @@ public class ClientApplication extends Application {
 
         this.stage = primaryStage;
 
-        // resize stage to screen size of this device
-        int width = (int) Screen.getPrimary().getBounds().getWidth();
-        int height = (int) Screen.getPrimary().getBounds().getHeight();
-        this.stage.setWidth(width);
-        this.stage.setHeight(height);
-
-        // this actually works better but the window size hast to be adjusted whenever the scene changes
-        // will deal w/ this later
-        // this.stage.setMaximized(true);
+        this.stage.setMaximized(true);
 
 
         // Hier wird das Fenster für den Start konfiguriert
