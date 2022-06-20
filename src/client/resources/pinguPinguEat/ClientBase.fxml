@@ -5,72 +5,67 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18"
-            fx:controller="pinguPinguEat.view.ClientScene">
-    <center>
-        <ImageView fx:id="type1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
-                   BorderPane.alignment="CENTER">
-            <image>
-                <Image url="@pog.jpg"/>
-            </image>
-        </ImageView>
-    </center>
-    <bottom>
-        <Button mnemonicParsing="false" onAction="#onHelloButtonClick" text="Have Fun" BorderPane.alignment="CENTER"/>
-    </bottom>
-    <top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.SceneController">
+    <left>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <HBox spacing="10.0">
+                    <children>
+                        <TextField fx:id="searchField" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchAction" text="Search">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </Button>
+                    </children>
+                </HBox>
+                <ListView fx:id="restaurantList" prefHeight="693.0" prefWidth="248.0" />
+            </children>
+        </VBox>
+    </left>
+   <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
                 <MenuBar>
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Close"/>
+                                <MenuItem mnemonicParsing="false" text="Close" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Delete"/>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="About"/>
+                                <MenuItem mnemonicParsing="false" text="About" />
                             </items>
                         </Menu>
                     </menus>
                 </MenuBar>
                 <ToolBar prefHeight="40.0" prefWidth="200.0">
                     <items>
-                        <TextField fx:id="userNameField" promptText="UserName"/>
-                        <TextField fx:id="passWordField" promptText="Password"/>
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login"/>
-                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction"
-                                text="Register"/>
+                        <TextField fx:id="userNameField" promptText="UserName" />
+                        <TextField fx:id="passWordField" promptText="Password" />
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
                     </items>
                 </ToolBar>
             </children>
         </VBox>
-    </top>
-    <right>
-        <Label fx:id="HelloSign" text="Hallo" BorderPane.alignment="CENTER"/>
-    </right>
-    <left>
-        <VBox BorderPane.alignment="CENTER">
-            <children>
-                <HBox spacing="10.0">
-                    <children>
-                        <TextField fx:id="searchField"/>
-                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchAction" text="Search">
-                            <opaqueInsets>
-                                <Insets/>
-                            </opaqueInsets>
-                        </Button>
-                    </children>
-                </HBox>
-                <ListView fx:id="restaurantList" prefHeight="693.0" prefWidth="248.0"/>
-            </children>
-        </VBox>
-    </left>
+   </top>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+              <ImageView fx:id="type1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@pog.jpg" />
+                  </image>
+              </ImageView>
+            <Button alignment="TOP_LEFT" centerShape="false" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToMapView" scaleShape="false" text="Go to Map" textAlignment="CENTER" translateX="-200.0" translateY="-200.0" />
+         </children>
+      </StackPane>
+   </center>
 </BorderPane>
