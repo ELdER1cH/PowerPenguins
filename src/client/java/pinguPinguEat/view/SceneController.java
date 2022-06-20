@@ -5,26 +5,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import pinguPinguEat.logic.RestaurantLogic;
 import pinguPinguEat.restaurants.Restaurant;
 
 import java.io.IOException;
 
 public class SceneController {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
 
     @FXML
@@ -61,8 +52,6 @@ public class SceneController {
         restaurantList.setItems(restaurants);
     }
 
-    @FXML // fx:id="HelloSign"
-    private Label HelloSign; // Value injected by FXMLLoader
 
     @FXML // fx:id="loginButton"
     private Button loginButton; // Value injected by FXMLLoader
