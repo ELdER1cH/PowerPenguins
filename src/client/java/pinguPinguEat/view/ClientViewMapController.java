@@ -1,4 +1,4 @@
 package pinguPinguEat.view;
 
-public class ClientViewMapController {
+public class ClientViewMapController extends SceneController {
 }

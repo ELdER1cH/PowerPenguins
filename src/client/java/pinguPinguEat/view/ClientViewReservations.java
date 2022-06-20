@@ -1,4 +1,4 @@
 package pinguPinguEat.view;
 
-public class ClientViewReservations {
+public class ClientViewReservations extends SceneController {
 }
