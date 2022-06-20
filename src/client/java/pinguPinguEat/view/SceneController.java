@@ -1,5 +1,7 @@
 package pinguPinguEat.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import pinguPinguEat.logic.RestaurantLogic;
 import pinguPinguEat.restaurants.Restaurant;
 
 import java.io.File;
@@ -23,6 +26,7 @@ public class SceneController {
     private Scene scene;
     private Parent root;
 
+    public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
     private static final String MAP_VIEW = "MapView.fxml";
     private static final String RESERVATION_VIEW = "ReservationView.fxml";
     private static final String RESTAURANT_VIEW = "RestaurantView.fxml";
@@ -42,12 +46,16 @@ public class SceneController {
 
     private void switchToScene(ActionEvent event, String SceneFileName) throws IOException {
         root = FXMLLoader.load(new File("src/client/resources/pinguPinguEat/" + SceneFileName).toURI().toURL());
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
+    public void loadRestaurants() {
+        restaurants.addAll(RestaurantLogic.getAllRestaurants());
+        restaurantList.setItems(restaurants);
+    }
 
     @FXML // fx:id="HelloSign"
     private Label HelloSign; // Value injected by FXMLLoader

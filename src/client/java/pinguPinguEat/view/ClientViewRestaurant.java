@@ -11,7 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import pinguPinguEat.restaurants.Restaurant;
 
-public class ClientViewRestaurant {
+public class ClientViewRestaurant extends SceneController {
 
     @FXML // fx:id="loginButton"
     private Button loginButton; // Value injected by FXMLLoader

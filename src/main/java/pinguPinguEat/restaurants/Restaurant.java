@@ -28,7 +28,7 @@ public class Restaurant {
         averageRating = 0;
         sumOfRatings = 0;
         images = new ArrayList<>();
-        reservationID = UUID.fromString(name);
+        reservationID = UUID.randomUUID();
     }
 
     public String getName() { return name; }
@@ -60,5 +60,10 @@ public class Restaurant {
 
     public void addReview(Review review) {
         //TODO implement addReview with updating sumOfRating and average Rating
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " Rating: " + averageRating;
     }
 }
