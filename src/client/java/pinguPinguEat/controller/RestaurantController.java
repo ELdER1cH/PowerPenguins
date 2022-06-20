@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class RestaurantController {
@@ -42,7 +41,7 @@ public class RestaurantController {
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
                     restaurantHashMap.clear();
-                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, Function.identity()))); // falsch, muss HashMap sein
+                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, r -> r)));
                     restaurantConsumer.accept(restaurantHashMap);
                 });
     }
@@ -58,7 +57,7 @@ public class RestaurantController {
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
                     restaurantHashMap.clear();
-                    restaurantHashMap.putAll(newRestaurants); // muss HashMap sein, falsch
+                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, r -> r)));
                     restaurantConsumer.accept(restaurantHashMap.get(restaurantID));
 
                 });
@@ -75,7 +74,7 @@ public class RestaurantController {
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
                     restaurantHashMap.clear();
-                    restaurantHashMap.putAll(newRestaurants); // muss HashMap sein, falsch
+                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, r -> r)));
                     tableConsumer.accept(restaurantHashMap.get(restaurantID).getReservationSystem().getTables());
                 });
     }
@@ -99,7 +98,7 @@ public class RestaurantController {
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
                     restaurantHashMap.clear();
-                    restaurantHashMap.putAll(newRestaurants); // muss HashMap sein, falsch
+                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, r -> r)));
                     tableConsumer.accept(allTables.stream().filter(x -> x != null).collect(Collectors.toList()));
                 });
     }
