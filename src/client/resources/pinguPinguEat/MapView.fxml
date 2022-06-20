@@ -5,9 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18"
-            fx:controller="pinguPinguEat.view.ClientScene">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.SceneController">
     <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
@@ -15,30 +13,29 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Close"/>
+                                <MenuItem mnemonicParsing="false" text="Close" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Delete"/>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="About"/>
+                                <MenuItem mnemonicParsing="false" text="About" />
                             </items>
                         </Menu>
                     </menus>
                 </MenuBar>
                 <ToolBar prefHeight="40.0" prefWidth="200.0">
                     <items>
-                        <TextField fx:id="userNameField" promptText="UserName"/>
-                        <TextField fx:id="passWordField" promptText="Password"/>
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login"/>
-                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction"
-                                text="Register"/>
-                        <Button alignment="BASELINE_RIGHT" mnemonicParsing="false" text="Button"/>
-                        <Button mnemonicParsing="false" text="Button"/>
+                        <TextField fx:id="userNameField" promptText="UserName" />
+                        <TextField fx:id="passWordField" promptText="Password" />
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
+                        <Button alignment="BASELINE_RIGHT" mnemonicParsing="false" text="Button" />
+                        <Button mnemonicParsing="false" text="Button" />
                     </items>
                 </ToolBar>
             </children>
@@ -49,21 +46,21 @@
             <children>
                 <HBox spacing="10.0">
                     <children>
-                        <TextField fx:id="searchField" promptText="Search"/>
+                        <TextField fx:id="searchField" promptText="Search" />
                         <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchAction" text="Search">
                             <opaqueInsets>
-                                <Insets/>
+                                <Insets />
                             </opaqueInsets>
                         </Button>
                     </children>
                     <padding>
-                        <Insets left="5.0"/>
+                        <Insets left="5.0" />
                     </padding>
                 </HBox>
-                <ListView fx:id="restaurantList" prefHeight="693.0" prefWidth="248.0"/>
+                <ListView fx:id="restaurantList" prefHeight="693.0" prefWidth="248.0" />
             </children>
             <padding>
-                <Insets top="5.0"/>
+                <Insets top="5.0" />
             </padding>
         </VBox>
     </left>
@@ -72,9 +69,10 @@
             <children>
                 <ImageView fx:id="type1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@pog.jpg"/>
+                        <Image url="@pog.jpg" />
                     </image>
                 </ImageView>
+            <Label layoutX="162.0" layoutY="176.0" text="I am map" />
             </children>
         </Pane>
     </center>

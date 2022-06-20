@@ -1,19 +1,53 @@
-/**
- * Sample Skeleton for 'ClientScene.fxml' Controller Class
- */
-
 package pinguPinguEat.view;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import pinguPinguEat.restaurants.Restaurant;
 
-public class ClientScene {
+import java.io.File;
+import java.io.IOException;
+
+public class SceneController {
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    private static final String MAP_VIEW = "MapView.fxml";
+    private static final String RESERVATION_VIEW = "ReservationView.fxml";
+    private static final String RESTAURANT_VIEW = "RestaurantView.fxml";
+
+    public void switchToMapView(ActionEvent event) throws IOException {
+        switchToScene(event, MAP_VIEW);
+    }
+
+    public void switchToReservationView(ActionEvent event) throws IOException {
+        switchToScene(event, RESERVATION_VIEW);
+
+    }
+
+    public void switchToRestaurantView(ActionEvent event) throws IOException {
+        switchToScene(event, RESTAURANT_VIEW);
+    }
+
+    private void switchToScene(ActionEvent event, String SceneFileName) throws IOException {
+        root = FXMLLoader.load(new File("src/client/resources/pinguPinguEat/" + SceneFileName).toURI().toURL());
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
     @FXML // fx:id="HelloSign"
     private Label HelloSign; // Value injected by FXMLLoader
@@ -61,5 +95,8 @@ public class ClientScene {
     void searchAction(ActionEvent event) {
 
     }
+
+
+
 
 }
