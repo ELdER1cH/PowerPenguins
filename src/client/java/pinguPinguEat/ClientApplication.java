@@ -1,6 +1,7 @@
 package pinguPinguEat;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +16,7 @@ public class ClientApplication extends Application {
     private Stage stage;
     private final String startView;
     private FXMLLoader loader;
-    private SceneController controller;
+    private SceneController sceneController;
 
 //    @Override
 //    public void init() throws Exception {
@@ -32,11 +33,11 @@ public class ClientApplication extends Application {
     }
 
     public SceneController getController() {
-        return controller;
+        return sceneController;
     }
 
-    public void setController(SceneController controller) {
-        this.controller = controller;
+    public void setController(SceneController sceneController) {
+        this.sceneController = sceneController;
     }
 
     public ClientApplication() {
@@ -57,8 +58,9 @@ public class ClientApplication extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("PinguPinguEat");
         stage.setScene(scene);
-        controller = loader.getController();
-        controller.loadRestaurants();
+        sceneController = loader.getController();
+        sceneController.switchToMapView(new ActionEvent());
+        sceneController.loadRestaurants();
 
 
         stage.show();

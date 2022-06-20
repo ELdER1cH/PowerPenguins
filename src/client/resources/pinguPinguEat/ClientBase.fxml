@@ -40,30 +40,32 @@
     <center>
         <StackPane fx:id="viewStackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Group fx:id="restaurantViewGroup" translateX="-100.0" translateY="100.0">
+                <Group fx:id="restaurantViewGroup" StackPane.alignment="TOP_LEFT">
                     <children>
-                        <Label text="RestaurantView">
+                        <Label alignment="TOP_RIGHT" text="RestaurantView" translateX="300.0">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToReservationView" text="Reservation" />
+                    </children>
+                </Group>
+                <Group fx:id="mapViewGroup" StackPane.alignment="TOP_LEFT">
+                    <children>
+                  <Button mnemonicParsing="false" onAction="#switchToRestaurantView" text="Restaurant" />
+                        <Label text="MapView" translateX="300.0">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
                     </children>
                 </Group>
-                <Group fx:id="mapViewGroup">
+                <Group fx:id="reservationViewGroup" StackPane.alignment="TOP_LEFT">
                     <children>
-                        <Button alignment="TOP_LEFT" centerShape="false" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToMapView" scaleShape="false" text="Go to Map" textAlignment="CENTER" />
-                        <Label text="MapView" translateX="-200.0" translateY="-200.0">
+                  <Button layoutX="-4.0" layoutY="1.0" mnemonicParsing="false" onAction="#switchToRestaurantView" text="Back" />
+                        <Label layoutX="300.0" text="ReservationView">
                             <font>
-                                <Font size="28.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Group>
-                <Group fx:id="reservationViewGroup" translateX="100.0">
-                    <children>
-                        <Label layoutX="100.0" layoutY="100.0" text="ReservationView">
-                            <font>
-                                <Font size="29.0" />
+                                <Font size="24.0" />
                             </font>
                         </Label>
                     </children>

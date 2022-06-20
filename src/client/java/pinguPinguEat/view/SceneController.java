@@ -29,19 +29,19 @@ public class SceneController {
     private StackPane viewStackPane;
 
     public void switchToMapView(ActionEvent event) throws IOException {
-        switchToScene(event, mapViewGroup);
+        switchToScene(mapViewGroup);
     }
 
     public void switchToReservationView(ActionEvent event) throws IOException {
-        switchToScene(event, reservationViewGroup);
+        switchToScene(reservationViewGroup);
 
     }
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
-        switchToScene(event, restaurantViewGroup);
+        switchToScene(restaurantViewGroup);
     }
 
-    private void switchToScene(ActionEvent event, Group viewGroup) throws IOException {
+    private void switchToScene(Group viewGroup) throws IOException {
         viewStackPane.getChildren().clear();
         viewStackPane.getChildren().add(viewGroup);
     }
