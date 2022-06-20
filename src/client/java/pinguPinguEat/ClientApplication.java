@@ -34,6 +34,10 @@ public class ClientApplication extends Application {
         this.stage.setWidth(width);
         this.stage.setHeight(height);
 
+        // this actually works better but the window size hast to be adjusted whenever the scene changes
+        // will deal w/ this later
+        // this.stage.setMaximized(true);
+
 
         // Hier wird das Fenster für den Start konfiguriert
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource(startView)));
