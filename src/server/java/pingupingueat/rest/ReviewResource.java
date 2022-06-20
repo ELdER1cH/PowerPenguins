@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pinguPinguEat.service.ReviewService;
 import pinguPinguEat.user.Review;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -20,16 +21,16 @@ public class ReviewResource {
 
     @PostMapping("reviews")
     public ResponseEntity<Review> createReview(@RequestBody Review review) {
-        if (reviewService.postReview(review) == null) {
+        if (review.getReviewID() != null) {
             return ResponseEntity.badRequest().build();
         } else {
             return ResponseEntity.ok(reviewService.postReview(review));
         }
     }
 
-    @DeleteMapping("reviews")
-    public ResponseEntity<HttpStatus> cancelReview(@PathVariable Review review) {
-        if (!reviewService.deleteReview(review)) {
+    @DeleteMapping("reviews/{reviewID}")
+    public ResponseEntity<HttpStatus> deleteReview(@PathVariable("reviewID") UUID reviewID) {
+        if (!reviewService.deleteReview(reviewID)) {
             return ResponseEntity.badRequest().build();
         } else {
             return ResponseEntity.noContent().build();
@@ -37,7 +38,7 @@ public class ReviewResource {
     }
 
     @GetMapping("reviews")
-    public ResponseEntity<List<Review>> getAllReviews() {
+    public ResponseEntity<HashMap<UUID, Review>> getAllReviews() {
         return ResponseEntity.ok(reviewService.getAllReviews());
     }
 
