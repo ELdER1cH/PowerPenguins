@@ -61,4 +61,9 @@ public class Restaurant {
     public void addReview(Review review) {
         //TODO implement addReview with updating sumOfRating and average Rating
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " Rating: " + averageRating;
+    }
 }
