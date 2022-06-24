@@ -19,13 +19,27 @@ public class UserService {
 
 
     public User authenticate(UUID Id, String password) {
-        //TODO implement
+        //TODO implement with Database access
+        if(users.get(Id) != null) {
+            if (users.get(Id).getPassword().equals(password)) {
+                return users.get(Id);
+            }
+        }
         return null;
     }
 
     public User newUser(User user) {
-        //TODO implement
+        //TODO implement with Database access
+        if (users.get(user.getUserID()) == null)  {
+            users.put(user.getUserID(), user);
+            return user;
+        }
         return null;
+
+    }
+
+    public boolean logoutUser(UUID Id) {
+        return users.get(Id) != null;
     }
 
 }

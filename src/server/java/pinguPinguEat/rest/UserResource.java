@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pinguPinguEat.ReservationModel.Reservation;
 import pinguPinguEat.user.User;
 import pinguPinguEat.service.UserService;
 
@@ -34,7 +33,19 @@ public class UserResource {
     //PostMapping, creates new user
     @PostMapping("/user")
     public ResponseEntity<User> newUser(@RequestBody User user){
-        return ResponseEntity.ok(userService.newUser(user));
+        if (userService.newUser(user) != null) {
+            return ResponseEntity.ok(userService.newUser(user));
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @DeleteMapping("/users/{userID}")
+    public ResponseEntity<HttpStatus> logoutUser(@PathVariable UUID userID) {
+        if (userService.logoutUser(userID)) {
+            return ResponseEntity.badRequest().build();
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
 
