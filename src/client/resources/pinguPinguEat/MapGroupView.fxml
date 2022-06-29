@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx"
-            fx:controller="pinguPinguEat.MapGroupView"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.AnchorPane?>
+<Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
+       fx:controller="pinguPinguEat.view.MapGroupController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label text="Map View"/>
+         </children>
+      </AnchorPane>
+   </children>
+</Group>
