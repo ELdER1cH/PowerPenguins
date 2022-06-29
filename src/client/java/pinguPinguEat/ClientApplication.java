@@ -18,11 +18,9 @@ public class ClientApplication extends Application {
     private FXMLLoader loader;
     private SceneController sceneController;
 
-//    @Override
-//    public void init() throws Exception {
-//        super.init();
-//    }
-
+    public ClientApplication() {
+        startView = "ClientBase.fxml";
+    }
 
     public FXMLLoader getLoader() {
         return loader;
@@ -40,9 +38,6 @@ public class ClientApplication extends Application {
         this.sceneController = sceneController;
     }
 
-    public ClientApplication() {
-        startView = "ClientBase.fxml";
-    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -60,9 +55,6 @@ public class ClientApplication extends Application {
         stage.setScene(scene);
         sceneController = loader.getController();
         sceneController.switchToMapView(new ActionEvent());
-        sceneController.loadRestaurants();
-
-
         stage.show();
     }
 }
