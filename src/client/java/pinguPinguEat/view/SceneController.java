@@ -4,61 +4,54 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
 import pinguPinguEat.logic.RestaurantLogic;
 import pinguPinguEat.restaurants.Restaurant;
 
-import java.io.File;
 import java.io.IOException;
 
 public class SceneController {
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
-    private static final String MAP_VIEW = "MapView.fxml";
-    private static final String RESERVATION_VIEW = "ReservationView.fxml";
-    private static final String RESTAURANT_VIEW = "RestaurantView.fxml";
+
+    @FXML
+    private Group mapViewGroup;
+    @FXML
+    private Group reservationViewGroup;
+    @FXML
+    private Group restaurantViewGroup;
+
+    @FXML
+    private StackPane viewStackPane;
 
     public void switchToMapView(ActionEvent event) throws IOException {
-        switchToScene(event, MAP_VIEW);
+        switchToScene(mapViewGroup);
     }
 
     public void switchToReservationView(ActionEvent event) throws IOException {
-        switchToScene(event, RESERVATION_VIEW);
+        switchToScene(reservationViewGroup);
 
     }
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
-        switchToScene(event, RESTAURANT_VIEW);
+        switchToScene(restaurantViewGroup);
     }
 
-    private void switchToScene(ActionEvent event, String SceneFileName) throws IOException {
-        root = FXMLLoader.load(new File("src/client/resources/pinguPinguEat/" + SceneFileName).toURI().toURL());
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    private void switchToScene(Group viewGroup) throws IOException {
+        viewStackPane.getChildren().clear();
+        viewStackPane.getChildren().add(viewGroup);
     }
+
 
     public void loadRestaurants() {
         restaurants.addAll(RestaurantLogic.getAllRestaurants());
         restaurantList.setItems(restaurants);
     }
 
-    @FXML // fx:id="HelloSign"
-    private Label HelloSign; // Value injected by FXMLLoader
 
     @FXML // fx:id="loginButton"
     private Button loginButton; // Value injected by FXMLLoader
@@ -103,8 +96,4 @@ public class SceneController {
     void searchAction(ActionEvent event) {
 
     }
-
-
-
-
 }
