@@ -72,15 +72,14 @@ public class RestaurantController {
                 })
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
-                    restaurantHashMap.clear();
-                    restaurantHashMap.putAll(newRestaurants.stream().collect(Collectors.toMap(Restaurant::getRestaurantID, r -> r)));
+                    //TODO Update Tables
                     tableConsumer.accept(restaurantHashMap.get(restaurantID).getReservationSystem().getTables());
                 });
     }
 
     public void getFreeTables(Consumer<List<Table>> tableConsumer, UUID restaurantID, TimeSlot timeSlot) {
         List<Table> allTables = restaurantHashMap.get(restaurantID).getReservationSystem().getTables();
-        List<Reservation> reservations = ((Restaurant) restaurantHashMap.get(restaurantID)).getReservationSystem().getReservations().get(timeSlot);
+        List<Reservation> reservations = restaurantHashMap.get(restaurantID).getReservationSystem().getReservations().get(timeSlot);
         for (Reservation reservation : reservations) {
             if (allTables.contains(reservation.getTable())) {
                 reservation = null;
