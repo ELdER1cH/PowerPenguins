@@ -25,8 +25,12 @@ public class SceneController {
     @FXML
     public void initialize() throws IOException {
         //Import Restaurant Group
-        loader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroup.fxml"));
+        loader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
         restaurantViewGroup = loader.load();
+
+        //Import Reservation Group
+        loader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
+        reservationViewGroup = loader.load();
 
         //Import Restaurants
         restaurants.addAll(RestaurantLogic.getAllRestaurants());
