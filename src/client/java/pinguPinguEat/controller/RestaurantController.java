@@ -62,7 +62,6 @@ public class RestaurantController {
 
                 });
     }
-
     public void getAllTables(Consumer<List<Table>> tableConsumer, UUID restaurantID) {
         webClient.get()
                 .uri(uriBuilder -> uriBuilder
