@@ -11,6 +11,7 @@ public class User {
     private List<Reservation> reservations;
 
     private UUID userID;
+    private String password;
 
     public User(String name, String username) {
         this.name = name;
@@ -23,6 +24,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public List<Reservation> getReservations() {
