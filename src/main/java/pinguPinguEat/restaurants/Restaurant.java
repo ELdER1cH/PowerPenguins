@@ -17,7 +17,7 @@ public class Restaurant {
     private final double averageRating;
     private final int sumOfRatings;
     private final List<String> images;
-    private final UUID reservationID;
+    private final UUID restaurantID;
 
     public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, ReservationSystem seatingPlan) {
         this.name = name;
@@ -28,7 +28,7 @@ public class Restaurant {
         averageRating = 0;
         sumOfRatings = 0;
         images = new ArrayList<>();
-        reservationID = UUID.fromString(name);
+        restaurantID = UUID.randomUUID();
     }
 
     public String getName() { return name; }
@@ -50,8 +50,8 @@ public class Restaurant {
         return averageRating;
     }
 
-    public UUID getReservationID() {
-        return reservationID;
+    public UUID getRestaurantID() {
+        return restaurantID;
     }
 
     public ReservationSystem getReservationSystem() {
@@ -60,5 +60,10 @@ public class Restaurant {
 
     public void addReview(Review review) {
         //TODO implement addReview with updating sumOfRating and average Rating
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " Rating: " + averageRating;
     }
 }
