@@ -1,10 +1,13 @@
 package pinguPinguEat.logic;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pinguPinguEat.controller.ReviewController;
 import pinguPinguEat.user.Review;
 import pinguPinguEat.view.SceneController;
+
+import java.util.List;
 
 public class ReviewLogic {
     private final ObservableList<Review> reviewObservableList;
@@ -15,6 +18,8 @@ public class ReviewLogic {
         this.reviewController = new ReviewController();
         this.sceneController = new SceneController();
         this.reviewObservableList = FXCollections.observableArrayList();
+
+        reviewController.getAllReviews(this::setReview);
     }
 
     //    create
@@ -35,5 +40,9 @@ public class ReviewLogic {
     //    show all reviews
     public void showAllReviews() {
 
+    }
+
+    private void setReview(List<Review> review) {
+        Platform.runLater(() -> reviewObservableList.setAll(review));
     }
 }

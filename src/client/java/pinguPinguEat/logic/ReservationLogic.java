@@ -1,11 +1,14 @@
 package pinguPinguEat.logic;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import pinguPinguEat.controller.ReservationController;
 import pinguPinguEat.reservationModel.Reservation;
 import pinguPinguEat.view.SceneController;
+
+import java.util.List;
 
 public class ReservationLogic {
     private final ObservableList<Reservation> reservationObservableList;
@@ -16,6 +19,14 @@ public class ReservationLogic {
         this.reservationController = new ReservationController();
         this.sceneController = new SceneController();
         this.reservationObservableList = FXCollections.observableArrayList();
+
+//        initiate reservationObservableList
+
+
+    }
+
+    private void setReservation(List<Reservation> reservation) {
+        Platform.runLater(() -> reservationObservableList.setAll(reservation));
     }
 
     //    FR4: Reserve table: A user can see the times when he can reserve a table in the chosen restaurant.
