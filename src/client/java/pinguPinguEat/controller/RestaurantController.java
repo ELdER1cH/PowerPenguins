@@ -102,4 +102,5 @@ public class RestaurantController {
                     tableConsumer.accept(allTables.stream().filter(x -> x != null).collect(Collectors.toList()));
                 });
     }
+
 }
