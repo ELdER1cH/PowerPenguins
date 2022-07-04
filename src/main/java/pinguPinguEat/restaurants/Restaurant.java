@@ -12,6 +12,7 @@ public class Restaurant {
     private final String name;
     private final CuisineType cuisineType;
     private final PriceCategory priceCategory;
+    private final String description;
     private final ReservationSystem reservationSystem;
     private final List<Review> reviews;
     private final double averageRating;
@@ -19,10 +20,11 @@ public class Restaurant {
     private final List<String> images;
     private final UUID restaurantID;
 
-    public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, ReservationSystem seatingPlan) {
+    public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, String description, ReservationSystem seatingPlan) {
         this.name = name;
         this.cuisineType = cuisineType;
         this.priceCategory = priceCategory;
+        this.description = description;
         this.reservationSystem = seatingPlan;
         reviews = new ArrayList<>();
         averageRating = 0;
@@ -31,7 +33,13 @@ public class Restaurant {
         restaurantID = UUID.randomUUID();
     }
 
-    public String getName() { return name; }
+    public String getDescription() {
+        return description;
+    }
+
+    public String getName() {
+        return name;
+    }
 
 
     public CuisineType getCuisineType() {

@@ -13,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import pinguPinguEat.ClientApplication;
 import pinguPinguEat.logic.RestaurantLogic;
+import pinguPinguEat.restaurants.CuisineType;
+import pinguPinguEat.restaurants.PriceCategory;
 import pinguPinguEat.restaurants.Restaurant;
 
 import java.io.IOException;
@@ -20,17 +22,20 @@ import java.io.IOException;
 
 public class SceneController {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
-    private FXMLLoader loader;
+    private FXMLLoader restaurantLoader;
+    private RestaurantGroupController restaurantController;
+    private FXMLLoader reservationLoader;
 
     @FXML
     public void initialize() throws IOException {
         //Import Restaurant Group
-        loader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
-        restaurantViewGroup = loader.load();
+        restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
+        restaurantViewGroup = restaurantLoader.load();
+        restaurantController = restaurantLoader.getController();
 
         //Import Reservation Group
-        loader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
-        reservationViewGroup = loader.load();
+        reservationLoader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
+        reservationViewGroup = reservationLoader.load();
 
         //Import Restaurants
         restaurants.addAll(RestaurantLogic.getAllRestaurants());
@@ -59,6 +64,7 @@ public class SceneController {
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
         switchToScene(restaurantViewGroup);
+        restaurantController.updateRestaurant(new Restaurant("TUM", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "private FXMLLoader restaurantLoader;", null));
     }
 
     private void switchToScene(Group viewGroup) throws IOException {
