@@ -109,4 +109,12 @@ public class SceneController {
     void searchAction(ActionEvent event) {
 
     }
+
+    public TextField getSearchField() {
+        return searchField;
+    }
+
+    public void setRestaurantList(ListView<Restaurant> restaurantList) {
+        this.restaurantList = restaurantList;
+    }
 }
