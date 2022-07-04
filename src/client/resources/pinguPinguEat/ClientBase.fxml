@@ -26,37 +26,24 @@
     <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
-                <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <HBox prefHeight="0.0" prefWidth="900.0">
+               <children>
+                      <ToolBar prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                          <items>
+                              <TextField fx:id="userNameField" promptText="UserName" />
+                              <TextField fx:id="passWordField" promptText="Password" />
+                              <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
+                              <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
+                          </items>
+                      </ToolBar>
+                  <ToolBar prefHeight="36.0" prefWidth="173.0" HBox.hgrow="NEVER">
                     <items>
-                  <BorderPane prefHeight="0.0" prefWidth="189.0">
-                     <right>
-                        <AnchorPane BorderPane.alignment="TOP_RIGHT">
-                           <children>
-                              <HBox alignment="TOP_RIGHT" prefHeight="29.0" prefWidth="483.0">
-                                 <children>
-                                    <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToMapView" text="Map" textAlignment="CENTER" />
-                                    <Button mnemonicParsing="false" onAction="#switchToReservationView" text="My Reservations" />
-                                 </children>
-                              </HBox>
-                           </children>
-                           <BorderPane.margin>
-                              <Insets />
-                           </BorderPane.margin>
-                        </AnchorPane>
-                     </right>
-                     <left>
-                        <HBox prefHeight="100.0" BorderPane.alignment="TOP_LEFT">
-                           <children>
-                                    <TextField fx:id="userNameField" promptText="UserName" />
-                                    <TextField fx:id="passWordField" promptText="Password" />
-                                    <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
-                                    <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
-                           </children>
-                        </HBox>
-                     </left>
-                  </BorderPane>
+                        <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToMapView" text="Map" textAlignment="CENTER" />
+                        <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#switchToReservationView" prefHeight="25.0" prefWidth="111.0" text="My Reservations" />
                     </items>
-                </ToolBar>
+                  </ToolBar>
+               </children>
+            </HBox>
             </children>
         </VBox>
     </top>
