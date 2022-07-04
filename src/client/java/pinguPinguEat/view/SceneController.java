@@ -16,6 +16,8 @@ import pinguPinguEat.logic.RestaurantLogic;
 import pinguPinguEat.restaurants.CuisineType;
 import pinguPinguEat.restaurants.PriceCategory;
 import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.user.Review;
+import pinguPinguEat.user.User;
 
 import java.io.IOException;
 
@@ -64,7 +66,9 @@ public class SceneController {
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
         switchToScene(restaurantViewGroup);
-        restaurantController.updateRestaurant(new Restaurant("TUM", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "private FXMLLoader restaurantLoader;", null));
+        Restaurant restaurant = new Restaurant("TUM", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "private FXMLLoader restaurantLoader;", null);
+        restaurant.addReview(new Review(4, "Test", "Lorem Ipsum \n dolores", new User("Max", "Master")));
+        restaurantController.updateRestaurant(restaurant);
     }
 
     private void switchToScene(Group viewGroup) throws IOException {

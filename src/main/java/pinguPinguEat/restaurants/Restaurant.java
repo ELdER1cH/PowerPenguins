@@ -26,7 +26,7 @@ public class Restaurant {
         this.priceCategory = priceCategory;
         this.description = description;
         this.reservationSystem = seatingPlan;
-        reviews = new ArrayList<>();
+        this.reviews = new ArrayList<>();
         averageRating = 0;
         sumOfRatings = 0;
         images = new ArrayList<>();

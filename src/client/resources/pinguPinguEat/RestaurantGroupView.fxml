@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
@@ -63,7 +63,24 @@
                    wrapText="true" BorderPane.alignment="CENTER"/>
          </center>
          <right>
-            <ListView fx:id="ReviewList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <ListView fx:id="ReviewList"/>
+                  <HBox>
+                     <children>
+                        <TextField fx:id="reviewTextField" promptText="Review">
+                           <HBox.margin>
+                              <Insets right="45.0"/>
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="submitReviewButton" mnemonicParsing="false" text="Submit"/>
+                     </children>
+                     <VBox.margin>
+                        <Insets/>
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
          </right>
       </BorderPane>
    </children>
