@@ -15,8 +15,8 @@ public class Restaurant {
     private final String description;
     private final ReservationSystem reservationSystem;
     private final List<Review> reviews;
-    private final double averageRating;
-    private final int sumOfRatings;
+    private double averageRating;
+    private int sumOfRatings;
     private final List<String> images;
     private final UUID restaurantID;
 
@@ -67,7 +67,9 @@ public class Restaurant {
     }
 
     public void addReview(Review review) {
-        //TODO implement addReview with updating sumOfRating and average Rating
+        this.reviews.add(review);
+        this.sumOfRatings += review.getRating();
+        this.averageRating = sumOfRatings / reviews.size();
     }
 
     @Override
