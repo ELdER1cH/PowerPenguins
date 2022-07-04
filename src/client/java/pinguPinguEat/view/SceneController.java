@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -18,9 +19,12 @@ import pinguPinguEat.restaurants.Restaurant;
 import java.io.IOException;
 
 
+
 public class SceneController {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
     private FXMLLoader loader;
+
+    private ReservationGroupController reservationGroupController = new ReservationGroupController();
 
     @FXML
     public void initialize() throws IOException {
@@ -31,6 +35,8 @@ public class SceneController {
         //Import Reservation Group
         loader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
         reservationViewGroup = loader.load();
+
+        //reservationGroupController.loadList();
 
         //Import Restaurants
         restaurants.addAll(RestaurantLogic.getAllRestaurants());
@@ -54,7 +60,6 @@ public class SceneController {
 
     public void switchToReservationView(ActionEvent event) throws IOException {
         switchToScene(reservationViewGroup);
-
     }
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
@@ -63,6 +68,7 @@ public class SceneController {
 
     private void switchToScene(Group viewGroup) throws IOException {
         viewStackPane.getChildren().clear();
+        viewStackPane.setAlignment(Pos.TOP_LEFT);
         viewStackPane.getChildren().add(viewGroup);
     }
 
@@ -77,6 +83,7 @@ public class SceneController {
 
     @FXML // fx:id="restaurantList"
     private ListView<Restaurant> restaurantList; // Value injected by FXMLLoader
+
 
     @FXML // fx:id="searchButton"
     private Button searchButton; // Value injected by FXMLLoader

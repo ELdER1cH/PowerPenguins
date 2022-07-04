@@ -50,20 +50,21 @@
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToReservationView" text="Reservation" />
                     </children>
                 </Group>
-                <Group fx:id="mapViewGroup" StackPane.alignment="TOP_LEFT">
+                <Group fx:id="reservationViewGroup" StackPane.alignment="TOP_LEFT">
                     <children>
-                  <Button mnemonicParsing="false" onAction="#switchToRestaurantView" text="Restaurant" />
-                        <Label text="MapView" translateX="300.0">
+                  <Button layoutX="-4.0" layoutY="1.0" mnemonicParsing="false" onAction="#switchToRestaurantView" text="Back" />
+                        <Label layoutX="300.0" text="ReservationView">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
                     </children>
                 </Group>
-                <Group fx:id="reservationViewGroup" StackPane.alignment="TOP_LEFT">
+                <Group fx:id="mapViewGroup" StackPane.alignment="TOP_LEFT">
                     <children>
-                  <Button layoutX="-4.0" layoutY="1.0" mnemonicParsing="false" onAction="#switchToRestaurantView" text="Back" />
-                        <Label layoutX="300.0" text="ReservationView">
+                  <Button mnemonicParsing="false" onAction="#switchToRestaurantView" text="Restaurant" />
+                  <Button mnemonicParsing="false" onAction="#switchToReservationView" text="temp_to_rev" translateY="100.0" />
+                        <Label text="MapView" translateX="300.0">
                             <font>
                                 <Font size="24.0" />
                             </font>

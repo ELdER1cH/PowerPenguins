@@ -15,7 +15,7 @@
                   <Font size="30.0"/>
                </font>
             </Label>
-            <Button layoutX="6.0" layoutY="174.0" mnemonicParsing="false" text="Button"/>
+            <Button layoutX="6.0" layoutY="174.0" mnemonicParsing="false" text="resst"/>
          </children>
       </AnchorPane>
    </children>
