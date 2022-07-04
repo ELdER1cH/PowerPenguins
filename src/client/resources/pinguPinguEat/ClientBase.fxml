@@ -28,10 +28,33 @@
             <children>
                 <ToolBar prefHeight="40.0" prefWidth="200.0">
                     <items>
-                        <TextField fx:id="userNameField" promptText="UserName" />
-                        <TextField fx:id="passWordField" promptText="Password" />
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
-                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
+                  <BorderPane prefHeight="0.0" prefWidth="189.0">
+                     <right>
+                        <AnchorPane BorderPane.alignment="TOP_RIGHT">
+                           <children>
+                              <HBox alignment="TOP_RIGHT" prefHeight="29.0" prefWidth="483.0">
+                                 <children>
+                                    <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToMapView" text="Map" textAlignment="CENTER" />
+                                    <Button mnemonicParsing="false" onAction="#switchToReservationView" text="My Reservations" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                        </AnchorPane>
+                     </right>
+                     <left>
+                        <HBox prefHeight="100.0" BorderPane.alignment="TOP_LEFT">
+                           <children>
+                                    <TextField fx:id="userNameField" promptText="UserName" />
+                                    <TextField fx:id="passWordField" promptText="Password" />
+                                    <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
+                                    <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
+                           </children>
+                        </HBox>
+                     </left>
+                  </BorderPane>
                     </items>
                 </ToolBar>
             </children>

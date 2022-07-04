@@ -19,7 +19,6 @@ import pinguPinguEat.restaurants.Restaurant;
 import java.io.IOException;
 
 
-
 public class SceneController {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
     private FXMLLoader loader;
