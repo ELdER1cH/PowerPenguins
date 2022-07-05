@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.UUID;
 public class User {
 
-    private String name;
-    private List<Reservation> reservations;
+    private final String name;
+    private final List<Reservation> reservations;
 
     private UUID userID;
     private String password;
@@ -46,5 +46,10 @@ public class User {
 
     public boolean confirmReservation(Reservation reservation) {
         return reservation.confirm();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
