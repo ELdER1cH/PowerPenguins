@@ -20,6 +20,7 @@ public class RestaurantController {
 
     // HashMap genutzt, um aud ID leicht zuzugreifen, aber problematisch im Code
     private final HashMap<UUID, Restaurant> restaurantHashMap;
+    private final HashMap<Integer, Table> tableHashMap;
 
     public RestaurantController() {
         this.webClient = WebClient.builder()
@@ -28,6 +29,7 @@ public class RestaurantController {
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
         this.restaurantHashMap = new HashMap<>();
+        this.tableHashMap = new HashMap<>();
     }
 
     public void getAllRestaurants(Consumer<HashMap<UUID, Restaurant>> restaurantConsumer) {
@@ -71,8 +73,10 @@ public class RestaurantController {
                 .bodyToMono(new ParameterizedTypeReference<List<Table>>() {
                 })
                 .onErrorStop()
-                .subscribe(newRestaurants -> {
-                    //TODO Update Tables
+                .subscribe(newTables -> {
+                    tableHashMap.clear();
+                    tableHashMap.putAll(newTables.stream().collect(Collectors.toMap(Table::getTableNumber, r -> r)));
+                    //TODO Update
                     tableConsumer.accept(restaurantHashMap.get(restaurantID).getReservationSystem().getTables());
                 });
     }
