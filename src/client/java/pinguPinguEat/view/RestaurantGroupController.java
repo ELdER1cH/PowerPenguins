@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-package pinguPinguEat.view;
-
-public class RestaurantGroupController {
-=======
-/**
- * Sample Skeleton for 'RestaurantGroupView.fxml' Controller Class
- */
-
 package pinguPinguEat.view;
 
 import javafx.collections.FXCollections;
@@ -85,7 +76,4 @@ public class RestaurantGroupController {
         this.reviews.addAll(restaurant.getReviews());
         this.ReviewList.setItems(reviews);
     }
-
-
->>>>>>> origin/main
 }

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
-<Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
+<Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16"
        fx:controller="pinguPinguEat.view.MapGroupController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="232.0" prefWidth="390.0">
          <children>
-            <Label text="Map View"/>
+            <Label text="Map   View"/>
+            <WebView layoutX="78.0" layoutY="58.0" prefHeight="167.0" prefWidth="183.0"/>
          </children>
       </AnchorPane>
    </children>

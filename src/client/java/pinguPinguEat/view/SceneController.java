@@ -96,4 +96,8 @@ public class SceneController {
     void searchAction(ActionEvent event) {
 
     }
+
+    public TextField getSearchField() {
+        return searchField;
+    }
 }
