@@ -35,7 +35,7 @@ dependencies {
 
 javafx {
     version = "17.0.2"
-    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media'  ]
+    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web'  ]
     configuration = 'clientImplementation'
 }
 
