@@ -7,7 +7,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
-public class Map extends Application {
+public class MapGroupController extends Application {
 
     static { // use system proxy settings when standalone application
         System.setProperty("java.net.useSystemProxies", "true");
