@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ReviewLogic {
     private final ObservableList<Review> reviewObservableList;
-    private SceneController sceneController;
-    private ReviewController reviewController;
+    private final SceneController sceneController;
+    private final ReviewController reviewController;
 
     public ReviewLogic() {
         this.reviewController = new ReviewController();

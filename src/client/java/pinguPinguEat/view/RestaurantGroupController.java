@@ -11,6 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import pinguPinguEat.restaurants.Restaurant;
 import pinguPinguEat.user.Review;
 
@@ -20,14 +22,39 @@ import java.util.ResourceBundle;
 public class RestaurantGroupController {
     //My Variables
     public final ObservableList<Review> reviews = FXCollections.observableArrayList();
+    public final ObservableList<ImageView> images = FXCollections.observableArrayList();
 
 
     //----------------------------------------------------------------------------------
     //My Functions
-    //----------------------------------------------------------------------------------
-    //Generated Variables
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
+
+    //----------------------------------------------------------------------------------
+    //Generated Variables
+    @FXML // fx:id="imageList"
+    private ListView<ImageView> imageList; // Value injected by FXMLLoader
+
+    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    private URL location;
+
+    @FXML // fx:id="ReviewList"
+    private ListView<Review> ReviewList; // Value injected by FXMLLoader
+
+    @FXML // fx:id="descriptionLabel"
+    private Label descriptionLabel; // Value injected by FXMLLoader
+    @FXML // fx:id="middleVBoxView"
+    private VBox middleVBoxView; // Value injected by FXMLLoader
+    @FXML // fx:id="restaurantLinkLabel"
+    private Label restaurantLinkLabel; // Value injected by FXMLLoader
+
+    @FXML // fx:id="restaurantExpensivnessLabel"
+    private Label restaurantExpensivnessLabel; // Value injected by FXMLLoader
+    @FXML // fx:id="restaurantOpeningTimesLabel"
+    private Label restaurantOpeningTimesLabel; // Value injected by FXMLLoader
+
+    @FXML // fx:id="restaurantNameLabel"
+    private Label restaurantNameLabel; // Value injected by FXMLLoader
 
     /**
      * Updates all Labels in Restaurant
@@ -42,22 +69,19 @@ public class RestaurantGroupController {
         this.descriptionLabel.setText(restaurant.getDescription());
         this.reviews.addAll(restaurant.getReviews());
         this.ReviewList.setItems(reviews);
+        this.restaurantLinkLabel.setText(restaurant.getLink());
+        this.restaurantOpeningTimesLabel.setText(restaurant.getOpeningTimes());
+        for (String image : restaurant.getImages()) {
+            ImageView temp = new ImageView(image);
+            temp.setFitWidth(300);
+            temp.setPreserveRatio(true);
+            temp.setSmooth(true);
+            images.add(temp);
+        }
+        this.imageList.setItems(images);
+
+
     }
-
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
-    private URL location;
-
-    @FXML // fx:id="ReviewList"
-    private ListView<Review> ReviewList; // Value injected by FXMLLoader
-
-    @FXML // fx:id="descriptionLabel"
-    private Label descriptionLabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="restaurantExpensivnessLabel"
-    private Label restaurantExpensivnessLabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="restaurantNameLabel"
-    private Label restaurantNameLabel; // Value injected by FXMLLoader
 
     @FXML // fx:id="restaurantRatingLabel"
     private Label restaurantRatingLabel; // Value injected by FXMLLoader
@@ -86,14 +110,20 @@ public class RestaurantGroupController {
     void initialize() {
         assert ReviewList != null : "fx:id=\"ReviewList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert descriptionLabel != null : "fx:id=\"descriptionLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
+        assert imageList != null : "fx:id=\"imageList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
+        assert middleVBoxView != null : "fx:id=\"middleVBoxView\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert restaurantExpensivnessLabel != null : "fx:id=\"restaurantExpensivnessLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
+        assert restaurantLinkLabel != null : "fx:id=\"restaurantLinkLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert restaurantNameLabel != null : "fx:id=\"restaurantNameLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
+        assert restaurantOpeningTimesLabel != null : "fx:id=\"restaurantOpeningTimesLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert restaurantRatingLabel != null : "fx:id=\"restaurantRatingLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert restaurantTypeLabel != null : "fx:id=\"restaurantTypeLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert submitReviewButton != null : "fx:id=\"submitReviewButton\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert toReservationButton != null : "fx:id=\"toReservationButton\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
 
     }
+
+
 
 
 

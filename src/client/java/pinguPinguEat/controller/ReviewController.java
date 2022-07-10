@@ -12,8 +12,8 @@ import java.util.function.Consumer;
 
 public class ReviewController {
 
-    private WebClient webClient;
-    private List<Review> reviews;
+    private final WebClient webClient;
+    private final List<Review> reviews;
 
     public ReviewController() {
         this.webClient = WebClient.builder()
