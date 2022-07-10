@@ -70,6 +70,7 @@ public class SceneController {
         Restaurant restaurant = new Restaurant("TUM", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", null, "Mo: 8 - 18\nDi: 8 - 18\n", "www.google.com");
         restaurant.addReview(new Review(4, "Test", "Lorem Ipsum \n dolores", new User("Max", "Master")));
         restaurant.addImage("pinguPinguEat/img/tum.jpg");
+        restaurant.addImage("pinguPinguEat/img/tum1.jpg");
         restaurantController.updateRestaurant(restaurant);
     }
 

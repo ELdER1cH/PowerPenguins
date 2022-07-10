@@ -27,11 +27,41 @@ public class RestaurantGroupController {
 
     //----------------------------------------------------------------------------------
     //My Functions
+
+
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     //----------------------------------------------------------------------------------
     //Generated Variables
+
+    /**
+     * Updates all Labels in Restaurant
+     *
+     * @param restaurant
+     */
+    public void updateRestaurant(Restaurant restaurant) {
+        this.restaurantNameLabel.setText(restaurant.getName());
+        this.restaurantExpensivnessLabel.setText(restaurant.getPriceCategory().toString());
+        this.restaurantRatingLabel.setText(String.valueOf(restaurant.getAverageRating()));
+        this.restaurantTypeLabel.setText(restaurant.getCuisineType().toString());
+        this.descriptionLabel.setText(restaurant.getDescription());
+        this.reviews.addAll(restaurant.getReviews());
+        this.ReviewList.setItems(reviews);
+        this.restaurantLinkLabel.setText(restaurant.getLink());
+        this.restaurantOpeningTimesLabel.setText(restaurant.getOpeningTimes());
+        for (String image : restaurant.getImages()) {
+            ImageView temp = new ImageView(image);
+            temp.setFitWidth(250);
+            temp.setPreserveRatio(true);
+            temp.setSmooth(true);
+            images.add(temp);
+        }
+        this.imageList.setItems(images);
+
+
+    }
+
     @FXML // fx:id="imageList"
     private ListView<ImageView> imageList; // Value injected by FXMLLoader
 
@@ -56,32 +86,6 @@ public class RestaurantGroupController {
     @FXML // fx:id="restaurantNameLabel"
     private Label restaurantNameLabel; // Value injected by FXMLLoader
 
-    /**
-     * Updates all Labels in Restaurant
-     *
-     * @param restaurant
-     */
-    public void updateRestaurant(Restaurant restaurant) {
-        this.restaurantNameLabel.setText(restaurant.getName());
-        this.restaurantExpensivnessLabel.setText(restaurant.getPriceCategory().toString());
-        this.restaurantRatingLabel.setText(String.valueOf(restaurant.getAverageRating()));
-        this.restaurantTypeLabel.setText(restaurant.getCuisineType().toString());
-        this.descriptionLabel.setText(restaurant.getDescription());
-        this.reviews.addAll(restaurant.getReviews());
-        this.ReviewList.setItems(reviews);
-        this.restaurantLinkLabel.setText(restaurant.getLink());
-        this.restaurantOpeningTimesLabel.setText(restaurant.getOpeningTimes());
-        for (String image : restaurant.getImages()) {
-            ImageView temp = new ImageView(image);
-            temp.setFitWidth(300);
-            temp.setPreserveRatio(true);
-            temp.setSmooth(true);
-            images.add(temp);
-        }
-        this.imageList.setItems(images);
-
-
-    }
 
     @FXML // fx:id="restaurantRatingLabel"
     private Label restaurantRatingLabel; // Value injected by FXMLLoader
