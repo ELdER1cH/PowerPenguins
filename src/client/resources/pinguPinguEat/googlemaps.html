@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Java-Buddy: Google Maps</title>
-<script key="AIzaSyAV2W97M1sXrntZ52YQZUSPz4JZLlVqfUE" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<style>#mapcanvas { height: 360px; width: 100%}</style>
+    <title>Java-Buddy: Google Maps</title>
+    <script src="https://www.google.com/maps/embed/v1/search?q=restaurants&key=AIzaSyAV2W97M1sXrntZ52YQZUSPz4JZLlVqfUE"></script>
+    <style>#mapcanvas {
+        height: 360px;
+        width: 100%
+    }</style>
 
-<script>
-var map;
-function loadmap(){
+    <script>
+        var map;
 
-  var options = {
-      zoom: 16,
-      center: new google.maps.LatLng(51.507222, -0.1275),
-      mapTypeId: google.maps.MapTypeId.SATELLITE
-  }
-  map = new google.maps.Map(document.getElementById("mapcanvas"), options);
-}
+        function loadmap() {
+            var options = {
+                zoom: 16,
+                center: new google.maps.LatLng(51.507222, -0.1275),
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            }
+            map = new google.maps.Map(document.getElementById("mapcanvas"), options);
+        }
 
-</script>
+    </script>
 
 </head>
 <body onload="loadmap()">
