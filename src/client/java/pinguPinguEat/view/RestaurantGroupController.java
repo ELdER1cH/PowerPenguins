@@ -8,32 +8,57 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import pinguPinguEat.logic.ReviewLogic;
 import pinguPinguEat.restaurants.Restaurant;
 import pinguPinguEat.user.Review;
+import pinguPinguEat.user.User;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RestaurantGroupController {
     //My Variables
     public final ObservableList<Review> reviews = FXCollections.observableArrayList();
     public final ObservableList<ImageView> images = FXCollections.observableArrayList();
+    public Dialog<Review> dialog;
+
+    public ReviewLogic reviewLogic;
 
 
     //----------------------------------------------------------------------------------
     //My Functions
-
-
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
+    @FXML // fx:id="imageList"
+    private ListView<ImageView> imageList; // Value injected by FXMLLoader
+
 
     //----------------------------------------------------------------------------------
     //Generated Variables
+    @FXML // fx:id="restaurantLinkLabel"
+    private Label restaurantLinkLabel; // Value injected by FXMLLoader
+
+    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    private URL location;
+
+    @FXML // fx:id="ReviewList"
+    private ListView<Review> ReviewList; // Value injected by FXMLLoader
+
+    @FXML // fx:id="descriptionLabel"
+    private Label descriptionLabel; // Value injected by FXMLLoader
+    @FXML // fx:id="restaurantOpeningTimesLabel"
+    private Label restaurantOpeningTimesLabel; // Value injected by FXMLLoader
+
+    @FXML // fx:id="middleVBoxView"
+    private VBox middleVBoxView; // Value injected by FXMLLoader
+
+    @FXML // fx:id="restaurantExpensivnessLabel"
+    private Label restaurantExpensivnessLabel; // Value injected by FXMLLoader
 
     /**
      * Updates all Labels in Restaurant
@@ -58,34 +83,57 @@ public class RestaurantGroupController {
             images.add(temp);
         }
         this.imageList.setItems(images);
-
-
     }
-
-    @FXML // fx:id="imageList"
-    private ListView<ImageView> imageList; // Value injected by FXMLLoader
-
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
-    private URL location;
-
-    @FXML // fx:id="ReviewList"
-    private ListView<Review> ReviewList; // Value injected by FXMLLoader
-
-    @FXML // fx:id="descriptionLabel"
-    private Label descriptionLabel; // Value injected by FXMLLoader
-    @FXML // fx:id="middleVBoxView"
-    private VBox middleVBoxView; // Value injected by FXMLLoader
-    @FXML // fx:id="restaurantLinkLabel"
-    private Label restaurantLinkLabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="restaurantExpensivnessLabel"
-    private Label restaurantExpensivnessLabel; // Value injected by FXMLLoader
-    @FXML // fx:id="restaurantOpeningTimesLabel"
-    private Label restaurantOpeningTimesLabel; // Value injected by FXMLLoader
 
     @FXML // fx:id="restaurantNameLabel"
     private Label restaurantNameLabel; // Value injected by FXMLLoader
 
+    private void showReviewDialog() {
+        dialog = new Dialog<>();
+        dialog.setTitle("Add Review");
+        dialog.setHeaderText("Please Type in your Rating and Review");
+
+        Label label1 = new Label("Rating: ");
+        Label label2 = new Label("Review: ");
+        TextField rating = new TextField();
+        TextField review = new TextField();
+
+        GridPane grid = new GridPane();
+        grid.add(label1, 1, 1);
+        grid.add(rating, 2, 1);
+        grid.add(label2, 1, 2);
+        grid.add(review, 2, 2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        ButtonType buttonTypeOk = new ButtonType("Done", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
+
+        dialog.setResultConverter(param -> {
+            if (param == buttonTypeOk) {
+                int ratingInt;
+                try {
+                    ratingInt = Integer.parseInt(rating.getText());
+                } catch (Exception e) {
+                    ratingInt = 0;
+                }
+                if (ratingInt > 5) {
+                    ratingInt = 5;
+                }
+                if (ratingInt < 0) {
+                    ratingInt = 0;
+                }
+                //TODO Get Author from Somewhere
+                return new Review(ratingInt, review.getText(), new User("Admin", "Test"));
+            }
+            return null;
+        });
+
+
+        Optional<Review> result = dialog.showAndWait();
+
+        result.ifPresent(value -> reviewLogic.postReview(value));
+    }
 
     @FXML // fx:id="restaurantRatingLabel"
     private Label restaurantRatingLabel; // Value injected by FXMLLoader
@@ -101,7 +149,7 @@ public class RestaurantGroupController {
 
     @FXML
     void addReviewAction(ActionEvent event) {
-
+        showReviewDialog();
     }
 
     @FXML
@@ -124,10 +172,8 @@ public class RestaurantGroupController {
         assert restaurantTypeLabel != null : "fx:id=\"restaurantTypeLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert submitReviewButton != null : "fx:id=\"submitReviewButton\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert toReservationButton != null : "fx:id=\"toReservationButton\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
-
+        this.reviewLogic = new ReviewLogic(this);
     }
-
-
 
 
 
