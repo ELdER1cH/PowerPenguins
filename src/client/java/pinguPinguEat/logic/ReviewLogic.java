@@ -5,26 +5,40 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pinguPinguEat.controller.ReviewController;
 import pinguPinguEat.user.Review;
-import pinguPinguEat.view.SceneController;
+import pinguPinguEat.view.RestaurantGroupController;
 
 import java.util.List;
 
 public class ReviewLogic {
     private final ObservableList<Review> reviewObservableList;
-    private final SceneController sceneController;
+
     private final ReviewController reviewController;
 
-    public ReviewLogic() {
-        this.reviewController = new ReviewController();
-        this.sceneController = new SceneController();
-        this.reviewObservableList = FXCollections.observableArrayList();
+    private final RestaurantGroupController restaurantGroupController;
 
-        reviewController.getAllReviews(this::setReview);
+    public ReviewLogic(RestaurantGroupController restaurantGroupController) {
+        this.reviewObservableList = FXCollections.observableArrayList();
+        this.reviewController = new ReviewController();
+        this.restaurantGroupController = restaurantGroupController;
+        this.reviewController.getAllReviews(this::setReview);
     }
 
-    //    create
-    public void postReview() {
+    /**
+     * Should send Review to Server
+     * Currently just adding it back to Restaurant View
+     *
+     * @param review
+     */
+    public void postReview(Review review) {
+        restaurantGroupController.reviews.add(review);
 
+        /*reviewController.addReview(review, new Consumer<List<Review>>() {
+            @Override
+            public void accept(List<Review> reviews) {
+                restaurantGroupController.reviews.clear();
+                restaurantGroupController.reviews.addAll(reviews);
+            }
+        });*/
     }
 
     //    delete
