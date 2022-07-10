@@ -66,15 +66,25 @@ public class RestaurantGroupController {
      * @param restaurant
      */
     public void updateRestaurant(Restaurant restaurant) {
+        // Sets Name of Restaurant
         this.restaurantNameLabel.setText(restaurant.getName());
+
+        // Sest Text for Side Bar
         this.restaurantExpensivnessLabel.setText(restaurant.getPriceCategory().toString());
         this.restaurantRatingLabel.setText(String.valueOf(restaurant.getAverageRating()));
         this.restaurantTypeLabel.setText(restaurant.getCuisineType().toString());
-        this.descriptionLabel.setText(restaurant.getDescription());
-        this.reviews.addAll(restaurant.getReviews());
-        this.ReviewList.setItems(reviews);
         this.restaurantLinkLabel.setText(restaurant.getLink());
         this.restaurantOpeningTimesLabel.setText(restaurant.getOpeningTimes());
+
+        // Sets Discription of Restaurant
+        this.descriptionLabel.setText(restaurant.getDescription());
+
+        // Adds all Reviews to Review List
+        this.reviews.addAll(restaurant.getReviews());
+        this.ReviewList.setItems(reviews);
+
+
+        // Adds Images from Class -> Sets width for proper Display
         for (String image : restaurant.getImages()) {
             ImageView temp = new ImageView(image);
             temp.setFitWidth(250);
@@ -88,6 +98,9 @@ public class RestaurantGroupController {
     @FXML // fx:id="restaurantNameLabel"
     private Label restaurantNameLabel; // Value injected by FXMLLoader
 
+    /**
+     * Generates / Initializes the Dialog  -> Generates a Review from Import and sends it to the Logic Class
+     */
     private void showReviewDialog() {
         dialog = new Dialog<>();
         dialog.setTitle("Add Review");
