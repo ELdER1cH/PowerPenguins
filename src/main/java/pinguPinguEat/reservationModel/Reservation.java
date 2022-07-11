@@ -20,6 +20,7 @@ public class Reservation {
         this.table = table;
         this.restaurant = restaurant;
         this.confirmed = false;
+        reservationId = UUID.randomUUID();
     }
 
     public boolean cancelReservation(){
@@ -29,10 +30,12 @@ public class Reservation {
 
     public boolean confirm() {
         if (this.isConfirmable()) {
-            this.confirmed = true;
+            setConfirmed(true);
+            System.out.println("CONFIRM");
             return true;
         }
         else {
+            setConfirmed(false);
             return false;
         }
     }
@@ -77,6 +80,6 @@ public class Reservation {
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return restaurant.getName() + " on " + timeSlot.getStartTime().format(DateTimeFormatter.ofPattern("dd.MM.YY")) + " at " +
-                timeSlot.getStartTime().format(formatter) + "\t[" + (confirmed? "confirmed" : "not confirmed") + "]";
+                timeSlot.getStartTime().format(formatter) + "\t[" + (isConfirmed()? "confirmed" : "not confirmed") + "]";
     }
 }
