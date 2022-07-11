@@ -4,9 +4,9 @@ import java.time.Instant;
 import java.util.UUID;
 
 public class Review {
-    private int rating;
-    private String comment;
-    private User author;
+    private final int rating;
+    private final String comment;
+    private final User author;
     private UUID reviewID;
 
     public Review(int rating, String comment, User author) {
@@ -35,5 +35,10 @@ public class Review {
     }
 
     public void setCreationDate(Instant now) {
+    }
+
+    @Override
+    public String toString() {
+        return "Rating: " + rating + "\nComment: " + comment + "\nAuthor: " + author.toString();
     }
 }

@@ -1,5 +1,5 @@
 package pinguPinguEat.restaurants;
 
 public enum CuisineType {
-    ITALIAN,CHINESE,GERMAN
+    ITALIAN, CHINESE, GERMAN
 }
