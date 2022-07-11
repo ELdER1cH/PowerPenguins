@@ -13,7 +13,7 @@
                <font>
                   <Font size="28.0" />
                </font></Label>
-            <ListView fx:id="reservationList" layoutX="50.0" layoutY="61.0" prefHeight="409.0" prefWidth="200.0" />
+            <ListView fx:id="reservationList" layoutX="50.0" layoutY="61.0" prefHeight="409.0" prefWidth="343.0" />
             </children>
         </AnchorPane>
     </children>

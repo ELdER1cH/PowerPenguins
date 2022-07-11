@@ -4,6 +4,7 @@ import pinguPinguEat.restaurants.Restaurant;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Reservation {
@@ -66,5 +67,12 @@ public class Reservation {
 
     public boolean isConfirmed() {
         return confirmed;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return restaurant.getName() + " on " + "[day]" + " at " +
+                timeSlot.getStartTime().format(formatter) + "\t[" + (confirmed? "confirmed" : "not confirmed") + "]";
     }
 }

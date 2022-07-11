@@ -10,18 +10,16 @@ import pinguPinguEat.reservationModel.Reservation;
 import java.io.IOException;
 
 public class ReservationGroupController {
-    private ObservableList<Reservation> user_reservations = FXCollections.observableArrayList();
+    private ObservableList<Reservation> userReservations = FXCollections.observableArrayList();
     @FXML // fx:id="reservationList"
     private ListView<Reservation> reservationList; // Value injected by FXMLLoader
-    public ReservationGroupController(){};
+    public ReservationGroupController() {
+
+    };
 
 
     public void loadList() throws IOException {
-//        FXMLLoader loader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
-//        Group reservationViewGroup = loader.load();
-
-        ObservableList<Reservation> user_reservations = FXCollections.observableArrayList();
-        user_reservations.addAll(MyReservationLogic.getUserReservations());
-        reservationList.setItems(user_reservations);
+        userReservations.addAll(MyReservationLogic.getAllReservations());
+        reservationList.setItems(userReservations);
     }
 }

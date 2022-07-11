@@ -73,7 +73,6 @@
                 <Group fx:id="mapViewGroup" StackPane.alignment="TOP_LEFT">
                     <children>
                   <Button mnemonicParsing="false" onAction="#switchToRestaurantView" text="Restaurant" />
-                  <Button mnemonicParsing="false" onAction="#switchToReservationView" text="temp_to_rev" translateY="100.0" />
                         <Label text="MapView" translateX="300.0">
                             <font>
                                 <Font size="24.0" />

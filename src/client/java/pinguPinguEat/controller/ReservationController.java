@@ -1,5 +1,6 @@
 package pinguPinguEat.controller;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -7,6 +8,8 @@ import pinguPinguEat.reservationModel.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class ReservationController {
     private final WebClient webClient;
@@ -28,7 +31,7 @@ public class ReservationController {
                 .retrieve()
                 .bodyToMono(Reservation.class)
                 .onErrorStop()
-                .subscribe(newPerson -> reservationsList.add(newPerson));
+                .subscribe(newReservation -> reservationsList.add(newReservation));
     }
 
     public void confirmReservation(Reservation reservation) {
@@ -37,7 +40,10 @@ public class ReservationController {
                 .retrieve()
                 .bodyToMono(Reservation.class)
                 .onErrorStop()
-                .subscribe(newReservation -> reservationsList.replaceAll(oldReservation -> oldReservation.getReservationId().equals(newReservation.getReservationId()) ? newReservation : oldReservation));
+                .subscribe(newReservation -> reservationsList.replaceAll(
+                        oldReservation ->
+                                oldReservation.getReservationId().equals(newReservation.getReservationId()) ?
+                                newReservation : oldReservation));
     }
 
     public void cancelReservation(Reservation reservation) {
@@ -47,5 +53,21 @@ public class ReservationController {
                 .toBodilessEntity()
                 .onErrorStop()
                 .subscribe(v -> reservationsList.remove(reservation));
+    }
+
+    public void getAllReservations(Consumer<List<Reservation>> restaurantConsumer) {
+        webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/reservations")
+                        .build())
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<Reservation>>() {
+                })
+                .onErrorStop()
+                .subscribe(newRestaurants -> {
+                    reservationsList.clear();
+                    reservationsList.addAll(newRestaurants.stream().collect(Collectors.toList()));
+                    restaurantConsumer.accept(reservationsList);
+                });
     }
 }
