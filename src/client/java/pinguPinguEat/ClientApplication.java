@@ -22,6 +22,10 @@ public class ClientApplication extends Application {
         startView = "ClientBase.fxml";
     }
 
+    public Stage getStage() {
+        return stage;
+    }
+
     public FXMLLoader getLoader() {
         return loader;
     }

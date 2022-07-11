@@ -33,6 +33,7 @@ public class SceneController {
         //Import Restaurant Group
         restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
         restaurantViewGroup = restaurantLoader.load();
+        restaurantViewGroup.getChildren().get(0);
         restaurantController = restaurantLoader.getController();
 
         //Import Reservation Group
@@ -66,8 +67,12 @@ public class SceneController {
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
         switchToScene(restaurantViewGroup);
-        Restaurant restaurant = new Restaurant("TUM", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "private FXMLLoader restaurantLoader;", null);
-        restaurant.addReview(new Review(4, "Test", "Lorem Ipsum \n dolores", new User("Max", "Master")));
+        Restaurant restaurant = new Restaurant("TUM", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n" +
+                "\n" +
+                "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", null, "Mo: 8 - 18\nDi: 8 - 18\n", "www.google.com");
+        restaurant.addReview(new Review(4, "Lorem Ipsum \n dolores", new User("Max", "Master")));
+        restaurant.addImage("pinguPinguEat/img/tum.jpg");
+        restaurant.addImage("pinguPinguEat/img/tum1.jpg");
         restaurantController.updateRestaurant(restaurant);
     }
 
@@ -78,6 +83,7 @@ public class SceneController {
 
     @FXML // fx:id="loginButton"
     private Button loginButton; // Value injected by FXMLLoader
+    //
 
     @FXML // fx:id="passWordField"
     private TextField passWordField; // Value injected by FXMLLoader

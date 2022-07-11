@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequestMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
 public class RestaurantResource {
 
-    private RestaurantService restaurantService;
+    private final RestaurantService restaurantService;
 
     public RestaurantResource(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;

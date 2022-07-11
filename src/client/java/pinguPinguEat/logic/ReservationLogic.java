@@ -12,8 +12,8 @@ import java.util.List;
 
 public class ReservationLogic {
     private final ObservableList<Reservation> reservationObservableList;
-    private SceneController sceneController;
-    private ReservationController reservationController;
+    private final SceneController sceneController;
+    private final ReservationController reservationController;
 
     public ReservationLogic() {
         this.reservationController = new ReservationController();
