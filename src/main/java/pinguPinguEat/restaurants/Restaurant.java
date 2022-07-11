@@ -23,7 +23,9 @@ public class Restaurant {
     private final String link;
 
 
-    public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, String description, ReservationSystem seatingPlan, String openingTimes, String link) {
+    public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory,
+                      String description, ReservationSystem seatingPlan,
+                      String openingTimes, String link) {
         this.name = name;
         this.cuisineType = cuisineType;
         this.priceCategory = priceCategory;

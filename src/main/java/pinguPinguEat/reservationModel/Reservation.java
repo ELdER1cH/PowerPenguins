@@ -3,7 +3,8 @@ package pinguPinguEat.reservationModel;
 import pinguPinguEat.restaurants.Restaurant;
 
 import java.time.Duration;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Reservation {
@@ -19,6 +20,7 @@ public class Reservation {
         this.table = table;
         this.restaurant = restaurant;
         this.confirmed = false;
+        reservationId = UUID.randomUUID();
     }
 
     public boolean cancelReservation(){
@@ -27,15 +29,12 @@ public class Reservation {
     }
 
     public boolean confirm() {
-        // this has to be in seconds, so you can still confirm let's say 12:10:13 before the reservation
-        long twelveHoursInSeconds = 43200;
-        long secondsUntilReservation = (Duration.between(LocalTime.now(),timeSlot.getStartTime()))
-                                    .toSeconds();
-        if (!this.isConfirmed() && secondsUntilReservation > twelveHoursInSeconds) {
-            this.confirmed = true;
+        if (this.isConfirmable()) {
+            setConfirmed(true);
             return true;
         }
         else {
+            setConfirmed(false);
             return false;
         }
     }
@@ -66,5 +65,26 @@ public class Reservation {
 
     public boolean isConfirmed() {
         return confirmed;
+    }
+
+    public boolean isConfirmable() {
+        return !this.isConfirmed() && isInLessThan12Hours();
+    }
+
+    public boolean isCancelable() {
+        return !this.isConfirmed() && !isInLessThan12Hours();
+    }
+
+    public boolean isInLessThan12Hours() {
+        long twelveHoursInSeconds = 43200;
+        long secondsUntilReservation = (Duration.between(LocalDateTime.now(), timeSlot.getStartTime())).toSeconds();
+        return secondsUntilReservation >= 0 && secondsUntilReservation < twelveHoursInSeconds;
+    }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return restaurant.getName() + " on " + timeSlot.getStartTime().format(DateTimeFormatter.ofPattern("dd.MM.YY")) + " at " +
+                timeSlot.getStartTime().format(formatter) + "\t[" + (isConfirmed()? "confirmed" : "not confirmed") + "]";
     }
 }

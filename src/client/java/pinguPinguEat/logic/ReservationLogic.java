@@ -6,15 +6,24 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import pinguPinguEat.controller.ReservationController;
 import pinguPinguEat.reservationModel.Reservation;
+import pinguPinguEat.reservationModel.ReservationSystem;
+import pinguPinguEat.reservationModel.Table;
+import pinguPinguEat.reservationModel.TimeSlot;
+import pinguPinguEat.restaurants.CuisineType;
+import pinguPinguEat.restaurants.PriceCategory;
+import pinguPinguEat.restaurants.Restaurant;
 import pinguPinguEat.view.SceneController;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationLogic {
+  
     private final ObservableList<Reservation> reservationObservableList;
     private final SceneController sceneController;
-    private final ReservationController reservationController;
-
+    private final ReservationController reservationController;  
+  
     public ReservationLogic() {
         this.reservationController = new ReservationController();
         this.sceneController = new SceneController();
@@ -24,6 +33,23 @@ public class ReservationLogic {
 
 
     }
+  
+    //Hier wird die Logic für Reservation eingefügt, damit in dem Controller nicht zu viel Text ist
+    public static List<Reservation> getAllReservations() {
+        List<Reservation> res = new ArrayList<>();
+        res.add(new Reservation(new TimeSlot(LocalDateTime.of(1, 2, 3, 12, 13)),
+                new Table(1, 2) ,
+                new Restaurant("AmazingDiner", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "great",
+                        new ReservationSystem(0, 0), "3.-3", "help")));
+        res.add(new Reservation(new TimeSlot(LocalDateTime.of(2022, 7, 11, 23, 13)),
+                new Table(5, 3) ,
+                new Restaurant("Blue Whale Restaurant", CuisineType.ITALIAN, PriceCategory.EXPENSIVE, "awful",
+                        new ReservationSystem(5, 8), "3.-3", "help")));
+        return res;
+    }
+  
+
+
 
     private void setReservation(List<Reservation> reservation) {
         Platform.runLater(() -> reservationObservableList.setAll(reservation));
