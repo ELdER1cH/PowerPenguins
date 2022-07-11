@@ -19,6 +19,7 @@ public class Restaurant {
     private int sumOfRatings;
     private final List<String> images;
     private final UUID restaurantID;
+    private int MapID;
 
     public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory, String description, ReservationSystem seatingPlan) {
         this.name = name;
@@ -31,6 +32,10 @@ public class Restaurant {
         sumOfRatings = 0;
         images = new ArrayList<>();
         restaurantID = UUID.randomUUID();
+    }
+
+    public int getMapID() {
+        return MapID;
     }
 
     public String getDescription() {

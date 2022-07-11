@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+
 <Group xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.MapGroupController">
    <children>
-      <AnchorPane prefHeight="232.0" prefWidth="390.0">
+      <AnchorPane prefHeight="234.0" prefWidth="366.0">
          <children>
             <Label text="Map   View" />
+            <ImageView fitHeight="214.0" fitWidth="424.0" layoutX="29.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/Map.png" />
+               </image>
+            </ImageView>
+            <ImageView id="1" fitHeight="9.0" fitWidth="12.0" layoutX="198.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/01.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
