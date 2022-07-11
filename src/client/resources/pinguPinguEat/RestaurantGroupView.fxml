@@ -46,12 +46,12 @@
                            </font>
                         </Label>
                         <Label fx:id="restaurantRatingLabel" text="Restaurant Rating"/>
-                        <Label text="Expensivness">
+                        <Label text="Price Category">
                            <font>
                               <Font name="System Bold" size="12.0"/>
                            </font>
                         </Label>
-                        <Label fx:id="restaurantExpensivnessLabel" text="Restaurant Expensivness "/>
+                        <Label fx:id="restaurantPriceCategoryLabel" text="Restaurant Price Category "/>
                         <Label text="Opening Times">
                            <font>
                               <Font name="System Bold" size="12.0"/>
