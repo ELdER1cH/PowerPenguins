@@ -3,7 +3,7 @@ package pinguPinguEat.reservationModel;
 import pinguPinguEat.restaurants.Restaurant;
 
 import java.time.Duration;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
@@ -28,11 +28,7 @@ public class Reservation {
     }
 
     public boolean confirm() {
-        // this has to be in seconds, so you can still confirm let's say 12:10:13 before the reservation
-        long twelveHoursInSeconds = 43200;
-        long secondsUntilReservation = (Duration.between(LocalTime.now(),timeSlot.getStartTime()))
-                                    .toSeconds();
-        if (!this.isConfirmed() && secondsUntilReservation > twelveHoursInSeconds) {
+        if (this.isConfirmable()) {
             this.confirmed = true;
             return true;
         }
@@ -69,10 +65,18 @@ public class Reservation {
         return confirmed;
     }
 
+    public boolean isConfirmable() {
+        // this has to be in seconds, so you can still confirm let's say 12:10:13 before the reservation
+        long twelveHoursInSeconds = 43200;
+        long secondsUntilReservation = Math.abs((Duration.between(LocalDateTime.now(), timeSlot.getStartTime()))
+                .toSeconds());
+        return !this.isConfirmed() && secondsUntilReservation < twelveHoursInSeconds;
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return restaurant.getName() + " on " + "[day]" + " at " +
+        return restaurant.getName() + " on " + timeSlot.getStartTime().format(DateTimeFormatter.ofPattern("dd.MM.YY")) + " at " +
                 timeSlot.getStartTime().format(formatter) + "\t[" + (confirmed? "confirmed" : "not confirmed") + "]";
     }
 }
