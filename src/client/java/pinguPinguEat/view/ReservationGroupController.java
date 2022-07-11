@@ -7,7 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
-import pinguPinguEat.logic.MyReservationLogic;
+import pinguPinguEat.logic.ReservationLogic;
 import pinguPinguEat.reservationModel.Reservation;
 
 import java.util.Optional;
@@ -22,7 +22,7 @@ public class ReservationGroupController {
     private Button cancelButton; // Value injected by FXMLLoader
 
     public ReservationGroupController() {
-        userReservations.addAll(MyReservationLogic.getAllReservations());
+        userReservations.addAll(ReservationLogic.getAllReservations());
     };
 
     public void loadList() {

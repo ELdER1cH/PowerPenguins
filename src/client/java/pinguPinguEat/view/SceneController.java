@@ -49,6 +49,7 @@ public class SceneController {
 
         loader = new FXMLLoader(ClientApplication.class.getResource("RestaurantReservationGroupView.fxml"));
         restaurantReservationController = loader.getController();
+        restaurantViewGroup = loader.load();
     }
 
     @FXML
@@ -57,6 +58,8 @@ public class SceneController {
     private Group reservationViewGroup;
     @FXML
     private Group restaurantViewGroup;
+    @FXML
+    private Group restaurantReservationViewGroup;
 
     @FXML
     private StackPane viewStackPane;
@@ -74,9 +77,9 @@ public class SceneController {
         switchToScene(restaurantViewGroup);
     }
 
-//    public void switchToRestaurantReservationView(ActionEvent event) throws IOException {
-//        switchToScene(restaurantReservationViewGroup);
-//    }
+    public void switchToRestaurantReservationView(ActionEvent event) throws IOException {
+        switchToScene(restaurantReservationViewGroup);
+    }
 
     private void switchToScene(Group viewGroup) throws IOException {
         viewStackPane.getChildren().clear();

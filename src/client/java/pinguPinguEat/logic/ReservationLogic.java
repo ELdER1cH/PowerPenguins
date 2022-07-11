@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyReservationLogic {
+public class ReservationLogic {
     //Hier wird die Logic für Reservation eingefügt, damit in dem Controller nicht zu viel Text ist
     public static List<Reservation> getAllReservations() {
         List<Reservation> res = new ArrayList<>();
