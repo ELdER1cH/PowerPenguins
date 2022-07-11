@@ -26,6 +26,9 @@ public class SceneController {
     public static final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
     private FXMLLoader loader;
 
+    private ReservationGroupController reservationController;
+    private RestaurantReservationGroupController restaurantReservationController;
+
 
     @FXML
     public void initialize() throws IOException {
@@ -41,11 +44,11 @@ public class SceneController {
         restaurants.addAll(RestaurantLogic.getAllRestaurants());
         restaurantList.setItems(restaurants);
 
-        ReservationGroupController lol = loader.getController();
-        lol.loadList();
+        reservationController = loader.getController();
+        reservationController.loadList();
 
-//        reservations.addAll(MyReservationLogic.getAllReservations());
-//        reservationList.setItems(reservations);
+        loader = new FXMLLoader(ClientApplication.class.getResource("RestaurantReservationGroupView.fxml"));
+        restaurantReservationController = loader.getController();
     }
 
     @FXML
@@ -70,6 +73,10 @@ public class SceneController {
     public void switchToRestaurantView(ActionEvent event) throws IOException {
         switchToScene(restaurantViewGroup);
     }
+
+//    public void switchToRestaurantReservationView(ActionEvent event) throws IOException {
+//        switchToScene(restaurantReservationViewGroup);
+//    }
 
     private void switchToScene(Group viewGroup) throws IOException {
         viewStackPane.getChildren().clear();
