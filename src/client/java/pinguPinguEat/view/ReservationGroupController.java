@@ -29,8 +29,6 @@ public class ReservationGroupController {
         reservationList.setItems(userReservations);
     }
 
-
-
     private void update(ObservableList<Reservation> reservations, Reservation updatedReservation) {
         // this may seem overcomplicated but this was necessary for some reason
         reservations.removeIf(x -> x.getReservationId().equals(updatedReservation.getReservationId()));
@@ -43,21 +41,23 @@ public class ReservationGroupController {
         if (thisReservation == null) {
             return;
         }
-        // this way the popup doesn't appear if it's already confirmed
         if (!thisReservation.isConfirmable()) {
             return;
         }
 
+        if (promptConfirmation().equals(ButtonType.OK)) {
+            thisReservation.confirm();
+            update(userReservations, thisReservation);
+        }
+    }
+
+    public ButtonType promptConfirmation() {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Confirmation");
         confirm.setHeaderText(null);
         confirm.setContentText("Confirm this reservation?");
         Optional<ButtonType> answer = confirm.showAndWait();
-        if (answer.get() == ButtonType.OK) {
-            thisReservation.confirm();
-            System.out.println(thisReservation.isConfirmed());
-            update(userReservations, thisReservation);
-        }
+        return answer.get();
     }
 
     public void cancelButtonPressed() {
@@ -65,7 +65,21 @@ public class ReservationGroupController {
         if (thisReservation == null) {
             return;
         }
+        if (!thisReservation.isCancelable()) {
+            alertCancellationImpossible();
+            return;
+        }
         userReservations.removeIf(x -> x.getReservationId().equals(thisReservation.getReservationId()));
         reservationList.setItems(userReservations);
     }
+
+    private void alertCancellationImpossible() {
+        Alert denial = new Alert(Alert.AlertType.INFORMATION);
+        denial.setTitle("Cancellation impossible");
+        denial.setHeaderText(null);
+        denial.setContentText("You cannot cancel this reservation any longer.");
+        denial.showAndWait();
+    }
 }
+
+

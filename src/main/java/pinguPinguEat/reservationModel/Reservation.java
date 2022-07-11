@@ -31,7 +31,6 @@ public class Reservation {
     public boolean confirm() {
         if (this.isConfirmable()) {
             setConfirmed(true);
-            System.out.println("CONFIRM");
             return true;
         }
         else {
@@ -69,11 +68,17 @@ public class Reservation {
     }
 
     public boolean isConfirmable() {
-        // this has to be in seconds, so you can still confirm let's say 12:10:13 before the reservation
+        return !this.isConfirmed() && isInLessThan12Hours();
+    }
+
+    public boolean isCancelable() {
+        return !this.isConfirmed() && !isInLessThan12Hours();
+    }
+
+    public boolean isInLessThan12Hours() {
         long twelveHoursInSeconds = 43200;
-        long secondsUntilReservation = Math.abs((Duration.between(LocalDateTime.now(), timeSlot.getStartTime()))
-                .toSeconds());
-        return !this.isConfirmed() && secondsUntilReservation < twelveHoursInSeconds;
+        long secondsUntilReservation = (Duration.between(LocalDateTime.now(), timeSlot.getStartTime())).toSeconds();
+        return secondsUntilReservation >= 0 && secondsUntilReservation < twelveHoursInSeconds;
     }
 
     @Override
