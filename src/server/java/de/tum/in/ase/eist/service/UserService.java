@@ -1,4 +1,4 @@
-package pinguPinguEat.service;
+package de.tum.in.ase.eist.service;
 
 import org.springframework.stereotype.Service;
 import pinguPinguEat.user.User;

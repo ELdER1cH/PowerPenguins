@@ -8,6 +8,7 @@ import pinguPinguEat.user.Review;
 import pinguPinguEat.view.RestaurantGroupController;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ReviewLogic {
     private final ObservableList<Review> reviewObservableList;
@@ -30,15 +31,10 @@ public class ReviewLogic {
      * @param review
      */
     public void postReview(Review review) {
-        restaurantGroupController.reviews.add(review);
-
-        /*reviewController.addReview(review, new Consumer<List<Review>>() {
-            @Override
-            public void accept(List<Review> reviews) {
-                restaurantGroupController.reviews.clear();
-                restaurantGroupController.reviews.addAll(reviews);
-            }
-        });*/
+        reviewController.addReview(review, reviews -> {
+            restaurantGroupController.reviews.clear();
+            restaurantGroupController.reviews.addAll(reviews);
+        });
     }
 
     //    delete
