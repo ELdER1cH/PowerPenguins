@@ -24,11 +24,8 @@ configurations {
 
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-test'
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    serverImplementation 'org.springframework.boot:spring-boot-starter-web:2.6.7'
+    serverImplementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
     clientImplementation 'org.springframework.boot:spring-boot-starter-webflux'
 
 }
@@ -83,6 +80,10 @@ processResources {
 }
 
 processClientResources{
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+processServerResources{
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
