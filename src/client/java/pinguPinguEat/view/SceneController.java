@@ -221,6 +221,8 @@ public class SceneController {
         dialog.getDialogPane().getButtonTypes().add(buttonTypeCancel);
         Button cancelButton = (Button) dialog.getDialogPane().lookupButton(buttonTypeCancel);
 
+        dialog.show();
+
         // Ok Button action
         okButton.setOnAction(e -> {
             if (checkBoxCuisineGerman.isSelected()) {
