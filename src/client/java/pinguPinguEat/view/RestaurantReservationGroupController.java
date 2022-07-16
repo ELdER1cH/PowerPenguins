@@ -78,12 +78,12 @@ public class RestaurantReservationGroupController {
     public void reserve() {
         Table table = restaurantReservationList.getSelectionModel().getSelectedItem();
         Reservation newReservation = new Reservation(getTimeSlot(), table, currentRestaurant);
-        if (!currentRestaurant.getReservationSystem().addReservation(newReservation)) {
-            failedReservationAlert();
-        }
-        else {
-            reservationSuccessfulAlert();
-        }
+//        if (!currentRestaurant.getReservationSystem().addReservation(newReservation)) {
+//            failedReservationAlert();
+//        }
+//        else {
+//            reservationSuccessfulAlert();
+//        }
     }
 
     //TODO catch exceptions
