@@ -113,7 +113,7 @@ public class SceneController {
     //
 
     public SceneController() {
-
+        searchFilter = new SearchFilter();
     }
 
     @FXML // fx:id="passWordField"
