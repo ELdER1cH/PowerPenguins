@@ -42,6 +42,7 @@ public class ReservationGroupController {
             return;
         }
         if (!thisReservation.isConfirmable()) {
+            alertConfirmationImpossible();
             return;
         }
 
@@ -60,6 +61,15 @@ public class ReservationGroupController {
         return answer.get();
     }
 
+    public ButtonType promptCancellation() {
+        Alert cancel = new Alert(Alert.AlertType.CONFIRMATION);
+        cancel.setTitle("Confirmation");
+        cancel.setHeaderText(null);
+        cancel.setContentText("Cancel this reservation?");
+        Optional<ButtonType> answer = cancel.showAndWait();
+        return answer.get();
+    }
+
     public void cancelButtonPressed() {
         Reservation thisReservation = reservationList.getSelectionModel().getSelectedItem();
         if (thisReservation == null) {
@@ -69,8 +79,14 @@ public class ReservationGroupController {
             alertCancellationImpossible();
             return;
         }
-        userReservations.removeIf(x -> x.getReservationId().equals(thisReservation.getReservationId()));
-        reservationList.setItems(userReservations);
+        else {
+            ButtonType answer = promptCancellation();
+            if (answer.equals(ButtonType.OK)) {
+                userReservations.removeIf(x -> x.getReservationId().equals(thisReservation.getReservationId()));
+                reservationList.setItems(userReservations);
+            }
+        }
+
     }
 
     private void alertCancellationImpossible() {
@@ -78,6 +94,14 @@ public class ReservationGroupController {
         denial.setTitle("Cancellation impossible");
         denial.setHeaderText(null);
         denial.setContentText("You cannot cancel this reservation any longer.");
+        denial.showAndWait();
+    }
+
+    private void alertConfirmationImpossible() {
+        Alert denial = new Alert(Alert.AlertType.INFORMATION);
+        denial.setTitle("Confirmation impossible");
+        denial.setHeaderText(null);
+        denial.setContentText("You cannot confirm this reservation any longer.");
         denial.showAndWait();
     }
 }

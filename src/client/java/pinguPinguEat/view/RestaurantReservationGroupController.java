@@ -60,7 +60,7 @@ public class RestaurantReservationGroupController {
         restaurantReservationList.getItems().clear();
         TimeSlot timeSlot = getTimeSlot();
 
-        freeTables.addAll(currentRestaurant.getReservationSystem().getFreeTables(timeSlot));
+        //freeTables.addAll(currentRestaurant.getReservationSystem().getFreeTables(timeSlot));
 
         freeTables.add(new Table(23, 3));
 
