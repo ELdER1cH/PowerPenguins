@@ -255,6 +255,13 @@ public class SceneController {
         });
 
         resetButton.setOnAction(e -> {
+            checkBoxCuisineGerman.setSelected(true);
+            checkBoxCuisineItalian.setSelected(true);
+            checkBoxCuisineChinese.setSelected(true);
+            checkBoxPriceInexpensive.setSelected(true);
+            checkBoxPriceModerate.setSelected(true);
+            checkBoxPriceExpensive.setSelected(true);
+            checkBoxPriceVeryExpensive.setSelected(true);
             searchFilter.resetFilter();
         });
 
