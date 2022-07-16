@@ -192,23 +192,23 @@ public class SceneController {
         // Dialog Komponenten: checkBoxes schon selected
         Label labelCuisine = new Label("Cusine Type");
         CheckBox checkBoxCuisineGerman = new CheckBox("German");
-        checkBoxCuisineGerman.setSelected(true);
+        checkBoxCuisineGerman.setSelected(searchFilter.isSelectedCuisineTypeGerman());
         CheckBox checkBoxCuisineItalian = new CheckBox("Italian");
-        checkBoxCuisineItalian.setSelected(true);
+        checkBoxCuisineItalian.setSelected(searchFilter.isSelectedCuisineTypeItalian());
         CheckBox checkBoxCuisineChinese = new CheckBox("Chinese");
-        checkBoxCuisineChinese.setSelected(true);
+        checkBoxCuisineChinese.setSelected(searchFilter.isSelectedCuisineTypeChinese());
         Label labelPrice = new Label("Price Category");
         CheckBox checkBoxPriceInexpensive = new CheckBox("Inexpensive");
-        checkBoxPriceInexpensive.setSelected(true);
+        checkBoxPriceInexpensive.setSelected(searchFilter.isSelectedPriceInexpensive());
         CheckBox checkBoxPriceModerate = new CheckBox("Moderate");
-        checkBoxPriceModerate.setSelected(true);
+        checkBoxPriceModerate.setSelected(searchFilter.isSelectedPriceModerate());
         CheckBox checkBoxPriceExpensive = new CheckBox("Expensive");
-        checkBoxPriceExpensive.setSelected(true);
+        checkBoxPriceExpensive.setSelected(searchFilter.isSelectedPriceExpensive());
         CheckBox checkBoxPriceVeryExpensive = new CheckBox("Very Expensive");
-        checkBoxPriceVeryExpensive.setSelected(true);
-        Button resetButton = new Button("reset");
+        checkBoxPriceVeryExpensive.setSelected(searchFilter.isSelectedPriceVeryExpensive());
+//        Button resetButton = new Button("reset");
         VBox vBox = new VBox(labelCuisine, checkBoxCuisineGerman, checkBoxCuisineItalian, checkBoxCuisineChinese,
-                labelPrice, checkBoxPriceInexpensive, checkBoxPriceModerate, checkBoxPriceExpensive, checkBoxPriceVeryExpensive, resetButton);
+                labelPrice, checkBoxPriceInexpensive, checkBoxPriceModerate, checkBoxPriceExpensive, checkBoxPriceVeryExpensive/*, resetButton*/);
 
         dialog.getDialogPane().setContent(vBox);
 
@@ -254,7 +254,7 @@ public class SceneController {
             dialog.close();
         });
 
-        resetButton.setOnAction(e -> {
+/*        resetButton.setOnAction(e -> {
             checkBoxCuisineGerman.setSelected(true);
             checkBoxCuisineItalian.setSelected(true);
             checkBoxCuisineChinese.setSelected(true);
@@ -263,7 +263,7 @@ public class SceneController {
             checkBoxPriceExpensive.setSelected(true);
             checkBoxPriceVeryExpensive.setSelected(true);
             searchFilter.resetFilter();
-        });
+        });*/
 
     }
 
