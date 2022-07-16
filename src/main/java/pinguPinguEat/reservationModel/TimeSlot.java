@@ -1,14 +1,14 @@
 package pinguPinguEat.reservationModel;
 
 import java.time.Duration;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class TimeSlot {
-    private final LocalTime startTime;
+    private final LocalDateTime startTime;
     private final static Duration duration = Duration.ofHours(1);
 
-    public TimeSlot(LocalTime startTime) {
+    public TimeSlot(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
@@ -26,7 +26,7 @@ public class TimeSlot {
         return Objects.hash(startTime);
     }
 
-    public LocalTime getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 }

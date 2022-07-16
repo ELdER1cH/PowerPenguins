@@ -4,19 +4,45 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import pinguPinguEat.ClientApplication;
 import pinguPinguEat.logic.RestaurantLogic;
+import pinguPinguEat.restaurants.CuisineType;
+import pinguPinguEat.restaurants.PriceCategory;
 import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.user.Review;
+import pinguPinguEat.user.User;
 
 import java.io.IOException;
 
+
 public class SceneController {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
+    private FXMLLoader restaurantLoader;
+    private RestaurantGroupController restaurantController;
+    private FXMLLoader reservationLoader;
+
+    @FXML
+    public void initialize() throws IOException {
+        //Import Restaurant Group
+        restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
+        restaurantViewGroup = restaurantLoader.load();
+        restaurantController = restaurantLoader.getController();
+
+        //Import Reservation Group
+        reservationLoader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
+        reservationViewGroup = reservationLoader.load();
+
+        //Import Restaurants
+        restaurants.addAll(RestaurantLogic.getAllRestaurants());
+        restaurantList.setItems(restaurants);
+    }
 
     @FXML
     private Group mapViewGroup;
@@ -27,6 +53,7 @@ public class SceneController {
 
     @FXML
     private StackPane viewStackPane;
+
 
     public void switchToMapView(ActionEvent event) throws IOException {
         switchToScene(mapViewGroup);
@@ -39,19 +66,15 @@ public class SceneController {
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
         switchToScene(restaurantViewGroup);
+        Restaurant restaurant = new Restaurant("TUM", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "private FXMLLoader restaurantLoader;", null);
+        restaurant.addReview(new Review(4, "Test", "Lorem Ipsum \n dolores", new User("Max", "Master")));
+        restaurantController.updateRestaurant(restaurant);
     }
 
     private void switchToScene(Group viewGroup) throws IOException {
         viewStackPane.getChildren().clear();
         viewStackPane.getChildren().add(viewGroup);
     }
-
-
-    public void loadRestaurants() {
-        restaurants.addAll(RestaurantLogic.getAllRestaurants());
-        restaurantList.setItems(restaurants);
-    }
-
 
     @FXML // fx:id="loginButton"
     private Button loginButton; // Value injected by FXMLLoader
@@ -95,5 +118,13 @@ public class SceneController {
     @FXML
     void searchAction(ActionEvent event) {
 
+    }
+
+    public TextField getSearchField() {
+        return searchField;
+    }
+
+    public void setRestaurantList(ListView<Restaurant> restaurantList) {
+        this.restaurantList = restaurantList;
     }
 }

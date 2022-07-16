@@ -1,13 +1,11 @@
-package pinguPinguEat.user;
+package pinguPinguEat.controller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import pinguPinguEat.reservationModel.Reservation;
+import pinguPinguEat.user.User;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class UserController {
     private final WebClient webClient;

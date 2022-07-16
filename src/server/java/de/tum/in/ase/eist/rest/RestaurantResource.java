@@ -1,5 +1,6 @@
-package pinguPinguEat.rest;
+package de.tum.in.ase.eist.rest;
 
+import de.tum.in.ase.eist.service.RestaurantService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pinguPinguEat.reservationModel.Table;
 import pinguPinguEat.reservationModel.TimeSlot;
 import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.service.RestaurantService;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -18,7 +19,7 @@ import java.util.UUID;
 @RequestMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
 public class RestaurantResource {
 
-    private RestaurantService restaurantService;
+    private final RestaurantService restaurantService;
 
     public RestaurantResource(RestaurantService restaurantService) {
         this.restaurantService = restaurantService;
@@ -43,7 +44,7 @@ public class RestaurantResource {
         return ResponseEntity.ok(restaurantService.getFreeTables(restaurantID, timeSlot));
     }
 
-    @GetMapping("/restaurant/{restaurantID}")
+    @GetMapping("/restaurant/{restaurantID}/tables")
     public ResponseEntity<List<Table>> getAllTables(@PathVariable UUID restaurantID) {
         return ResponseEntity.ok(restaurantService.getAllTables(restaurantID));
     }

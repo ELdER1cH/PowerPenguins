@@ -1,4 +1,4 @@
-package pinguPinguEat.service;
+package de.tum.in.ase.eist.service;
 
 import org.springframework.stereotype.Service;
 import pinguPinguEat.user.Review;
@@ -16,7 +16,8 @@ public class ReviewService {
 
     public Review postReview(Review review) {
         review.setReviewID(UUID.randomUUID());
-        return this.reviews.put(review.getReviewID(), review);
+        this.reviews.put(review.getReviewID(), review);
+        return this.reviews.get(review.getReviewID());
     }
 
     public boolean deleteReview(UUID reviewID) {
