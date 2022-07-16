@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public class Restaurant {
     private final String name;
+    private final String address;
     private final CuisineType cuisineType;
     private final PriceCategory priceCategory;
     private final String description;
@@ -21,12 +22,14 @@ public class Restaurant {
     private final UUID restaurantID;
     private final String openingTimes;
     private final String link;
+    private final int mapID;
 
 
-    public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory,
+    public Restaurant(String name, String address, CuisineType cuisineType, PriceCategory priceCategory,
                       String description, ReservationSystem seatingPlan,
-                      String openingTimes, String link) {
+                      String openingTimes, String link , int mapID) {
         this.name = name;
+        this.address = address;
         this.cuisineType = cuisineType;
         this.priceCategory = priceCategory;
         this.description = description;
@@ -38,6 +41,7 @@ public class Restaurant {
         sumOfRatings = 0;
         images = new ArrayList<>();
         restaurantID = UUID.randomUUID();
+        this.mapID = mapID;
     }
 
     public String getDescription() {
