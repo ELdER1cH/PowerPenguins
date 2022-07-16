@@ -45,6 +45,10 @@ public class ReservationLogic {
                 new Table(5, 3) ,
                 new Restaurant("Blue Whale Restaurant", CuisineType.ITALIAN, PriceCategory.EXPENSIVE, "awful",
                         new ReservationSystem(5, 8), "3.-3", "help")));
+        res.add(new Reservation(new TimeSlot(LocalDateTime.of(1980, 7, 11, 23, 13)),
+                new Table(5, 3) ,
+                new Restaurant("WCDarnalds", CuisineType.ITALIAN, PriceCategory.INEXPENSIVE, "nice",
+                        new ReservationSystem(5, 8), "3.-3", "help")));
         return res;
     }
   
@@ -73,10 +77,10 @@ public class ReservationLogic {
 //    and thus reserve the table for the specified number of visitors.
     // "on action" method for the exact table the free one in the overview
     public void chooseTable(ActionEvent event) {
-        reservaTable();
+        reserveTable();
     }
 
-    private Boolean reservaTable() {
+    private Boolean reserveTable() {
 //        Todo
         setSpecifiedNumberOfVisitors();
         return false;
@@ -89,7 +93,7 @@ public class ReservationLogic {
     //  FR5: Save calendar event: When the user reserves a table,
 //  an event in the local calendar is created for the reservation.
     public void createCalendarEvent() {
-        if (reservaTable()) {
+        if (reserveTable()) {
             //        Todo
 
         }

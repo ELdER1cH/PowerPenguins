@@ -99,6 +99,7 @@ public class RestaurantReservationGroupController {
         return tables;
     }
 
+
     private TimeSlot getTimeSlot() {
         LocalTime timeSlotTime;
         timeSlotTime = switch(timeChoiceBox.getValue().toString()) {

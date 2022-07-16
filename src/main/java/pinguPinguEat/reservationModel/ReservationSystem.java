@@ -10,6 +10,7 @@ public class ReservationSystem {
     private final List<Table> tables;
     private final HashMap<TimeSlot, List<Reservation>> reservations;
 
+
     public ReservationSystem(int numberOfSeats, int numberOfTables) {
         this.numberOfSeats = numberOfSeats;
         this.numberOfTables = numberOfTables;
@@ -60,7 +61,10 @@ public class ReservationSystem {
     }
 
     public List<Table> getFreeTables(TimeSlot timeSlot){
-        //TODO implement getFreeTables
-        return null;
+        List<Table> freeTables = getTables();
+        // TODO does this work for diff. timeslot objects of the same time?
+        freeTables.removeIf(x -> reservations.get(timeSlot).contains(x));
+
+        return freeTables;
     }
 }
