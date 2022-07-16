@@ -17,6 +17,7 @@
                                 <Insets />
                             </opaqueInsets>
                         </Button>
+                  <Button mnemonicParsing="false" text="Filter"/>
                     </children>
                 </HBox>
                 <ListView fx:id="restaurantList" prefHeight="693.0" prefWidth="248.0" />
