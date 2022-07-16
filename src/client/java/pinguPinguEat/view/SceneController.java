@@ -158,19 +158,23 @@ public class SceneController {
     // Search Button pressed
     @FXML
     void searchAction(ActionEvent event) {
-        ArrayList<Restaurant> allRestaurants = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
-        for (Restaurant r : allRestaurants) {
+        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+        for (Restaurant r : allRestaurantsToFilter) {
+            restaurantController.updateRestaurant(r);
             // inconsistent with filter
-            if ((r.getCuisineType() == CuisineType.GERMAN) != searchFilter.isSelectedCuisineTypeGerman() ||
+            if ((r.getCuisineType() == CuisineType.GERMAN) !=
+                    searchFilter.isSelectedCuisineTypeGerman() ||
                     (r.getCuisineType() == CuisineType.ITALIAN) != searchFilter.isSelectedCuisineTypeItalian() ||
                     (r.getCuisineType() == CuisineType.CHINESE) != searchFilter.isSelectedCuisineTypeChinese() ||
                     (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
                     (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
                     (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
                     (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive()) {
-                restaurantList
+                allRestaurantsToFilter.remove(r);
             }
         }
+        restaurants.removeAll();
+        restaurants.addAll(allRestaurantsToFilter);
     }
 
     // Filter Button pressed
