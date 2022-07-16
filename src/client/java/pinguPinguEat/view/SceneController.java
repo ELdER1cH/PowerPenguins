@@ -75,6 +75,7 @@ public class SceneController {
 
     @FXML
     private StackPane viewStackPane;
+
     @FXML // fx:id= ???
     private Button filterButton;
 
@@ -147,7 +148,7 @@ public class SceneController {
 
     @FXML
     void onHelloButtonClick(ActionEvent event) {
-
+        //???
     }
 
     @FXML
