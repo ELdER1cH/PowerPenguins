@@ -60,7 +60,10 @@ public class RestaurantReservationGroupController {
         restaurantReservationList.getItems().clear();
         TimeSlot timeSlot = getTimeSlot();
 
-        //freeTables.addAll(currentRestaurant.getReservationSystem().getFreeTables(timeSlot));
+        if (currentRestaurant.getReservationSystem() != null) {
+            freeTables.addAll(currentRestaurant.getReservationSystem().getFreeTables(timeSlot));
+        }
+
 
         freeTables.add(new Table(23, 3));
 
@@ -76,14 +79,17 @@ public class RestaurantReservationGroupController {
     }
 
     public void reserve() {
+        if (currentRestaurant.getReservationSystem() == null) {
+            throw new NullPointerException("This restaurant doesn't have a reservation system.");
+        }
         Table table = restaurantReservationList.getSelectionModel().getSelectedItem();
         Reservation newReservation = new Reservation(getTimeSlot(), table, currentRestaurant);
-//        if (!currentRestaurant.getReservationSystem().addReservation(newReservation)) {
-//            failedReservationAlert();
-//        }
-//        else {
-//            reservationSuccessfulAlert();
-//        }
+        if (!currentRestaurant.getReservationSystem().addReservation(newReservation)) {
+            failedReservationAlert();
+        }
+        else {
+            reservationSuccessfulAlert();
+        }
     }
 
     //TODO catch exceptions
