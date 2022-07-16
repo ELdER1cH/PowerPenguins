@@ -51,13 +51,28 @@ public class ReservationSystem {
     }
 
     public boolean deleteReservation(Reservation reservation){
-        //TODO implement deleteReservation
-        return false;
+        List<Reservation> currentRes = reservations.get(reservation.getTimeSlot());
+
+        if (currentRes != null && !currentRes.isEmpty()) {
+            currentRes.remove(reservation);
+        }
+
+        return true;
     }
 
     public boolean addReservation(Reservation reservation){
-        //TODO implement addReservation
-        return false;
+        List<Reservation> currentRes = reservations.get(reservation.getTimeSlot());
+
+        if (currentRes == null || currentRes.isEmpty()) {
+            List<Reservation> newRes = new ArrayList<>();
+            newRes.add(reservation);
+            reservations.put(reservation.getTimeSlot(), newRes);
+        }
+        else {
+            currentRes.add(reservation);
+        }
+
+        return true;
     }
 
     public List<Table> getFreeTables(TimeSlot timeSlot){
