@@ -180,7 +180,7 @@ public class SceneController {
 
     // Filter Button pressed
     void filterAction(ActionEvent event) {
-        showFilterDialog();
+        filterButton.setOnAction(e -> showFilterDialog());
     }
 
     // Dialog mit CheckBoxen zum Filtern bei der Suche nach Restaurants
