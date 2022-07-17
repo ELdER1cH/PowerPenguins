@@ -10,11 +10,11 @@ import java.util.UUID;
 
 public class Restaurant {
     private final String name;
-    private final String address;
+    private String address;
     private final CuisineType cuisineType;
     private final PriceCategory priceCategory;
     private final String description;
-    private final ReservationSystem reservationSystem;
+    private ReservationSystem reservationSystem;
     private final List<Review> reviews;
     private double averageRating;
     private int sumOfRatings;
@@ -43,6 +43,42 @@ public class Restaurant {
         restaurantID = UUID.randomUUID();
         this.mapID = mapID;
     }
+
+    public Restaurant(String name, CuisineType cuisineType, PriceCategory priceCategory,
+                      String description,
+                      String openingTimes, String link, int mapID) {
+        this.name = name;
+        this.cuisineType = cuisineType;
+        this.priceCategory = priceCategory;
+        this.description = description;
+        this.openingTimes = openingTimes;
+        this.link = link;
+        this.reviews = new ArrayList<>();
+        averageRating = 0;
+        sumOfRatings = 0;
+        images = new ArrayList<>();
+        restaurantID = UUID.randomUUID();
+        this.mapID = mapID;
+    }
+
+//    public Restaurant(String name, String address, CuisineType cuisineType, PriceCategory priceCategory,
+//                      String description, ReservationSystem seatingPlan,
+//                      String openingTimes, String link , int mapID) {
+//        this.name = name;
+//        this.address = address;
+//        this.cuisineType = cuisineType;
+//        this.priceCategory = priceCategory;
+//        this.description = description;
+//        this.reservationSystem = seatingPlan;
+//        this.openingTimes = openingTimes;
+//        this.link = link;
+//        this.reviews = new ArrayList<>();
+//        averageRating = 0;
+//        sumOfRatings = 0;
+//        images = new ArrayList<>();
+//        restaurantID = UUID.randomUUID();
+//        this.mapID = mapID;
+//    }
 
     public String getDescription() {
         return description;

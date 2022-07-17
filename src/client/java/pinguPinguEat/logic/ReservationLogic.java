@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationLogic {
-  
+
     private final ObservableList<Reservation> reservationObservableList;
     private final SceneController sceneController;
-    private final ReservationController reservationController;  
-  
+    private final ReservationController reservationController;
+
     public ReservationLogic() {
         this.reservationController = new ReservationController();
         this.sceneController = new SceneController();
@@ -33,22 +33,20 @@ public class ReservationLogic {
 
 
     }
-  
+
     //Hier wird die Logic für Reservation eingefügt, damit in dem Controller nicht zu viel Text ist
     public static List<Reservation> getAllReservations() {
         List<Reservation> res = new ArrayList<>();
         res.add(new Reservation(new TimeSlot(LocalDateTime.of(1, 2, 3, 12, 13)),
-                new Table(1, 2) ,
-                new Restaurant("AmazingDiner", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "great",
-                        new ReservationSystem(0, 0), "3.-3", "help")));
+                new Table(1, 2),
+                new Restaurant("AmazingDiner", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "great",
+                        new ReservationSystem(0, 0), "3.-3", "www.restaurant.de", 11)));
         res.add(new Reservation(new TimeSlot(LocalDateTime.of(2022, 7, 11, 23, 13)),
-                new Table(5, 3) ,
-                new Restaurant("Blue Whale Restaurant", CuisineType.ITALIAN, PriceCategory.EXPENSIVE, "awful",
-                        new ReservationSystem(5, 8), "3.-3", "help")));
+                new Table(5, 3),
+                new Restaurant("Blue Whale Restaurant", "address", CuisineType.ITALIAN, PriceCategory.EXPENSIVE, "awful",
+                        new ReservationSystem(5, 8), "3.-3", "www.restaurant.de", 12)));
         return res;
     }
-  
-
 
 
     private void setReservation(List<Reservation> reservation) {
