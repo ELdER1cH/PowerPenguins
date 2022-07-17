@@ -5,19 +5,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pinguPinguEat.controller.ReviewController;
 import pinguPinguEat.user.Review;
-import pinguPinguEat.view.RestaurantGroupController;
+import pinguPinguEat.view.RestaurantGroupView;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 public class ReviewLogic {
     private final ObservableList<Review> reviewObservableList;
 
     private final ReviewController reviewController;
 
-    private final RestaurantGroupController restaurantGroupController;
+    private final RestaurantGroupView restaurantGroupController;
 
-    public ReviewLogic(RestaurantGroupController restaurantGroupController) {
+    public ReviewLogic(RestaurantGroupView restaurantGroupController) {
         this.reviewObservableList = FXCollections.observableArrayList();
         this.reviewController = new ReviewController();
         this.restaurantGroupController = restaurantGroupController;

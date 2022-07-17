@@ -13,7 +13,7 @@ import pinguPinguEat.reservationModel.ReservationSystem;
 import pinguPinguEat.restaurants.CuisineType;
 import pinguPinguEat.restaurants.PriceCategory;
 import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.view.SceneController;
+import pinguPinguEat.view.SceneView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,12 +23,12 @@ import java.util.UUID;
 public class RestaurantLogic {
     private final ObservableList<Restaurant> restaurantObservableList;
     private final HashMap<UUID, Restaurant> searchResult;
-    private final SceneController sceneController;
+    private final SceneView sceneView;
     private final RestaurantController restaurantController;
 
     public RestaurantLogic() {
         this.restaurantController = new RestaurantController();
-        this.sceneController = new SceneController();
+        this.sceneView = new SceneView();
         this.restaurantObservableList = FXCollections.observableArrayList();
         this.searchResult = new HashMap<>();
 
@@ -40,7 +40,7 @@ public class RestaurantLogic {
     //    FR1: Search for restaurants: The user can search for restaurants
     //    on a list and on a map that displays up to 50 restaurants.
     public void searchRestuarant(ActionEvent event) {
-        String searchCondition = sceneController.getSearchField().getText();
+        String searchCondition = sceneView.getSearchField().getText();
         // use String.contains() for the name and cuisineType of restaurants.
 
     }

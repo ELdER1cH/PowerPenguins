@@ -4,7 +4,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<Group xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.RestaurantReservationGroupController">
+<Group xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.RestaurantReservationGroupView">
     <children>
         <AnchorPane layoutY="-7.0" prefHeight="517.0" prefWidth="494.0">
             <children>
