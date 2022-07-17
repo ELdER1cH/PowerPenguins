@@ -31,11 +31,11 @@ public class SceneView {
     private FXMLLoader restaurantReservationLoader;
   
     private FXMLLoader restaurantLoader;
-    private RestaurantGroupView restaurantController;
+    private RestaurantGroupView restaurantGroupView;
     private FXMLLoader reservationLoader;
 
-    private ReservationGroupView reservationController;
-    private RestaurantReservationGroupView restaurantReservationController;
+    private ReservationGroupView reservationGroupView;
+    private RestaurantReservationGroupView restaurantReservationGroupView;
 
 
     @FXML
@@ -44,8 +44,8 @@ public class SceneView {
         restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
         restaurantViewGroup = restaurantLoader.load();
         restaurantViewGroup.getChildren().get(0);
-        restaurantController = restaurantLoader.getController();
-        restaurantController.setSceneController(this);
+        restaurantGroupView = restaurantLoader.getController();
+        restaurantGroupView.setSceneController(this);
 
         //Import Reservation Group
         reservationLoader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
@@ -55,12 +55,12 @@ public class SceneView {
         restaurants.addAll(RestaurantLogic.getAllRestaurants());
         restaurantList.setItems(restaurants);
 
-        reservationController = reservationLoader.getController();
-        reservationController.loadList();
+        reservationGroupView = reservationLoader.getController();
+        reservationGroupView.loadList();
 
         restaurantReservationLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantReservationGroupView.fxml"));
         restaurantReservationViewGroup = restaurantReservationLoader.load();
-        restaurantReservationController = restaurantReservationLoader.getController();
+        restaurantReservationGroupView = restaurantReservationLoader.getController();
     }
 
     @FXML
@@ -92,13 +92,13 @@ public class SceneView {
         restaurant.addReview(new Review(4, "Lorem Ipsum \n dolores", new User("Max", "Master")));
         restaurant.addImage("pinguPinguEat/img/tum.jpg");
         restaurant.addImage("pinguPinguEat/img/tum1.jpg");
-        restaurantController.updateRestaurant(restaurant);
+        restaurantGroupView.updateRestaurant(restaurant);
     }
 
     public void switchToRestaurantReservationView(Restaurant restaurant, ActionEvent event) throws IOException {
         switchToScene(restaurantReservationViewGroup);
-        restaurantReservationController.setRestaurant(restaurant);
-        restaurantReservationController.updateView();
+        restaurantReservationGroupView.setRestaurant(restaurant);
+        restaurantReservationGroupView.updateView();
     }
 
     private void switchToScene(Group viewGroup) throws IOException {
