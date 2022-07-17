@@ -65,8 +65,8 @@ public class RestaurantLogic {
 
     public static List<Restaurant> getAllRestaurants() {
         List<Restaurant> returnValue = new ArrayList<>();
-        returnValue.add(new Restaurant("Test", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
-        returnValue.add(new Restaurant("Lorem Ipsum", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
+        returnValue.add(new Restaurant("Test", "address",CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",06));
+        returnValue.add(new Restaurant("Lorem Ipsum","address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",07));
         return returnValue;
     }
 
