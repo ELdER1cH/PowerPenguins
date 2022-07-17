@@ -61,25 +61,6 @@ public class Restaurant {
         this.mapID = mapID;
     }
 
-//    public Restaurant(String name, String address, CuisineType cuisineType, PriceCategory priceCategory,
-//                      String description, ReservationSystem seatingPlan,
-//                      String openingTimes, String link , int mapID) {
-//        this.name = name;
-//        this.address = address;
-//        this.cuisineType = cuisineType;
-//        this.priceCategory = priceCategory;
-//        this.description = description;
-//        this.reservationSystem = seatingPlan;
-//        this.openingTimes = openingTimes;
-//        this.link = link;
-//        this.reviews = new ArrayList<>();
-//        averageRating = 0;
-//        sumOfRatings = 0;
-//        images = new ArrayList<>();
-//        restaurantID = UUID.randomUUID();
-//        this.mapID = mapID;
-//    }
-
     public String getDescription() {
         return description;
     }
