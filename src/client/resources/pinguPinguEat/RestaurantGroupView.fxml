@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
-       fx:controller="pinguPinguEat.view.RestaurantGroupController">
+       fx:controller="pinguPinguEat.view.RestaurantGroupView">
    <children>
       <AnchorPane>
          <children>

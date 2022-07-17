@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public class RestaurantReservationGroupController {
+public class RestaurantReservationGroupView {
     private ObservableList<Table> freeTables = FXCollections.observableArrayList();
     private Restaurant currentRestaurant;
     @FXML // fx:id="restaurantReservationList"
@@ -38,7 +38,7 @@ public class RestaurantReservationGroupController {
         timeChoiceBox.setItems(times);
     }
 
-    public RestaurantReservationGroupController() {
+    public RestaurantReservationGroupView() {
 
     }
 

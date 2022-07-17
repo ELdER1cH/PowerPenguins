@@ -15,7 +15,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class ReservationGroupController {
+public class ReservationGroupView {
     private ObservableList<Reservation> userReservations = FXCollections.observableArrayList();
     @FXML // fx:id="reservationList"
     private ListView<Reservation> reservationList; // Value injected by FXMLLoader
@@ -24,7 +24,7 @@ public class ReservationGroupController {
     @FXML // fx:id="cancelButton"
     private Button cancelButton; // Value injected by FXMLLoader
 
-    public ReservationGroupController() {
+    public ReservationGroupView() {
         userReservations.addAll(ReservationLogic.getAllReservations());
     };
 

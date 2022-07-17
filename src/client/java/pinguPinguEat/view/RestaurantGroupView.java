@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class RestaurantGroupController {
+public class RestaurantGroupView {
     //My Variables
     public final ObservableList<Review> reviews = FXCollections.observableArrayList();
     public final ObservableList<ImageView> images = FXCollections.observableArrayList();
@@ -31,7 +31,7 @@ public class RestaurantGroupController {
     public ReviewLogic reviewLogic;
 
     // needed to switch view groups through buttons in the restaurant view
-    private SceneController sceneController;
+    private SceneView sceneView;
     private Restaurant currentRestaurant;
 
     //----------------------------------------------------------------------------------
@@ -172,7 +172,7 @@ public class RestaurantGroupController {
 
     @FXML
     void switchToRestaurantReservationView(ActionEvent event) throws IOException {
-        sceneController.switchToRestaurantReservationView(currentRestaurant, event);
+        sceneView.switchToRestaurantReservationView(currentRestaurant, event);
     }
 
     @FXML
@@ -194,7 +194,7 @@ public class RestaurantGroupController {
     }
 
 
-    public void setSceneController(SceneController sceneController) {
-        this.sceneController = sceneController;
+    public void setSceneController(SceneView sceneView) {
+        this.sceneView = sceneView;
     }
 }

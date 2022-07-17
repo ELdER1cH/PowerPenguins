@@ -24,18 +24,18 @@ import pinguPinguEat.user.User;
 import java.io.IOException;
 
 
-public class SceneController {
+public class SceneView {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
 
     public static final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
     private FXMLLoader restaurantReservationLoader;
   
     private FXMLLoader restaurantLoader;
-    private RestaurantGroupController restaurantController;
+    private RestaurantGroupView restaurantController;
     private FXMLLoader reservationLoader;
 
-    private ReservationGroupController reservationController;
-    private RestaurantReservationGroupController restaurantReservationController;
+    private ReservationGroupView reservationController;
+    private RestaurantReservationGroupView restaurantReservationController;
 
 
     @FXML
