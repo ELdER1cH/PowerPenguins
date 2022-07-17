@@ -45,6 +45,7 @@ public class SceneController {
         restaurantViewGroup = restaurantLoader.load();
         restaurantViewGroup.getChildren().get(0);
         restaurantController = restaurantLoader.getController();
+        restaurantController.setSceneController(this);
 
         //Import Reservation Group
         reservationLoader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
@@ -58,8 +59,8 @@ public class SceneController {
         reservationController.loadList();
 
         restaurantReservationLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantReservationGroupView.fxml"));
-        restaurantReservationController = restaurantReservationLoader.getController();
         restaurantReservationViewGroup = restaurantReservationLoader.load();
+        restaurantReservationController = restaurantReservationLoader.getController();
     }
 
     @FXML
@@ -94,8 +95,10 @@ public class SceneController {
         restaurantController.updateRestaurant(restaurant);
     }
 
-    public void switchToRestaurantReservationView(ActionEvent event) throws IOException {
+    public void switchToRestaurantReservationView(Restaurant restaurant, ActionEvent event) throws IOException {
         switchToScene(restaurantReservationViewGroup);
+        restaurantReservationController.setRestaurant(restaurant);
+        restaurantReservationController.updateView();
     }
 
     private void switchToScene(Group viewGroup) throws IOException {

@@ -13,7 +13,6 @@ public class TimeSlot {
     }
 
     @Override
-    //TODO does this really need to work for "Object" and not just other TimeSlots?
     public boolean equals(Object other) {
         if (other == null || other.getClass() != this.getClass()) {
             return false;
@@ -28,5 +27,9 @@ public class TimeSlot {
 
     public LocalDateTime getStartTime() {
         return startTime;
+    }
+
+    public int compareTo(TimeSlot other) {
+        return (this.getStartTime()).compareTo(other.getStartTime());
     }
 }

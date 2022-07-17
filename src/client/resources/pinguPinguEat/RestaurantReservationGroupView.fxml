@@ -6,18 +6,21 @@
 <?import javafx.scene.text.Font?>
 <Group xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.RestaurantReservationGroupController">
     <children>
-        <AnchorPane prefHeight="500.0" prefWidth="500.0">
+        <AnchorPane layoutY="-7.0" prefHeight="517.0" prefWidth="494.0">
             <children>
-                <Label layoutX="14.0" layoutY="5.0" text="Free Tables">
+                <Label fx:id="title" layoutX="14.0" layoutY="5.0" text="Free Tables">
                     <font>
                         <Font size="28.0" />
                     </font></Label>
                 <ListView fx:id="restaurantReservationList" layoutX="50.0" layoutY="61.0" prefHeight="409.0" prefWidth="260.0" />
-            <Button layoutX="329.0" layoutY="415.0" mnemonicParsing="false" text="Reserve" />
-            <TextField layoutX="329.0" layoutY="356.0" prefHeight="25.0" prefWidth="74.0" />
+            <Button layoutX="230.0" layoutY="476.0" mnemonicParsing="false" onAction="#reserve" prefHeight="33.0" prefWidth="74.0" text="Reserve" />
+            <TextField fx:id="peopleNumberPicker" layoutX="329.0" layoutY="356.0" prefHeight="25.0" prefWidth="74.0" />
             <Label layoutX="329.0" layoutY="339.0" text="number of people" />
-            <DatePicker layoutX="329.0" layoutY="302.0" prefHeight="25.0" prefWidth="151.0" />
-            <Label layoutX="329.0" layoutY="285.0" text="date and time" />
+            <DatePicker fx:id="datePicker" layoutX="329.0" layoutY="302.0" prefHeight="25.0" prefWidth="151.0" />
+            <Label layoutX="329.0" layoutY="285.0" text="date" />
+            <ChoiceBox fx:id="timeChoiceBox" layoutX="328.0" layoutY="253.0" prefWidth="150.0" />
+            <Label layoutX="327.0" layoutY="233.0" text="time" />
+            <Button layoutX="325.0" layoutY="404.0" mnemonicParsing="false" onAction="#updateViewBtn" text="Show Tables" />
             </children>
         </AnchorPane>
     </children>

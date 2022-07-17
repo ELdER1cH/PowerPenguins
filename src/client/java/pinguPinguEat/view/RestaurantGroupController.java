@@ -17,6 +17,7 @@ import pinguPinguEat.restaurants.Restaurant;
 import pinguPinguEat.user.Review;
 import pinguPinguEat.user.User;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -29,6 +30,9 @@ public class RestaurantGroupController {
 
     public ReviewLogic reviewLogic;
 
+    // needed to switch view groups through buttons in the restaurant view
+    private SceneController sceneController;
+    private Restaurant currentRestaurant;
 
     //----------------------------------------------------------------------------------
     //My Functions
@@ -66,17 +70,18 @@ public class RestaurantGroupController {
      * @param restaurant
      */
     public void updateRestaurant(Restaurant restaurant) {
+        currentRestaurant = restaurant;
         // Sets Name of Restaurant
         this.restaurantNameLabel.setText(restaurant.getName());
 
-        // Sest Text for Side Bar
+        // Set Text for Side Bar
         this.restaurantPriceCategoryLabel.setText(restaurant.getPriceCategory().toString());
         this.restaurantRatingLabel.setText(String.valueOf(restaurant.getAverageRating()));
         this.restaurantTypeLabel.setText(restaurant.getCuisineType().toString());
         this.restaurantLinkLabel.setText(restaurant.getLink());
         this.restaurantOpeningTimesLabel.setText(restaurant.getOpeningTimes());
 
-        // Sets Discription of Restaurant
+        // Set Description of Restaurant
         this.descriptionLabel.setText(restaurant.getDescription());
 
         // Adds all Reviews to Review List
@@ -166,8 +171,8 @@ public class RestaurantGroupController {
     }
 
     @FXML
-    void switchToRestaurantReservationView(ActionEvent event) {
-
+    void switchToRestaurantReservationView(ActionEvent event) throws IOException {
+        sceneController.switchToRestaurantReservationView(currentRestaurant, event);
     }
 
     @FXML
@@ -189,6 +194,7 @@ public class RestaurantGroupController {
     }
 
 
-
-
+    public void setSceneController(SceneController sceneController) {
+        this.sceneController = sceneController;
+    }
 }
