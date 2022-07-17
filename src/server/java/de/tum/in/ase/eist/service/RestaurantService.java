@@ -1,4 +1,4 @@
-package pinguPinguEat.service;
+package de.tum.in.ase.eist.service;
 
 import pinguPinguEat.reservationModel.Reservation;
 import pinguPinguEat.reservationModel.Table;
