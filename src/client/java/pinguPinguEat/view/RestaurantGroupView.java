@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class RestaurantGroupView {
     //My Variables
-    public final ObservableList<Review> reviews = FXCollections.observableArrayList();
+    public ObservableList<Review> reviews = FXCollections.observableArrayList();
     public final ObservableList<ImageView> images = FXCollections.observableArrayList();
     public Dialog<Review> dialog;
 
@@ -51,7 +51,7 @@ public class RestaurantGroupView {
     private URL location;
 
     @FXML // fx:id="ReviewList"
-    private ListView<Review> ReviewList; // Value injected by FXMLLoader
+    private ListView<Review> reviewList; // Value injected by FXMLLoader
 
     @FXML // fx:id="descriptionLabel"
     private Label descriptionLabel; // Value injected by FXMLLoader
@@ -85,8 +85,7 @@ public class RestaurantGroupView {
         this.descriptionLabel.setText(restaurant.getDescription());
 
         // Adds all Reviews to Review List
-        this.reviews.addAll(restaurant.getReviews());
-        this.ReviewList.setItems(reviews);
+        resetReviews();
 
 
         // Adds Images from Class -> Sets width for proper Display
@@ -98,6 +97,12 @@ public class RestaurantGroupView {
             images.add(temp);
         }
         this.imageList.setItems(images);
+    }
+
+    private void resetReviews() {
+        reviews.clear();
+        reviews.addAll(currentRestaurant.getReviews());
+        reviewList.setItems(reviews);
     }
 
     @FXML // fx:id="restaurantNameLabel"
@@ -178,7 +183,7 @@ public class RestaurantGroupView {
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert ReviewList != null : "fx:id=\"ReviewList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
+        assert reviewList != null : "fx:id=\"reviewList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert descriptionLabel != null : "fx:id=\"descriptionLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert imageList != null : "fx:id=\"imageList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert middleVBoxView != null : "fx:id=\"middleVBoxView\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";

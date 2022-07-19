@@ -29,7 +29,6 @@ public class SceneView {
 
     public static final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
     private FXMLLoader restaurantReservationLoader;
-
     private FXMLLoader restaurantLoader;
     private RestaurantGroupView restaurantGroupView;
     private FXMLLoader reservationLoader;
@@ -102,6 +101,11 @@ public class SceneView {
         switchToScene(restaurantReservationViewGroup);
         restaurantReservationGroupView.setRestaurant(restaurant);
         restaurantReservationGroupView.updateView();
+    }
+
+    public void switchToSelectedRestaurant() throws IOException {
+        switchToRestaurantView(null);
+        restaurantGroupView.updateRestaurant(restaurantList.getSelectionModel().getSelectedItem());
     }
 
     private void switchToScene(Group viewGroup) throws IOException {

@@ -13,6 +13,8 @@ import pinguPinguEat.reservationElement.ReservationSystem;
 import pinguPinguEat.restaurantElement.CuisineType;
 import pinguPinguEat.restaurantElement.PriceCategory;
 import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
+import pinguPinguEat.userElement.User;
 import pinguPinguEat.view.MapGroupView;
 import pinguPinguEat.view.SceneView;
 
@@ -68,8 +70,13 @@ public class RestaurantLogic {
 
     public static List<Restaurant> getAllRestaurants() {
         List<Restaurant> returnValue = new ArrayList<>();
-        returnValue.add(new Restaurant("Test", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06));
-        returnValue.add(new Restaurant("Lorem Ipsum", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07));
+        Restaurant test1 = new Restaurant("Test", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test2 = new Restaurant("Lorem Ipsum", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        test1.addReview(new Review(5, "review test 1", new User("Hugh", "Janus")));
+        test2.addReview(new Review(5, "review test 2", new User("Patricia", "Table")));
+        test2.addReview(new Review(5, "amazing place!", new User("Alex", "Corn")));
+        returnValue.add(test1);
+        returnValue.add(test2);
         return returnValue;
     }
 
