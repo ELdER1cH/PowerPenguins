@@ -51,52 +51,15 @@ public class ReservationLogic {
                         new ReservationSystem(5, 8), "3.-3", "help", 5)));
         return res;
     }
-  
-
-
 
     private void setReservation(List<Reservation> reservation) {
         Platform.runLater(() -> reservationObservableList.setAll(reservation));
     }
 
-    //    FR4: Reserve table: A user can see the times when he can reserve a table in the chosen restaurant.
-    public void showFreeTimeSlots() {
-
-    }
-
-    //    After clicking on the time, the user sees an overview of all tables in the restaurant.
-    public void showOverviewOfAllTablesInChosenRestaurant() {
-
-    }
-
-    public void markAvailableTablesInOverview() {
-
-    }
-
-    //    He can choose the exact table the free one in the overview
-//    and thus reserve the table for the specified number of visitors.
-    // "on action" method for the exact table the free one in the overview
-    public void chooseTable(ActionEvent event) {
-        reserveTable();
-    }
-
-    private Boolean reserveTable() {
-//        Todo
-        setSpecifiedNumberOfVisitors();
-        return false;
-    }
-
-    private void setSpecifiedNumberOfVisitors() {
-
-    }
-
     //  FR5: Save calendar event: When the user reserves a table,
 //  an event in the local calendar is created for the reservation.
     public void createCalendarEvent() {
-        if (reserveTable()) {
-            //        Todo
 
-        }
     }
 
 //    FR6: Confirm reservation: A user is reminded about a reservation one day

@@ -13,6 +13,7 @@ import pinguPinguEat.reservationModel.ReservationSystem;
 import pinguPinguEat.restaurants.CuisineType;
 import pinguPinguEat.restaurants.PriceCategory;
 import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.view.MapGroupView;
 import pinguPinguEat.view.SceneView;
 
 import java.util.ArrayList;
@@ -26,11 +27,14 @@ public class RestaurantLogic {
     private final SceneView sceneView;
     private final RestaurantController restaurantController;
 
+    private final MapGroupView mapGroupView;
+
     public RestaurantLogic() {
         this.restaurantController = new RestaurantController();
         this.sceneView = new SceneView();
         this.restaurantObservableList = FXCollections.observableArrayList();
         this.searchResult = new HashMap<>();
+        this.mapGroupView = new MapGroupView();
 
 // !!!
 //        restaurantController.getAllRestaurants(this::setRestaurant);
@@ -43,15 +47,14 @@ public class RestaurantLogic {
         String searchCondition = sceneView.getSearchField().getText();
         // use String.contains() for the name and cuisineType of restaurants.
 
+        mapGroupView.showRestaurantsOnMap();
     }
 
     //    click to see the details of restaurants
     //    FR2: See restaurants details: The user can see pictures,
     //    ratings and comments of the restaurant as well as opening times and a link to the website.
     public void showRestaurantDetailsByClickingIt(ActionEvent event) {
-//    click on Map
-
-//    click on TableView
+//    click on ListView
 
     }
 
@@ -65,8 +68,8 @@ public class RestaurantLogic {
 
     public static List<Restaurant> getAllRestaurants() {
         List<Restaurant> returnValue = new ArrayList<>();
-        returnValue.add(new Restaurant("Test", "address",CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",06));
-        returnValue.add(new Restaurant("Lorem Ipsum","address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",07));
+        returnValue.add(new Restaurant("Test", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06));
+        returnValue.add(new Restaurant("Lorem Ipsum", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07));
         return returnValue;
     }
 
