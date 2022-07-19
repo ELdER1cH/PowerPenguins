@@ -6,24 +6,54 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import pinguPinguEat.controller.ReservationController;
 import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.view.SceneController;
+import pinguPinguEat.reservationModel.ReservationSystem;
+import pinguPinguEat.reservationModel.Table;
+import pinguPinguEat.reservationModel.TimeSlot;
+import pinguPinguEat.restaurants.CuisineType;
+import pinguPinguEat.restaurants.PriceCategory;
+import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.view.SceneView;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationLogic {
+  
     private final ObservableList<Reservation> reservationObservableList;
-    private SceneController sceneController;
-    private ReservationController reservationController;
-
+    private final SceneView sceneView;
+    private final ReservationController reservationController;  
+  
     public ReservationLogic() {
         this.reservationController = new ReservationController();
-        this.sceneController = new SceneController();
+        this.sceneView = new SceneView();
         this.reservationObservableList = FXCollections.observableArrayList();
 
 //        initiate reservationObservableList
 
 
     }
+  
+    //Hier wird die Logic für Reservation eingefügt, damit in dem Controller nicht zu viel Text ist
+    public static List<Reservation> getAllReservations() {
+        List<Reservation> res = new ArrayList<>();
+        res.add(new Reservation(new TimeSlot(LocalDateTime.of(1, 2, 3, 12, 13)),
+                new Table(1, 2) ,
+                new Restaurant("AmazingDiner","address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "great",
+                        new ReservationSystem(0, 0), "3.-3", "help",8)));
+        res.add(new Reservation(new TimeSlot(LocalDateTime.of(2022, 7, 11, 23, 13)),
+                new Table(5, 3) ,
+                new Restaurant("Blue Whale Restaurant","address", CuisineType.ITALIAN, PriceCategory.EXPENSIVE, "awful",
+                        new ReservationSystem(5, 8), "3.-3", "help", 9)));
+        res.add(new Reservation(new TimeSlot(LocalDateTime.of(1980, 7, 11, 23, 13)),
+                new Table(5, 3) ,
+                new Restaurant("WCDarnalds", "addresio", CuisineType.ITALIAN, PriceCategory.INEXPENSIVE, "nice",
+                        new ReservationSystem(5, 8), "3.-3", "help", 5)));
+        return res;
+    }
+  
+
+
 
     private void setReservation(List<Reservation> reservation) {
         Platform.runLater(() -> reservationObservableList.setAll(reservation));
@@ -47,10 +77,10 @@ public class ReservationLogic {
 //    and thus reserve the table for the specified number of visitors.
     // "on action" method for the exact table the free one in the overview
     public void chooseTable(ActionEvent event) {
-        reservaTable();
+        reserveTable();
     }
 
-    private Boolean reservaTable() {
+    private Boolean reserveTable() {
 //        Todo
         setSpecifiedNumberOfVisitors();
         return false;
@@ -63,7 +93,7 @@ public class ReservationLogic {
     //  FR5: Save calendar event: When the user reserves a table,
 //  an event in the local calendar is created for the reservation.
     public void createCalendarEvent() {
-        if (reservaTable()) {
+        if (reserveTable()) {
             //        Todo
 
         }

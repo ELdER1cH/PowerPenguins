@@ -1,4 +1,4 @@
-package pinguPinguEat.service;
+package de.tum.in.ase.eist.service;
 
 import pinguPinguEat.reservationModel.Reservation;
 import pinguPinguEat.reservationModel.Table;
@@ -29,7 +29,7 @@ public class RestaurantService {
 
     public List<Table> getFreeTables(UUID restaurantID, TimeSlot timeSlot) {
         List<Table> allTables = getAllTables(restaurantID);
-        List<Reservation> reservations = ((Restaurant) restaurants.get(restaurantID)).getReservationSystem().getReservations().get(timeSlot);
+        List<Reservation> reservations = restaurants.get(restaurantID).getReservationSystem().getReservations().get(timeSlot);
         for (Reservation reservation : reservations) {
             if (allTables.contains(reservation.getTable())) {
                 reservation = null;

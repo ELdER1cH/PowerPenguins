@@ -1,10 +1,10 @@
-package pinguPinguEat.rest;
+package de.tum.in.ase.eist.rest;
 
+import de.tum.in.ase.eist.service.ReviewService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pinguPinguEat.service.ReviewService;
 import pinguPinguEat.user.Review;
 
 import java.util.HashMap;

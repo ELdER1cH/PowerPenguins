@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.context.ConfigurableApplicationContext;
-import pinguPinguEat.view.SceneController;
+import pinguPinguEat.view.SceneView;
 
 import java.io.IOException;
 
@@ -16,10 +16,14 @@ public class ClientApplication extends Application {
     private Stage stage;
     private final String startView;
     private FXMLLoader loader;
-    private SceneController sceneController;
+    private SceneView sceneView;
 
     public ClientApplication() {
         startView = "ClientBase.fxml";
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     public FXMLLoader getLoader() {
@@ -30,12 +34,12 @@ public class ClientApplication extends Application {
         this.loader = loader;
     }
 
-    public SceneController getController() {
-        return sceneController;
+    public SceneView getController() {
+        return sceneView;
     }
 
-    public void setController(SceneController sceneController) {
-        this.sceneController = sceneController;
+    public void setController(SceneView sceneView) {
+        this.sceneView = sceneView;
     }
 
 
@@ -53,8 +57,8 @@ public class ClientApplication extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("PinguPinguEat");
         stage.setScene(scene);
-        sceneController = loader.getController();
-        sceneController.switchToMapView(new ActionEvent());
+        sceneView = loader.getController();
+        sceneView.switchToMapView(new ActionEvent());
         stage.show();
     }
 }

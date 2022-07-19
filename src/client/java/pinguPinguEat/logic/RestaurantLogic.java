@@ -13,7 +13,7 @@ import pinguPinguEat.reservationModel.ReservationSystem;
 import pinguPinguEat.restaurants.CuisineType;
 import pinguPinguEat.restaurants.PriceCategory;
 import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.view.SceneController;
+import pinguPinguEat.view.SceneView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,12 +23,12 @@ import java.util.UUID;
 public class RestaurantLogic {
     private final ObservableList<Restaurant> restaurantObservableList;
     private final HashMap<UUID, Restaurant> searchResult;
-    private SceneController sceneController;
-    private RestaurantController restaurantController;
+    private final SceneView sceneView;
+    private final RestaurantController restaurantController;
 
     public RestaurantLogic() {
         this.restaurantController = new RestaurantController();
-        this.sceneController = new SceneController();
+        this.sceneView = new SceneView();
         this.restaurantObservableList = FXCollections.observableArrayList();
         this.searchResult = new HashMap<>();
 
@@ -40,7 +40,7 @@ public class RestaurantLogic {
     //    FR1: Search for restaurants: The user can search for restaurants
     //    on a list and on a map that displays up to 50 restaurants.
     public void searchRestuarant(ActionEvent event) {
-        String searchCondition = sceneController.getSearchField().getText();
+        String searchCondition = sceneView.getSearchField().getText();
         // use String.contains() for the name and cuisineType of restaurants.
 
     }
@@ -63,51 +63,11 @@ public class RestaurantLogic {
         updateTableViewAccordingToComboBox();
     }
 
-    public void updateTableViewAccordingToComboBox() {
-//         restaurant type, prize category,free time slots,number of visitors
-        FilteredList<Restaurant> filteredList = new FilteredList<>(restaurantObservableList, i -> true);
-
-        ComboBox<String> filterOption = new ComboBox();
-        initiateComboBoxForFilter(filterOption);
-
-        filterOption.setEditable(true);
-
-        // Add a listener to the textProperty of the combobox editor. The
-        // listener will simply filter the list every time the input is changed
-        // as long as the user hasn't selected an item in the list.
-        filterOption.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            final TextField editor = filterOption.getEditor();
-
-            final String selected = (String) filterOption.getSelectionModel().getSelectedItem();
-
-            // This needs run on the GUI thread to avoid the error described
-            // here: https://bugs.openjdk.java.net/browse/JDK-8081700.
-            Platform.runLater(() -> {
-
-                // If the no item in the list is selected or the selected item
-                // isn't equal to the current input, we refilter the list.
-                if (selected == null || !selected.equals(editor.getText())) {
-
-                    if (selected.equals("Restaurant Type")) {
-                        filteredList.setPredicate(Restaurant -> {
-                            // We return true for any items that meet the condition
-                            if (Restaurant.getCuisineType().equals(newValue.toUpperCase())) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        });
-                    } else if (selected.equals("Price Category")) {
-//                        Todo
-                    }
-                }
-            });
-        });
-
-
-        TableView<Restaurant> table = new TableView(filteredList);
-//        !!!
-//        sceneController.setRestaurantList(table);
+    public static List<Restaurant> getAllRestaurants() {
+        List<Restaurant> returnValue = new ArrayList<>();
+        returnValue.add(new Restaurant("Test", "address",CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",06));
+        returnValue.add(new Restaurant("Lorem Ipsum","address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",07));
+        return returnValue;
     }
 
     private void initiateComboBoxForFilter(ComboBox comboBox) {
@@ -133,10 +93,46 @@ public class RestaurantLogic {
         Platform.runLater(() -> restaurantObservableList.setAll(restaurant));
     }
 
-    public static List<Restaurant> getAllRestaurants() {
-        List<Restaurant> returnValue = new ArrayList<>();
-        returnValue.add(new Restaurant("Test", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0)));
-        returnValue.add(new Restaurant("Lorem Ipsum", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0)));
-        return returnValue;
+    public void updateTableViewAccordingToComboBox() {
+//         restaurant type, prize category,free time slots,number of visitors
+        FilteredList<Restaurant> filteredList = new FilteredList<>(restaurantObservableList, i -> true);
+
+        ComboBox<String> filterOption = new ComboBox();
+        initiateComboBoxForFilter(filterOption);
+
+        filterOption.setEditable(true);
+
+        // Add a listener to the textProperty of the combobox editor. The
+        // listener will simply filter the list every time the input is changed
+        // as long as the user hasn't selected an item in the list.
+        filterOption.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
+            final TextField editor = filterOption.getEditor();
+
+            final String selected = filterOption.getSelectionModel().getSelectedItem();
+
+            // This needs run on the GUI thread to avoid the error described
+            // here: https://bugs.openjdk.java.net/browse/JDK-8081700.
+            Platform.runLater(() -> {
+
+                // If the no item in the list is selected or the selected item
+                // isn't equal to the current input, we refilter the list.
+                if (selected == null || !selected.equals(editor.getText())) {
+
+                    if (selected.equals("Restaurant Type")) {
+                        filteredList.setPredicate(Restaurant -> {
+                            // We return true for any items that meet the condition
+                            return Restaurant.getCuisineType().equals(newValue.toUpperCase());
+                        });
+                    } else if (selected.equals("Price Category")) {
+//                        Todo
+                    }
+                }
+            });
+        });
+
+
+        TableView<Restaurant> table = new TableView(filteredList);
+//        !!!
+//        sceneController.setRestaurantList(table);
     }
 }

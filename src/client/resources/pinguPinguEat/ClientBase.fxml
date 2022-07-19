@@ -5,7 +5,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.SceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.SceneView">
     <left>
         <VBox BorderPane.alignment="CENTER">
             <children>
@@ -26,14 +26,24 @@
     <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
-                <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <HBox prefHeight="0.0" prefWidth="900.0">
+               <children>
+                      <ToolBar prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                          <items>
+                              <TextField fx:id="userNameField" promptText="UserName" />
+                              <TextField fx:id="passWordField" promptText="Password" />
+                              <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
+                              <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
+                          </items>
+                      </ToolBar>
+                  <ToolBar prefHeight="36.0" prefWidth="173.0" HBox.hgrow="NEVER">
                     <items>
-                        <TextField fx:id="userNameField" promptText="UserName" />
-                        <TextField fx:id="passWordField" promptText="Password" />
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginAction" text="Login" />
-                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerAction" text="Register" />
+                        <Button alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToMapView" text="Map" textAlignment="CENTER" />
+                        <Button alignment="TOP_RIGHT" mnemonicParsing="false" onAction="#switchToReservationView" prefHeight="25.0" prefWidth="111.0" text="My Reservations" />
                     </items>
-                </ToolBar>
+                  </ToolBar>
+               </children>
+            </HBox>
             </children>
         </VBox>
     </top>
@@ -50,20 +60,20 @@
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToReservationView" text="Reservation" />
                     </children>
                 </Group>
-                <Group fx:id="mapViewGroup" StackPane.alignment="TOP_LEFT">
+                <Group fx:id="reservationViewGroup" StackPane.alignment="TOP_LEFT">
                     <children>
-                  <Button mnemonicParsing="false" onAction="#switchToRestaurantView" text="Restaurant" />
-                        <Label text="MapView" translateX="300.0">
+                  <Button layoutX="-4.0" layoutY="1.0" mnemonicParsing="false" onAction="#switchToRestaurantView" text="Back" />
+                        <Label layoutX="300.0" text="ReservationView">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
                     </children>
                 </Group>
-                <Group fx:id="reservationViewGroup" StackPane.alignment="TOP_LEFT">
+                <Group fx:id="mapViewGroup" StackPane.alignment="TOP_LEFT">
                     <children>
-                  <Button layoutX="-4.0" layoutY="1.0" mnemonicParsing="false" onAction="#switchToRestaurantView" text="Back" />
-                        <Label layoutX="300.0" text="ReservationView">
+                  <Button mnemonicParsing="false" onAction="#switchToRestaurantView" text="Restaurant" />
+                        <Label text="MapView" translateX="300.0">
                             <font>
                                 <Font size="24.0" />
                             </font>

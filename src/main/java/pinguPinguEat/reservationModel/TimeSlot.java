@@ -1,19 +1,18 @@
 package pinguPinguEat.reservationModel;
 
 import java.time.Duration;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class TimeSlot {
-    private final LocalTime startTime;
+    private final LocalDateTime startTime;
     private final static Duration duration = Duration.ofHours(1);
 
-    public TimeSlot(LocalTime startTime) {
+    public TimeSlot(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
     @Override
-    //TODO does this really need to work for "Object" and not just other TimeSlots?
     public boolean equals(Object other) {
         if (other == null || other.getClass() != this.getClass()) {
             return false;
@@ -26,7 +25,11 @@ public class TimeSlot {
         return Objects.hash(startTime);
     }
 
-    public LocalTime getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
+    }
+
+    public int compareTo(TimeSlot other) {
+        return (this.getStartTime()).compareTo(other.getStartTime());
     }
 }
