@@ -103,4 +103,8 @@ public class Restaurant {
     public List<String> getImages() {
         return images;
     }
+
+    public int getMapID() {
+        return mapID;
+    }
 }
