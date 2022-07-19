@@ -8,17 +8,262 @@
 
 <Group xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.MapGroupController">
    <children>
-      <AnchorPane prefHeight="234.0" prefWidth="366.0">
+      <AnchorPane prefHeight="252.0" prefWidth="366.0">
          <children>
-            <Label text="Map   View" />
-            <ImageView fitHeight="214.0" fitWidth="424.0" layoutX="29.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="153.0" layoutY="4.0" text="Map   View" />
+            <ImageView fitHeight="238.0" fitWidth="368.0" layoutX="-2.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Map/Map.png" />
                </image>
             </ImageView>
-            <ImageView id="1" fitHeight="9.0" fitWidth="12.0" layoutX="198.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="1" fx:id="one" fitHeight="9.0" fitWidth="12.0" layoutX="198.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Map/50Markers/01.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="two" fitHeight="9.0" fitWidth="12.0" layoutX="161.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/02.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="three" fitHeight="9.0" fitWidth="12.0" layoutX="160.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/03.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="four" fitHeight="9.0" fitWidth="12.0" layoutX="129.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/04.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="five" fitHeight="9.0" fitWidth="12.0" layoutX="140.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/05.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="six" fitHeight="9.0" fitWidth="12.0" layoutX="53.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/06.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="seven" fitHeight="9.0" fitWidth="12.0" layoutX="169.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/07.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="eight" fitHeight="9.0" fitWidth="12.0" layoutX="143.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/08.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="nine" fitHeight="9.0" fitWidth="12.0" layoutX="83.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/09.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ten" fitHeight="9.0" fitWidth="12.0" layoutX="105.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/10.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="eleven" fitHeight="9.0" fitWidth="12.0" layoutX="238.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/11.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twelve" fitHeight="9.0" fitWidth="12.0" layoutX="291.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/12.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirteen" fitHeight="9.0" fitWidth="12.0" layoutX="219.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/13.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourteen" fitHeight="9.0" fitWidth="12.0" layoutX="298.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/14.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fifteen" fitHeight="9.0" fitWidth="12.0" layoutX="185.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/15.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="sixteen" fitHeight="9.0" fitWidth="12.0" layoutX="186.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/16.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="seventeen" fitHeight="9.0" fitWidth="12.0" layoutX="116.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/17.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="eighteen" fitHeight="9.0" fitWidth="12.0" layoutX="181.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/18.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="nineteen" fitHeight="9.0" fitWidth="12.0" layoutX="234.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/19.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twenty" fitHeight="9.0" fitWidth="12.0" layoutX="183.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/20.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentyone" fitHeight="9.0" fitWidth="12.0" layoutX="152.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/21.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentytwo" fitHeight="9.0" fitWidth="12.0" layoutX="198.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/22.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentythree" fitHeight="9.0" fitWidth="12.0" layoutX="126.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/23.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentyfour" fitHeight="9.0" fitWidth="12.0" layoutX="143.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/24.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentyfive" fitHeight="9.0" fitWidth="12.0" layoutX="263.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/25.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentysix" fitHeight="9.0" fitWidth="12.0" layoutX="59.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/26.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentyseven" fitHeight="9.0" fitWidth="12.0" layoutX="76.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/27.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentyeight" fitHeight="9.0" fitWidth="12.0" layoutX="52.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/28.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="twentynine" fitHeight="9.0" fitWidth="12.0" layoutX="164.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/29.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirty" fitHeight="9.0" fitWidth="12.0" layoutX="110.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/30.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtyone" fitHeight="9.0" fitWidth="12.0" layoutX="217.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/31.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtytwo" fitHeight="9.0" fitWidth="12.0" layoutX="147.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/32.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtythree" fitHeight="9.0" fitWidth="12.0" layoutX="229.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/33.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtyfour" fitHeight="13.0" fitWidth="12.0" layoutX="232.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/34.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtyfive" fitHeight="9.0" fitWidth="12.0" layoutX="236.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/35.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtysix" fitHeight="9.0" fitWidth="12.0" layoutX="188.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/36.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtyseven" fitHeight="9.0" fitWidth="12.0" layoutX="80.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/37.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtynine" fitHeight="9.0" fitWidth="12.0" layoutX="26.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/39.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourty" fitHeight="9.0" fitWidth="12.0" layoutX="24.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/40.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtyone" fitHeight="9.0" fitWidth="12.0" layoutX="63.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/41.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtytwo" fitHeight="9.0" fitWidth="12.0" layoutX="224.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/42.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtythree" fitHeight="9.0" fitWidth="12.0" layoutX="250.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/43.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtyfour" fitHeight="9.0" fitWidth="12.0" layoutX="128.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/44.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtyfive" fitHeight="9.0" fitWidth="12.0" layoutX="172.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/45.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtysix" fitHeight="9.0" fitWidth="12.0" layoutX="188.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/46.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtyseven" fitHeight="9.0" fitWidth="12.0" layoutX="126.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/47.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtyeight" fitHeight="9.0" fitWidth="12.0" layoutX="95.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/48.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fourtynine" fitHeight="9.0" fitWidth="12.0" layoutX="185.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/49.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fifty" fitHeight="9.0" fitWidth="12.0" layoutX="201.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/50.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="thirtyeight" fitHeight="9.0" fitWidth="12.0" layoutX="177.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Map/50Markers/38.png" />
                </image>
             </ImageView>
          </children>
