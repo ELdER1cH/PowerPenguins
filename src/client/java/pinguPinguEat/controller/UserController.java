@@ -3,7 +3,7 @@ package pinguPinguEat.controller;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import pinguPinguEat.user.User;
+import pinguPinguEat.userElement.User;
 
 import java.util.HashMap;
 

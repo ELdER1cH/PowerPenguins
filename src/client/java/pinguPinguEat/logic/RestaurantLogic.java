@@ -9,10 +9,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import pinguPinguEat.controller.RestaurantController;
-import pinguPinguEat.reservationModel.ReservationSystem;
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.ReservationSystem;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+import pinguPinguEat.restaurantElement.Restaurant;
 import pinguPinguEat.view.MapGroupView;
 import pinguPinguEat.view.SceneView;
 
