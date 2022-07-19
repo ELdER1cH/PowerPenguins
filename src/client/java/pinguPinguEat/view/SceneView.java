@@ -45,7 +45,6 @@ public class SceneView {
         //Import Restaurant Group
         restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
         restaurantViewGroup = restaurantLoader.load();
-        restaurantViewGroup.getChildren().get(0);
         restaurantGroupView = restaurantLoader.getController();
         restaurantGroupView.setSceneController(this);
 
