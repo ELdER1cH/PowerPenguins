@@ -14,12 +14,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import pinguPinguEat.ClientApplication;
 import pinguPinguEat.logic.RestaurantLogic;
-import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
-import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.user.Review;
-import pinguPinguEat.user.User;
+import pinguPinguEat.reservationElement.Reservation;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
+import pinguPinguEat.userElement.User;
 
 import java.io.IOException;
 

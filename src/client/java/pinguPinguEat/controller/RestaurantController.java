@@ -4,10 +4,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.reservationModel.Table;
-import pinguPinguEat.reservationModel.TimeSlot;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.Reservation;
+import pinguPinguEat.reservationElement.Table;
+import pinguPinguEat.reservationElement.TimeSlot;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.util.HashMap;
 import java.util.List;

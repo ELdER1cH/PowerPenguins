@@ -13,9 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import pinguPinguEat.logic.ReviewLogic;
-import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.user.Review;
-import pinguPinguEat.user.User;
+import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
+import pinguPinguEat.userElement.User;
 
 import java.io.IOException;
 import java.net.URL;

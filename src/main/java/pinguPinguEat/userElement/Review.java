@@ -1,4 +1,4 @@
-package pinguPinguEat.user;
+package pinguPinguEat.userElement;
 
 import java.time.Instant;
 import java.util.UUID;

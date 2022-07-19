@@ -1,9 +1,9 @@
 package pinguPinguEat.logic;
 
-import pinguPinguEat.reservationModel.ReservationSystem;
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.ReservationSystem;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;

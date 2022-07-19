@@ -1,6 +1,6 @@
-package pinguPinguEat.user;
+package pinguPinguEat.userElement;
 
-import pinguPinguEat.reservationModel.Reservation;
+import pinguPinguEat.reservationElement.Reservation;
 
 import java.util.ArrayList;
 import java.util.List;

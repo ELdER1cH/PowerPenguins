@@ -4,10 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.reservationModel.Table;
-import pinguPinguEat.reservationModel.TimeSlot;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.Reservation;
+import pinguPinguEat.reservationElement.Table;
+import pinguPinguEat.reservationElement.TimeSlot;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

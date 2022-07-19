@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pinguPinguEat.controller.ReviewController;
-import pinguPinguEat.user.Review;
+import pinguPinguEat.userElement.Review;
 import pinguPinguEat.view.RestaurantGroupView;
 
 import java.util.List;
