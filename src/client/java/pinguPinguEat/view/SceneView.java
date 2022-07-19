@@ -29,13 +29,15 @@ public class SceneView {
 
     public static final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
     private FXMLLoader restaurantReservationLoader;
-  
+
     private FXMLLoader restaurantLoader;
     private RestaurantGroupView restaurantGroupView;
     private FXMLLoader reservationLoader;
 
     private ReservationGroupView reservationGroupView;
     private RestaurantReservationGroupView restaurantReservationGroupView;
+
+    private RestaurantLogic restaurantLogic;
 
 
     @FXML
@@ -61,6 +63,8 @@ public class SceneView {
         restaurantReservationLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantReservationGroupView.fxml"));
         restaurantReservationViewGroup = restaurantReservationLoader.load();
         restaurantReservationGroupView = restaurantReservationLoader.getController();
+
+        restaurantLogic = new RestaurantLogic();
     }
 
     @FXML
@@ -86,9 +90,9 @@ public class SceneView {
 
     public void switchToRestaurantView(ActionEvent event) throws IOException {
         switchToScene(restaurantViewGroup);
-        Restaurant restaurant = new Restaurant("TUM","address", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n" +
+        Restaurant restaurant = new Restaurant("TUM", "address", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n" +
                 "\n" +
-                "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", null, "Mo: 8 - 18\nDi: 8 - 18\n", "www.google.com",05);
+                "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", null, "Mo: 8 - 18\nDi: 8 - 18\n", "www.google.com", 05);
         restaurant.addReview(new Review(4, "Lorem Ipsum \n dolores", new User("Max", "Master")));
         restaurant.addImage("pinguPinguEat/img/tum.jpg");
         restaurant.addImage("pinguPinguEat/img/tum1.jpg");
@@ -152,7 +156,11 @@ public class SceneView {
 
     @FXML
     void searchAction(ActionEvent event) {
+        restaurantLogic.searchRestuarant(event);
+    }
 
+    void listViewClickedToSeeDetails(ActionEvent event){
+        restaurantLogic.showRestaurantDetailsByClickingIt(event);
     }
 
     public TextField getSearchField() {
