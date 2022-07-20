@@ -158,6 +158,10 @@ public class SceneView {
     void searchAction(ActionEvent event) {
         restaurantLogic.searchRestuarant(event);
     }
+ @FXML
+    void filterAction(ActionEvent event) {
+        restaurantLogic.filterRestuarant(event);
+    }
 
     void listViewClickedToSeeDetails(ActionEvent event){
         restaurantLogic.showRestaurantDetailsByClickingIt(event);
