@@ -8,7 +8,7 @@ import pinguPinguEat.restaurantElement.Restaurant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateRestaurants {
+public class RestaurantFactory {
     public static List<Restaurant> create() {
         List<Restaurant> list = new ArrayList<>();
         list.add(new Restaurant("Steinheil 16", "Steinheilstraße 16",  CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Casual restaurant specializing in schnitzel plates & fried sides, plus beer, wine & cocktails.", new ReservationSystem(4, 6), "11am-1am", "https://www.steinheil16.de/", 1));
