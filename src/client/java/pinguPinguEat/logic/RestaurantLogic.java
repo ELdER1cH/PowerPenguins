@@ -55,19 +55,19 @@ public class RestaurantLogic {
 
     }
 
+    public static List<Restaurant> getAllRestaurants() {
+        List<Restaurant> returnValue = new ArrayList<>();
+        returnValue.add(new Restaurant("Test", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "description1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
+        returnValue.add(new Restaurant("Lorem Ipsum", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "description2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
+        return returnValue;
+    }
+
     //  "on action" method for filter combobox --> choose filter conditions
 //    FR3: Filter search results: He can filter the results by the restaurant type, the prize category,
 //    by distance around a certain location, by the average rating
 //    and by free time slots for reservations for specified dates and number of visitors.
-    public void filterRestuarant(ActionEvent event) {
+    public void filterRestaurant(ActionEvent event) {
         updateTableViewAccordingToComboBox();
-    }
-
-    public static List<Restaurant> getAllRestaurants() {
-        List<Restaurant> returnValue = new ArrayList<>();
-        returnValue.add(new Restaurant("Test", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
-        returnValue.add(new Restaurant("Lorem Ipsum", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
-        return returnValue;
     }
 
     private void initiateComboBoxForFilter(ComboBox comboBox) {

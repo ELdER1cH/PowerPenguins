@@ -194,12 +194,6 @@ public class SceneController {
         restaurantList.getItems().removeAll();
         restaurantList.getItems().setAll(restaurants);
         restaurantList.refresh();
-//        searchButton.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//
-//            }
-//        });
 
 
     }
@@ -207,14 +201,8 @@ public class SceneController {
     // Filter Button pressed
     @FXML
     void filterAction(ActionEvent event) {
+        System.out.println("filterAction called");
         showFilterDialog();
-//        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                showFilterDialog();
-//            }
-//        };
-//        filterButton.setOnAction(handler);
     }
 
     // Dialog mit CheckBoxen/Spinner zum Filtern bei der Suche nach Restaurants (Suche nach Namen und Beschreibung)
