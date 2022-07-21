@@ -3,6 +3,7 @@ package pinguPinguEat.view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -43,13 +44,13 @@ public class SceneController {
     @FXML
     public void initialize() throws IOException {
         //Import Restaurant Group
-        restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
+        restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("/pinguPinguEat/RestaurantGroupView.fxml"));
         restaurantViewGroup = restaurantLoader.load();
         restaurantViewGroup.getChildren().get(0);
         restaurantController = restaurantLoader.getController();
 
         //Import Reservation Group
-        reservationLoader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
+        reservationLoader = new FXMLLoader(ClientApplication.class.getResource("/pinguPinguEat/ReservationGroupView.fxml"));
         reservationViewGroup = reservationLoader.load();
 
         //Import Restaurants
@@ -59,9 +60,12 @@ public class SceneController {
         reservationController = reservationLoader.getController();
         reservationController.loadList();
 
-        restaurantReservationLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantReservationGroupView.fxml"));
+        restaurantReservationLoader = new FXMLLoader(ClientApplication.class.getResource("/pinguPinguEat/RestaurantReservationGroupView.fxml"));
         restaurantReservationController = restaurantReservationLoader.getController();
         restaurantReservationViewGroup = restaurantReservationLoader.load();
+
+        filterButton.setOnAction(e -> filterAction(e));
+        searchButton.setOnAction(e -> searchAction(e));
     }
 
     @FXML
@@ -156,50 +160,62 @@ public class SceneController {
         // nichts passiert
     }
 
-
-    // Search Button pressed
     @FXML
     void searchAction(ActionEvent event) {
-        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
 
-        for (Restaurant r : allRestaurantsToFilter) {
-            restaurantController.updateRestaurant(r);
-            // inconsistent with filter
-            if ((r.getCuisineType() == CuisineType.GERMAN) !=
-                    searchFilter.isSelectedCuisineTypeGerman() ||
-                    (r.getCuisineType() == CuisineType.ITALIAN) != searchFilter.isSelectedCuisineTypeItalian() ||
-                    (r.getCuisineType() == CuisineType.CHINESE) != searchFilter.isSelectedCuisineTypeChinese() ||
-                    (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
-                    (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
-                    (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
-                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive() ||
-                    ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
-                allRestaurantsToFilter.remove(r);
-            }
-        }
-        String query = (String) searchField.getCharacters();
-        String[] queryWords = query.split(" ");
-        for (String queryWord : queryWords) {
-            for (Restaurant r : allRestaurantsToFilter) {
-                if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
-                    allRestaurantsToFilter.remove(r);
+        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                // Search Button pressed
+                ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+
+                for (Restaurant r : allRestaurantsToFilter) {
+                    restaurantController.updateRestaurant(r);
+                    // inconsistent with filter
+                    if ((r.getCuisineType() == CuisineType.GERMAN) !=
+                            searchFilter.isSelectedCuisineTypeGerman() ||
+                            (r.getCuisineType() == CuisineType.ITALIAN) != searchFilter.isSelectedCuisineTypeItalian() ||
+                            (r.getCuisineType() == CuisineType.CHINESE) != searchFilter.isSelectedCuisineTypeChinese() ||
+                            (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
+                            (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
+                            (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
+                            (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive() ||
+                            ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
+                        allRestaurantsToFilter.remove(r);
+                    }
                 }
-            }
-        }
+                String query = (String) searchField.getCharacters();
+                String[] queryWords = query.split(" ");
+                for (String queryWord : queryWords) {
+                    for (Restaurant r : allRestaurantsToFilter) {
+                        if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
+                            allRestaurantsToFilter.remove(r);
+                        }
+                    }
+                }
 
-        restaurants.removeAll();
-        restaurants.addAll(allRestaurantsToFilter);
+                restaurants.removeAll();
+                restaurants.addAll(allRestaurantsToFilter);
+            }
+        });
+
 
         //////!!!!!!!! Restaurant waehlen aus Suchergebnis und zur RestaurantView switchen
-        restaurantList.getSelectionModel().selectedItemProperty().addListener(());
-        Restaurant selectedRestaurant = restaurantList.getSelectionModel().getSelectedItem();
-        restaurantController.updateRestaurant(selectedRestaurant);
-        switchToRestaurantView(new ActionEvent());
+        //restaurantList.getSelectionModel().selectedItemProperty().addListener(());
+        //Restaurant selectedRestaurant = restaurantList.getSelectionModel().getSelectedItem();
+        //restaurantController.updateRestaurant(selectedRestaurant);
+        //switchToRestaurantView(new ActionEvent());
     }
 
     // Filter Button pressed
     void filterAction(ActionEvent event) {
-        filterButton.setOnAction(e -> showFilterDialog());
+        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showFilterDialog();
+            }
+        };
+        filterButton.setOnAction(handler);
     }
 
     // Dialog mit CheckBoxen/Spinner zum Filtern bei der Suche nach Restaurants (Suche nach Namen und Beschreibung)
