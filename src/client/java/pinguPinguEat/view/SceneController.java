@@ -195,7 +195,6 @@ public class SceneController {
         restaurantList.getItems().setAll(restaurants);
         restaurantList.refresh();
 
-
     }
 
     // Filter Button pressed
