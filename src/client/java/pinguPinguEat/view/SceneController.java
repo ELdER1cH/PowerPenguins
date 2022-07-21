@@ -3,7 +3,6 @@ package pinguPinguEat.view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -64,14 +63,13 @@ public class SceneController {
         restaurantReservationController = restaurantReservationLoader.getController();
         restaurantReservationViewGroup = restaurantReservationLoader.load();
 
-        filterButton.setOnAction(e -> filterAction(e));
-        searchButton.setOnAction(e -> searchAction(e));
     }
 
     @FXML
     private Group mapViewGroup;
     @FXML
     private Group reservationViewGroup;
+
     @FXML
     private Group restaurantViewGroup;
     @FXML
@@ -163,59 +161,60 @@ public class SceneController {
     @FXML
     void searchAction(ActionEvent event) {
 
-        searchButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                // Search Button pressed
-                ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+        // Search Button pressed
+        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
 
-                for (Restaurant r : allRestaurantsToFilter) {
-                    restaurantController.updateRestaurant(r);
-                    // inconsistent with filter
-                    if ((r.getCuisineType() == CuisineType.GERMAN) !=
-                            searchFilter.isSelectedCuisineTypeGerman() ||
-                            (r.getCuisineType() == CuisineType.ITALIAN) != searchFilter.isSelectedCuisineTypeItalian() ||
-                            (r.getCuisineType() == CuisineType.CHINESE) != searchFilter.isSelectedCuisineTypeChinese() ||
-                            (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
-                            (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
-                            (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
-                            (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive() ||
-                            ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
-                        allRestaurantsToFilter.remove(r);
-                    }
-                }
-                String query = (String) searchField.getCharacters();
-                String[] queryWords = query.split(" ");
-                for (String queryWord : queryWords) {
-                    for (Restaurant r : allRestaurantsToFilter) {
-                        if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
-                            allRestaurantsToFilter.remove(r);
-                        }
-                    }
-                }
-
-                restaurants.removeAll();
-                restaurants.addAll(allRestaurantsToFilter);
+        for (Restaurant r : allRestaurantsToFilter) {
+            restaurantController.updateRestaurant(r);
+            // inconsistent with filter
+            if ((r.getCuisineType() == CuisineType.GERMAN) !=
+                    searchFilter.isSelectedCuisineTypeGerman() ||
+                    (r.getCuisineType() == CuisineType.ITALIAN) != searchFilter.isSelectedCuisineTypeItalian() ||
+                    (r.getCuisineType() == CuisineType.CHINESE) != searchFilter.isSelectedCuisineTypeChinese() ||
+                    (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
+                    (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
+                    (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
+                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive() ||
+                    ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
+                allRestaurantsToFilter.remove(r);
             }
-        });
+        }
+        String query = (String) searchField.getCharacters();
+        String[] queryWords = query.split(" ");
+        for (String queryWord : queryWords) {
+            for (Restaurant r : allRestaurantsToFilter) {
+                if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
+                    allRestaurantsToFilter.remove(r);
+                }
+            }
+        }
+
+        restaurants.removeAll();
+        restaurants.addAll(allRestaurantsToFilter);
+        restaurantList.getItems().removeAll();
+        restaurantList.getItems().setAll(restaurants);
+        restaurantList.refresh();
+//        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//
+//            }
+//        });
 
 
-        //////!!!!!!!! Restaurant waehlen aus Suchergebnis und zur RestaurantView switchen
-        //restaurantList.getSelectionModel().selectedItemProperty().addListener(());
-        //Restaurant selectedRestaurant = restaurantList.getSelectionModel().getSelectedItem();
-        //restaurantController.updateRestaurant(selectedRestaurant);
-        //switchToRestaurantView(new ActionEvent());
     }
 
     // Filter Button pressed
+    @FXML
     void filterAction(ActionEvent event) {
-        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                showFilterDialog();
-            }
-        };
-        filterButton.setOnAction(handler);
+        showFilterDialog();
+//        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//                showFilterDialog();
+//            }
+//        };
+//        filterButton.setOnAction(handler);
     }
 
     // Dialog mit CheckBoxen/Spinner zum Filtern bei der Suche nach Restaurants (Suche nach Namen und Beschreibung)
@@ -243,9 +242,10 @@ public class SceneController {
         checkBoxPriceVeryExpensive.setSelected(searchFilter.isSelectedPriceVeryExpensive());
         Label labelRating = new Label("Minimum Rating");
         Spinner<Integer> ratingSpinner = new Spinner<>(1, 5, searchFilter.getSelectedRating());
-//        Button resetButton = new Button("reset");
+        Button resetButton = new Button("reset");
         VBox vBox = new VBox(labelCuisine, checkBoxCuisineGerman, checkBoxCuisineItalian, checkBoxCuisineChinese,
-                labelPrice, checkBoxPriceInexpensive, checkBoxPriceModerate, checkBoxPriceExpensive, checkBoxPriceVeryExpensive/*, resetButton*/);
+                new Label(" "), labelPrice, checkBoxPriceInexpensive, checkBoxPriceModerate, checkBoxPriceExpensive,
+                checkBoxPriceVeryExpensive, new Label(" "), labelRating, ratingSpinner, resetButton);
 
         dialog.getDialogPane().setContent(vBox);
 
@@ -262,6 +262,7 @@ public class SceneController {
 
         // Ok Button action
         okButton.setOnAction(e -> {
+            searchFilter.refreshFlter();
             if (checkBoxCuisineGerman.isSelected()) {
                 searchFilter.selectCuisine(CuisineType.GERMAN);
             }
@@ -292,7 +293,7 @@ public class SceneController {
             dialog.close();
         });
 
-/*        resetButton.setOnAction(e -> {
+        resetButton.setOnAction(e -> {
             checkBoxCuisineGerman.setSelected(true);
             checkBoxCuisineItalian.setSelected(true);
             checkBoxCuisineChinese.setSelected(true);
@@ -300,8 +301,9 @@ public class SceneController {
             checkBoxPriceModerate.setSelected(true);
             checkBoxPriceExpensive.setSelected(true);
             checkBoxPriceVeryExpensive.setSelected(true);
+            ratingSpinner.getValueFactory().setValue(1);
             searchFilter.resetFilter();
-        });*/
+        });
 
     }
 

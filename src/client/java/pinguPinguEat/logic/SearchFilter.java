@@ -42,6 +42,12 @@ public class SearchFilter {
         }
     }
 
+    public void refreshFlter() {
+        for (int i = 0; i < 7; i++) {
+            filterElements[i] = 0;
+        }
+    }
+
 
     public boolean isSelectedCuisineTypeGerman() {
         return filterElements[0] == 1;
