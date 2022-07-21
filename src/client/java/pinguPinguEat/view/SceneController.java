@@ -156,10 +156,12 @@ public class SceneController {
         // nichts passiert
     }
 
+
     // Search Button pressed
     @FXML
     void searchAction(ActionEvent event) {
         ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+
         for (Restaurant r : allRestaurantsToFilter) {
             restaurantController.updateRestaurant(r);
             // inconsistent with filter
@@ -170,12 +172,29 @@ public class SceneController {
                     (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
                     (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
                     (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
-                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive()) {
+                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive() ||
+                    ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
                 allRestaurantsToFilter.remove(r);
             }
         }
+        String query = (String) searchField.getCharacters();
+        String[] queryWords = query.split(" ");
+        for (String queryWord : queryWords) {
+            for (Restaurant r : allRestaurantsToFilter) {
+                if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
+                    allRestaurantsToFilter.remove(r);
+                }
+            }
+        }
+
         restaurants.removeAll();
         restaurants.addAll(allRestaurantsToFilter);
+
+        //////!!!!!!!! Restaurant waehlen aus Suchergebnis und zur RestaurantView switchen
+        restaurantList.getSelectionModel().selectedItemProperty().addListener(());
+        Restaurant selectedRestaurant = restaurantList.getSelectionModel().getSelectedItem();
+        restaurantController.updateRestaurant(selectedRestaurant);
+        switchToRestaurantView(new ActionEvent());
     }
 
     // Filter Button pressed
@@ -183,7 +202,7 @@ public class SceneController {
         filterButton.setOnAction(e -> showFilterDialog());
     }
 
-    // Dialog mit CheckBoxen zum Filtern bei der Suche nach Restaurants
+    // Dialog mit CheckBoxen/Spinner zum Filtern bei der Suche nach Restaurants (Suche nach Namen und Beschreibung)
     public void showFilterDialog() {
         Dialog dialog = new Dialog<>();
         dialog.setTitle("Search filter");
@@ -206,6 +225,8 @@ public class SceneController {
         checkBoxPriceExpensive.setSelected(searchFilter.isSelectedPriceExpensive());
         CheckBox checkBoxPriceVeryExpensive = new CheckBox("Very Expensive");
         checkBoxPriceVeryExpensive.setSelected(searchFilter.isSelectedPriceVeryExpensive());
+        Label labelRating = new Label("Minimum Rating");
+        Spinner<Integer> ratingSpinner = new Spinner<>(1, 5, searchFilter.getSelectedRating());
 //        Button resetButton = new Button("reset");
         VBox vBox = new VBox(labelCuisine, checkBoxCuisineGerman, checkBoxCuisineItalian, checkBoxCuisineChinese,
                 labelPrice, checkBoxPriceInexpensive, checkBoxPriceModerate, checkBoxPriceExpensive, checkBoxPriceVeryExpensive/*, resetButton*/);
@@ -246,6 +267,7 @@ public class SceneController {
             if (checkBoxPriceVeryExpensive.isSelected()) {
                 searchFilter.selectPriceCategory(PriceCategory.VERY_EXPENSIVE);
             }
+            searchFilter.selectRating(ratingSpinner.getValue());
             dialog.close();
         });
 
