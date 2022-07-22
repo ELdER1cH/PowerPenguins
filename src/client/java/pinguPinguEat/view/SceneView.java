@@ -225,7 +225,6 @@ public class SceneView {
         restaurants.addAll(/*RestaurantLogic.getAllRestaurants()*/allRestaurantsQuery);
         restaurantList.setItems(restaurants);
     }
-
     // Filter Button pressed
     @FXML
     void filterAction(ActionEvent event) {
