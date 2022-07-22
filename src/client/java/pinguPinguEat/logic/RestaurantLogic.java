@@ -44,11 +44,11 @@ public class RestaurantLogic {
     public static List<Restaurant> getAllRestaurants() {
         List<Restaurant> returnValue = new ArrayList<>();
         Restaurant test1 = new Restaurant("Test", "Adresse", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
-        Restaurant test2 = new Restaurant("Lorem Ipsum", "Sternstraße 7", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Ramen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
-        Restaurant test3 = new Restaurant("PinguEat", "Arcisstraße 23", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "eat fish stay fit", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
-        Restaurant test4 = new Restaurant("Pizza", "Boltzmannstraße 42", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Lecker", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
-        Restaurant test5 = new Restaurant("Essen", "Im Paradies 12", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Hier gibt es Essen zum essen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
-        Restaurant test6 = new Restaurant("Kochstube", "Am See 24", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Nudelsalat und vieles mehr", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        Restaurant test2 = new Restaurant("Lorem Ipsum", "Sternstraße 7", CuisineType.ITALIAN, PriceCategory.INEXPENSIVE, "Ramen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        Restaurant test3 = new Restaurant("PinguEat", "Arcisstraße 23", CuisineType.CHINESE, PriceCategory.EXPENSIVE, "eat fish stay fit", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test4 = new Restaurant("Pizza", "Boltzmannstraße 42", CuisineType.GERMAN, PriceCategory.VERY_EXPENSIVE, "Lecker", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        Restaurant test5 = new Restaurant("Essen", "Im Paradies 12", CuisineType.CHINESE, PriceCategory.INEXPENSIVE, "Hier gibt es Essen zum essen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test6 = new Restaurant("Kochstube", "Am See 24", CuisineType.ITALIAN, PriceCategory.MODERATE, "Nudelsalat und vieles mehr", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
         Restaurant test7 = new Restaurant("PinguRestaurant", "Pinguinallee 4", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Wir servieren nur frische Speisen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
 
         test1.addReview(new Review(5, "review test 1", new User("Hugh", "Janus")));
