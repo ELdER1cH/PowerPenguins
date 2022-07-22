@@ -100,6 +100,7 @@ public class SceneView {
 
     public void switchToMapView(ActionEvent event) throws IOException {
         switchToScene(mapViewGroup);
+        mapGroupView.setRestaurants(restaurants);
     }
 
     public void switchToReservationView(ActionEvent event) throws IOException {
