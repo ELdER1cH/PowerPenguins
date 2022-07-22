@@ -16,7 +16,7 @@ public class ClientApplication extends Application {
     private Stage stage;
     private final String startView;
     private FXMLLoader loader;
-    private SceneView sceneView;
+    private SceneView sceneController;
 
     public ClientApplication() {
         startView = "ClientBase.fxml";
@@ -34,12 +34,12 @@ public class ClientApplication extends Application {
         this.loader = loader;
     }
 
-    public SceneView getSceneView() {
-        return sceneView;
+    public SceneView getController() {
+        return sceneController;
     }
 
     public void setController(SceneView sceneController) {
-        this.sceneView = sceneController;
+        this.sceneController = sceneController;
     }
 
 
@@ -57,8 +57,8 @@ public class ClientApplication extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("PinguPinguEat");
         stage.setScene(scene);
-        sceneView = loader.getController();
-        sceneView.switchToMapView(new ActionEvent());
+        sceneController = loader.getController();
+        sceneController.switchToMapView(new ActionEvent());
         stage.show();
     }
 }
