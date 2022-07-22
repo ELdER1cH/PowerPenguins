@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pinguPinguEat.controller.ReservationController;
+
 import pinguPinguEat.reservationElement.Reservation;
 import pinguPinguEat.reservationElement.ReservationSystem;
 import pinguPinguEat.reservationElement.Table;
@@ -11,6 +12,7 @@ import pinguPinguEat.reservationElement.TimeSlot;
 import pinguPinguEat.restaurantElement.CuisineType;
 import pinguPinguEat.restaurantElement.PriceCategory;
 import pinguPinguEat.restaurantElement.Restaurant;
+
 import pinguPinguEat.view.SceneView;
 
 import java.time.LocalDateTime;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationLogic {
-  
+
     private final ObservableList<Reservation> reservationObservableList;
     private final SceneView sceneView;
     private final ReservationController reservationController;  

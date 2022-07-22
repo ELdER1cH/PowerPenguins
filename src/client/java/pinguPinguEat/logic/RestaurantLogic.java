@@ -64,9 +64,10 @@ public class RestaurantLogic {
 //    FR3: Filter search results: He can filter the results by the restaurant type, the prize category,
 //    by distance around a certain location, by the average rating
 //    and by free time slots for reservations for specified dates and number of visitors.
-    public void filterRestuarant(ActionEvent event) {
+    public void filterRestaurant(ActionEvent event) {
         updateTableViewAccordingToComboBox();
     }
+
 
     public static List<Restaurant> getAllRestaurants() {
         List<Restaurant> returnValue = new ArrayList<>();
@@ -79,6 +80,7 @@ public class RestaurantLogic {
         returnValue.add(test2);
         return returnValue;
     }
+
 
     private void initiateComboBoxForFilter(ComboBox comboBox) {
         ArrayList<String> filterOptions = new ArrayList<>();
@@ -143,6 +145,6 @@ public class RestaurantLogic {
 
         TableView<Restaurant> table = new TableView(filteredList);
 //        !!!
-//        sceneController.setRestaurantList(table);
+//        sceneView.setRestaurantList(table);
     }
 }

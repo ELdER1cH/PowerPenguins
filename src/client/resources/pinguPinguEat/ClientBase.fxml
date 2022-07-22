@@ -5,7 +5,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.SceneView">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.SceneController">
     <left>
         <VBox BorderPane.alignment="CENTER">
             <children>
@@ -17,6 +17,7 @@
                                 <Insets />
                             </opaqueInsets>
                         </Button>
+                  <Button fx:id="filterButton" mnemonicParsing="false" onAction="#filterAction" text="Filter"/>
                     </children>
                 </HBox>
                 <ListView fx:id="restaurantList" onMousePressed="#switchToSelectedRestaurant" prefHeight="693.0" prefWidth="248.0" />
