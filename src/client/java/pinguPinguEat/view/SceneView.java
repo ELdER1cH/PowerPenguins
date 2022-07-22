@@ -31,7 +31,7 @@ public class SceneView {
 
     private FXMLLoader mapLoader;
     private  MapGroupView mapGroupView;
-    public  final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
+    public static final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
     private FXMLLoader restaurantReservationLoader;
 
     private FXMLLoader restaurantLoader;
