@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pinguPinguEat.logic.RestaurantLogic;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.restaurantElement.Restaurant;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
