@@ -58,8 +58,8 @@ public class SceneView {
         reservationViewGroup = reservationLoader.load();
 
         //Import Restaurants
-        restaurants.addAll(RestaurantLogic.getAllRestaurants());
-        restaurantList.setItems(restaurants);
+        //restaurants.addAll(RestaurantLogic.getAllRestaurants());
+        //restaurantList.setItems(restaurants);
 
 
         reservationGroupView = reservationLoader.getController();
@@ -190,6 +190,7 @@ public class SceneView {
 
     @FXML
     void searchAction(ActionEvent event) {
+
         // Search Button pressed
         ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
 
@@ -208,28 +209,26 @@ public class SceneView {
             }
         }
 
-        String query = (String) searchField.getCharacters();
+        String query = searchField.getText();
         String[] queryWords = query.split(" ");
+        ArrayList<Restaurant> allRestaurantsQuery = new ArrayList<>();
         for (String queryWord : queryWords) {
             for (Restaurant r : allRestaurantsToFilter) {
-                if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
-                    allRestaurantsToFilter.remove(r);
+                if (r.getName().toLowerCase().contains(queryWord.toLowerCase()) || r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
+                    allRestaurantsQuery.add(r);
                 }
             }
         }
 
-        restaurants.removeAll();
-        restaurants.addAll(allRestaurantsToFilter);
-        restaurantList.getItems().removeAll();
-        restaurantList.getItems().setAll(restaurants);
-        restaurantList.refresh();
+        restaurantList.getItems().clear();
+        restaurants.addAll(/*RestaurantLogic.getAllRestaurants()*/allRestaurantsQuery);
+        restaurantList.setItems(restaurants);
 
     }
 
     // Filter Button pressed
     @FXML
     void filterAction(ActionEvent event) {
-        System.out.println("filterAction called");
         showFilterDialog();
     }
 
