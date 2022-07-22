@@ -12,21 +12,21 @@ import pinguPinguEat.reservationModel.TimeSlot;
 import pinguPinguEat.restaurants.CuisineType;
 import pinguPinguEat.restaurants.PriceCategory;
 import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.view.SceneView;
+import pinguPinguEat.view.SceneController;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationLogic {
-
+  
     private final ObservableList<Reservation> reservationObservableList;
-    private final SceneView sceneView;
+    private final SceneController sceneController;
     private final ReservationController reservationController;  
   
     public ReservationLogic() {
         this.reservationController = new ReservationController();
-        this.sceneView = new SceneView();
+        this.sceneController = new SceneController();
         this.reservationObservableList = FXCollections.observableArrayList();
 
 //        initiate reservationObservableList
