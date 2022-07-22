@@ -1,7 +1,8 @@
 package pinguPinguEat.logic;
 
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+
 
 public class SearchFilter {
 

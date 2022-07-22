@@ -9,7 +9,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import pinguPinguEat.controller.RestaurantController;
-
 import pinguPinguEat.reservationElement.ReservationSystem;
 import pinguPinguEat.restaurantElement.CuisineType;
 import pinguPinguEat.restaurantElement.PriceCategory;
@@ -59,13 +58,6 @@ public class RestaurantLogic {
     public void showRestaurantDetailsByClickingIt(ActionEvent event) {
 //    click on ListView
 
-    }
-
-    public static List<Restaurant> getAllRestaurants() {
-        List<Restaurant> returnValue = new ArrayList<>();
-        returnValue.add(new Restaurant("Test", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "description1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
-        returnValue.add(new Restaurant("Lorem Ipsum", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "description2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com"));
-        return returnValue;
     }
 
     //  "on action" method for filter combobox --> choose filter conditions
