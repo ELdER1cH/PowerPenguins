@@ -191,7 +191,7 @@ public class RestaurantLogic {
 
         // Ok Button action
         okButton.setOnAction(e -> {
-            searchFilter.refreshFlter();
+            searchFilter.refreshFilter();
             if (checkBoxCuisineGerman.isSelected()) {
                 searchFilter.selectCuisine(CuisineType.GERMAN);
             }

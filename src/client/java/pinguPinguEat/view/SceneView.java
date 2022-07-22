@@ -222,6 +222,12 @@ public class SceneView {
         allRestaurantsToFilter.removeAll(allRestaurantsToRemove);
 
         String query = searchField.getText();
+        if (query.equals("")) {
+            restaurants.addAll(RestaurantFactory.create());
+            restaurantList.setItems(restaurants);
+            return;
+        }
+
         String[] queryWords = query.split(" ");
         ArrayList<Restaurant> allRestaurantsQuery = new ArrayList<>();
         for (String queryWord : queryWords) {
@@ -233,6 +239,7 @@ public class SceneView {
         }
 
         restaurantList.getItems().clear();
+        restaurants.clear();
         restaurants.addAll(allRestaurantsQuery);
         restaurantList.setItems(restaurants);
     }

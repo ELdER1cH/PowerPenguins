@@ -37,7 +37,7 @@ public class Restaurant {
         this.openingTimes = openingTimes;
         this.link = link;
         this.reviews = new ArrayList<>();
-        averageRating = 0;
+        averageRating = 1;
         sumOfRatings = 0;
         images = new ArrayList<>();
         restaurantID = UUID.randomUUID();

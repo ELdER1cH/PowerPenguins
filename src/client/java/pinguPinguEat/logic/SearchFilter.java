@@ -43,7 +43,7 @@ public class SearchFilter {
         }
     }
 
-    public void refreshFlter() {
+    public void refreshFilter() {
         for (int i = 0; i < 7; i++) {
             filterElements[i] = 0;
         }
