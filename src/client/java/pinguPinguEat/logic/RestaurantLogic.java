@@ -93,42 +93,44 @@ public class RestaurantLogic {
     // "on action" method for "search" button
     //    FR1: Search for restaurants: The user can search for restaurants
     //    on a list and on a map that displays up to 50 restaurants.
-    public void searchRestaurant(ActionEvent event) {
-        // Search Button pressed
-        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
 
-        for (Restaurant r : allRestaurantsToFilter) {
-            restaurantGroupView.updateRestaurant(r);
-            // inconsistent with filter
-            if ((r.getCuisineType() == CuisineType.GERMAN) !=
-                    searchFilter.isSelectedCuisineTypeGerman() ||
-                    (r.getCuisineType() == CuisineType.ITALIAN) != searchFilter.isSelectedCuisineTypeItalian() ||
-                    (r.getCuisineType() == CuisineType.CHINESE) != searchFilter.isSelectedCuisineTypeChinese() ||
-                    (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
-                    (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
-                    (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
-                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive() ||
-                    ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
-                allRestaurantsToFilter.remove(r);
-            }
-        }
-        String query = (String) sceneView.getSearchField().getCharacters();
-        String[] queryWords = query.split(" ");
-        for (String queryWord : queryWords) {
-            for (Restaurant r : allRestaurantsToFilter) {
-                if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
-                    allRestaurantsToFilter.remove(r);
-                }
-            }
-        }
-
-        sceneView.getRestaurants().removeAll();
-        sceneView.getRestaurants().addAll(allRestaurantsToFilter);
-        sceneView.getRestaurantList().getItems().removeAll();
-        sceneView.getRestaurantList().getItems().setAll(sceneView.getRestaurants());
-        sceneView.getRestaurantList().refresh();
-
-    }
+//    public void searchRestaurant(ActionEvent event) {
+//        // Search Button pressed
+//        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+//        ArrayList<Restaurant> allRestaurantsToRemove = new ArrayList<>();
+//
+//        for (Restaurant r : allRestaurantsToFilter) {
+//            restaurantGroupView.updateRestaurant(r);
+//            // inconsistent with filter
+//            if ((r.getCuisineType() == CuisineType.GERMAN) && !searchFilter.isSelectedCuisineTypeGerman() ||
+//                    (r.getCuisineType() == CuisineType.ITALIAN) && !searchFilter.isSelectedCuisineTypeItalian() ||
+//                    (r.getCuisineType() == CuisineType.CHINESE) && !searchFilter.isSelectedCuisineTypeChinese() ||
+//                    (r.getPriceCategory() == PriceCategory.INEXPENSIVE) && !searchFilter.isSelectedPriceInexpensive() ||
+//                    (r.getPriceCategory() == PriceCategory.MODERATE) && !searchFilter.isSelectedPriceModerate() ||
+//                    (r.getPriceCategory() == PriceCategory.EXPENSIVE) && !searchFilter.isSelectedPriceExpensive() ||
+//                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) && !searchFilter.isSelectedPriceVeryExpensive() ||
+//                    ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
+//                allRestaurantsToRemove.add(r);
+//            }
+//        }
+//        allRestaurantsToFilter.removeAll(allRestaurantsToRemove);
+//
+//        String query = searchField.getText();
+//        String[] queryWords = query.split(" ");
+//        ArrayList<Restaurant> allRestaurantsQuery = new ArrayList<>();
+//        for (String queryWord : queryWords) {
+//            for (Restaurant r : allRestaurantsToFilter) {
+//                if (r.getName().toLowerCase().contains(queryWord.toLowerCase()) || r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
+//                    allRestaurantsQuery.add(r);
+//                }
+//            }
+//        }
+//
+//        restaurantList.getItems().clear();
+//        restaurants.addAll(/*RestaurantLogic.getAllRestaurants()*/allRestaurantsQuery);
+//        restaurantList.setItems(restaurants);
+//
+//    }
 
 
     private void initiateComboBoxForFilter(ComboBox comboBox) {
