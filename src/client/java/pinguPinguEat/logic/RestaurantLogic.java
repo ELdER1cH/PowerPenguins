@@ -43,15 +43,36 @@ public class RestaurantLogic {
 
     public static List<Restaurant> getAllRestaurants() {
         List<Restaurant> returnValue = new ArrayList<>();
-        Restaurant test1 = new Restaurant("Test", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
-        Restaurant test2 = new Restaurant("Lorem Ipsum", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Ramen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
-        Restaurant test3 = new Restaurant("PinguEat", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "eat fish stay fit", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
-        Restaurant test4 = new Restaurant("Pizza", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Lecker", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        Restaurant test1 = new Restaurant("Test", "Adresse", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test2 = new Restaurant("Lorem Ipsum", "Sternstraße 7", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Ramen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        Restaurant test3 = new Restaurant("PinguEat", "Arcisstraße 23", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "eat fish stay fit", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test4 = new Restaurant("Pizza", "Boltzmannstraße 42", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Lecker", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        Restaurant test5 = new Restaurant("Essen", "Im Paradies 12", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Hier gibt es Essen zum essen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test6 = new Restaurant("Kochstube", "Am See 24", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Nudelsalat und vieles mehr", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        Restaurant test7 = new Restaurant("PinguRestaurant", "Pinguinallee 4", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Wir servieren nur frische Speisen", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+
         test1.addReview(new Review(5, "review test 1", new User("Hugh", "Janus")));
         test2.addReview(new Review(5, "review test 2", new User("Patricia", "Table")));
         test2.addReview(new Review(5, "amazing place!", new User("Alex", "Corn")));
+        test7.addReview(new Review(1, "das Essen ist nicht frisch und es gibt Kakerlaken im Restaurant. NIE WIEDER!", new User("Philipp", "angryCustomer21")));
+        test7.addReview(new Review(5, "Tolle unterkunft und viel Essen", new User("Kakerlake", "immortal71")));
+        test2.addReview(new Review(4, "I like the chairs", new User("Matthew", "mattie")));
+        test7.addReview(new Review(2, "no", new User("Nana", "nunu")));
+
+        test5.addReview(new Review(4, "Super toll :)", new User("Anne", "anne242")));
+        test6.addReview(new Review(3, "ok", new User("Alex", "Corn")));
+        test6.addReview(new Review(2, "zu lange Wartezeiten, bin eingeschlafen", new User("Eleanore", "ele123")));
+        test3.addReview(new Review(1, "very rude servants", new User("Melanie", "mel3636")));
+        test1.addReview(new Review(4, "pretty good", new User("Steph", "amazingPerson")));
+
+
         returnValue.add(test1);
         returnValue.add(test2);
+        returnValue.add(test3);
+        returnValue.add(test4);
+        returnValue.add(test5);
+        returnValue.add(test6);
+        returnValue.add(test7);
         return returnValue;
     }
 
