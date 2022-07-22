@@ -207,6 +207,7 @@ public class SceneView {
                 allRestaurantsToFilter.remove(r);
             }
         }
+
         String query = (String) searchField.getCharacters();
         String[] queryWords = query.split(" ");
         for (String queryWord : queryWords) {
