@@ -5,7 +5,7 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.AnchorPane?>
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
-       fx:controller="pinguPinguEat.view.MapGroupController">
+       fx:controller="pinguPinguEat.view.MapGroupView">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>

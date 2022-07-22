@@ -1,6 +1,6 @@
-package pinguPinguEat.reservationModel;
+package pinguPinguEat.reservationElement;
 
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -84,7 +84,7 @@ public class Reservation {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return restaurant.getName() + " on " + timeSlot.getStartTime().format(DateTimeFormatter.ofPattern("dd.MM.YY")) + " at " +
+        return restaurant.getName() + " on " + timeSlot.getStartTime().format(DateTimeFormatter.ofPattern("dd.MM.YYYY")) + " at " +
                 timeSlot.getStartTime().format(formatter) + "\t[" + (isConfirmed()? "confirmed" : "not confirmed") + "]";
     }
 }
