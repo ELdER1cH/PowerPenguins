@@ -7,10 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import pinguPinguEat.ClientApplication;
 import pinguPinguEat.logic.RestaurantLogic;
 import pinguPinguEat.logic.SearchFilter;
@@ -189,7 +190,6 @@ public class SceneView {
 
     @FXML
     void searchAction(ActionEvent event) {
-
         // Search Button pressed
         ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
         ArrayList<Restaurant> allRestaurantsToRemove = new ArrayList<>();
@@ -228,98 +228,10 @@ public class SceneView {
     // Filter Button pressed
     @FXML
     void filterAction(ActionEvent event) {
-        showFilterDialog();
+        restaurantLogic.showFilterDialog();
     }
 
-    // Dialog mit CheckBoxen/Spinner zum Filtern bei der Suche nach Restaurants (Suche nach Namen und Beschreibung)
-    public void showFilterDialog() {
-        Dialog dialog = new Dialog<>();
-        dialog.setTitle("Search filter");
-        dialog.setHeaderText("Please select your search preferences:");
 
-        // Dialog Komponenten: checkBoxes schon selected
-        Label labelCuisine = new Label("Cusine Type");
-        CheckBox checkBoxCuisineGerman = new CheckBox("German");
-        checkBoxCuisineGerman.setSelected(searchFilter.isSelectedCuisineTypeGerman());
-        CheckBox checkBoxCuisineItalian = new CheckBox("Italian");
-        checkBoxCuisineItalian.setSelected(searchFilter.isSelectedCuisineTypeItalian());
-        CheckBox checkBoxCuisineChinese = new CheckBox("Chinese");
-        checkBoxCuisineChinese.setSelected(searchFilter.isSelectedCuisineTypeChinese());
-        Label labelPrice = new Label("Price Category");
-        CheckBox checkBoxPriceInexpensive = new CheckBox("Inexpensive");
-        checkBoxPriceInexpensive.setSelected(searchFilter.isSelectedPriceInexpensive());
-        CheckBox checkBoxPriceModerate = new CheckBox("Moderate");
-        checkBoxPriceModerate.setSelected(searchFilter.isSelectedPriceModerate());
-        CheckBox checkBoxPriceExpensive = new CheckBox("Expensive");
-        checkBoxPriceExpensive.setSelected(searchFilter.isSelectedPriceExpensive());
-        CheckBox checkBoxPriceVeryExpensive = new CheckBox("Very Expensive");
-        checkBoxPriceVeryExpensive.setSelected(searchFilter.isSelectedPriceVeryExpensive());
-        Label labelRating = new Label("Minimum Rating");
-        Spinner<Integer> ratingSpinner = new Spinner<>(1, 5, searchFilter.getSelectedRating());
-        Button resetButton = new Button("reset");
-        VBox vBox = new VBox(labelCuisine, checkBoxCuisineGerman, checkBoxCuisineItalian, checkBoxCuisineChinese,
-                new Label(" "), labelPrice, checkBoxPriceInexpensive, checkBoxPriceModerate, checkBoxPriceExpensive,
-                checkBoxPriceVeryExpensive, new Label(" "), labelRating, ratingSpinner, resetButton);
-
-        dialog.getDialogPane().setContent(vBox);
-
-        // Dialog Buttons
-        ButtonType buttonTypeOk = new ButtonType("Done", ButtonBar.ButtonData.OK_DONE);
-        dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
-        Button okButton = (Button) dialog.getDialogPane().lookupButton(buttonTypeOk);
-
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        dialog.getDialogPane().getButtonTypes().add(buttonTypeCancel);
-        Button cancelButton = (Button) dialog.getDialogPane().lookupButton(buttonTypeCancel);
-
-        dialog.show();
-
-        // Ok Button action
-        okButton.setOnAction(e -> {
-            searchFilter.refreshFlter();
-            if (checkBoxCuisineGerman.isSelected()) {
-                searchFilter.selectCuisine(CuisineType.GERMAN);
-            }
-            if (checkBoxCuisineItalian.isSelected()) {
-                searchFilter.selectCuisine(CuisineType.ITALIAN);
-            }
-            if (checkBoxCuisineChinese.isSelected()) {
-                searchFilter.selectCuisine(CuisineType.CHINESE);
-            }
-            if (checkBoxPriceInexpensive.isSelected()) {
-                searchFilter.selectPriceCategory(PriceCategory.INEXPENSIVE);
-            }
-            if (checkBoxPriceModerate.isSelected()) {
-                searchFilter.selectPriceCategory(PriceCategory.MODERATE);
-            }
-            if (checkBoxPriceExpensive.isSelected()) {
-                searchFilter.selectPriceCategory(PriceCategory.EXPENSIVE);
-            }
-            if (checkBoxPriceVeryExpensive.isSelected()) {
-                searchFilter.selectPriceCategory(PriceCategory.VERY_EXPENSIVE);
-            }
-            searchFilter.selectRating(ratingSpinner.getValue());
-            dialog.close();
-        });
-
-        // Cancel Button Action
-        cancelButton.setOnAction(e -> {
-            dialog.close();
-        });
-
-        resetButton.setOnAction(e -> {
-            checkBoxCuisineGerman.setSelected(true);
-            checkBoxCuisineItalian.setSelected(true);
-            checkBoxCuisineChinese.setSelected(true);
-            checkBoxPriceInexpensive.setSelected(true);
-            checkBoxPriceModerate.setSelected(true);
-            checkBoxPriceExpensive.setSelected(true);
-            checkBoxPriceVeryExpensive.setSelected(true);
-            ratingSpinner.getValueFactory().setValue(1);
-            searchFilter.resetFilter();
-        });
-
-    }
 
     void listViewClickedToSeeDetails(ActionEvent event) {
         restaurantLogic.showRestaurantDetailsByClickingIt(event);
