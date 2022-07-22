@@ -4,10 +4,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.reservationModel.Table;
-import pinguPinguEat.reservationModel.TimeSlot;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.Reservation;
+import pinguPinguEat.reservationElement.Table;
+import pinguPinguEat.reservationElement.TimeSlot;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.util.HashMap;
 import java.util.List;
@@ -62,7 +62,6 @@ public class RestaurantController {
 
                 });
     }
-
     public void getAllTables(Consumer<List<Table>> tableConsumer, UUID restaurantID) {
         webClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -73,15 +72,14 @@ public class RestaurantController {
                 })
                 .onErrorStop()
                 .subscribe(newRestaurants -> {
-                    restaurantHashMap.clear();
-                    //TODO Return Value to List
+                    //TODO Update Tables
                     tableConsumer.accept(restaurantHashMap.get(restaurantID).getReservationSystem().getTables());
                 });
     }
 
     public void getFreeTables(Consumer<List<Table>> tableConsumer, UUID restaurantID, TimeSlot timeSlot) {
         List<Table> allTables = restaurantHashMap.get(restaurantID).getReservationSystem().getTables();
-        List<Reservation> reservations = ((Restaurant) restaurantHashMap.get(restaurantID)).getReservationSystem().getReservations().get(timeSlot);
+        List<Reservation> reservations = restaurantHashMap.get(restaurantID).getReservationSystem().getReservations().get(timeSlot);
         for (Reservation reservation : reservations) {
             if (allTables.contains(reservation.getTable())) {
                 reservation = null;

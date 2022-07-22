@@ -5,14 +5,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import pinguPinguEat.controller.RestaurantController;
-import pinguPinguEat.reservationModel.ReservationSystem;
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.ReservationSystem;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
+import pinguPinguEat.userElement.User;
+import pinguPinguEat.view.RestaurantGroupView;
 import pinguPinguEat.view.SceneView;
 
 import java.util.ArrayList;
@@ -24,6 +26,9 @@ public class RestaurantLogic {
     private final ObservableList<Restaurant> restaurantObservableList;
     private final HashMap<UUID, Restaurant> searchResult;
     private final SceneView sceneView;
+
+    private final RestaurantGroupView restaurantGroupView;
+    private final SearchFilter searchFilter;
     private final RestaurantController restaurantController;
 
     public RestaurantLogic() {
@@ -31,7 +36,8 @@ public class RestaurantLogic {
         this.sceneView = new SceneView();
         this.restaurantObservableList = FXCollections.observableArrayList();
         this.searchResult = new HashMap<>();
-
+        restaurantGroupView=new RestaurantGroupView();
+        searchFilter = new SearchFilter();
 // !!!
 //        restaurantController.getAllRestaurants(this::setRestaurant);
     }
@@ -40,8 +46,39 @@ public class RestaurantLogic {
     //    FR1: Search for restaurants: The user can search for restaurants
     //    on a list and on a map that displays up to 50 restaurants.
     public void searchRestuarant(ActionEvent event) {
-        String searchCondition = sceneView.getSearchField().getText();
-        // use String.contains() for the name and cuisineType of restaurants.
+        // Search Button pressed
+        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+
+        for (Restaurant r : allRestaurantsToFilter) {
+            restaurantGroupView.updateRestaurant(r);
+            // inconsistent with filter
+            if ((r.getCuisineType() == CuisineType.GERMAN) !=
+                    searchFilter.isSelectedCuisineTypeGerman() ||
+                    (r.getCuisineType() == CuisineType.ITALIAN) != searchFilter.isSelectedCuisineTypeItalian() ||
+                    (r.getCuisineType() == CuisineType.CHINESE) != searchFilter.isSelectedCuisineTypeChinese() ||
+                    (r.getPriceCategory() == PriceCategory.INEXPENSIVE) != searchFilter.isSelectedPriceInexpensive() ||
+                    (r.getPriceCategory() == PriceCategory.MODERATE) != searchFilter.isSelectedPriceModerate() ||
+                    (r.getPriceCategory() == PriceCategory.EXPENSIVE) != searchFilter.isSelectedPriceExpensive() ||
+                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) != searchFilter.isSelectedPriceVeryExpensive() ||
+                    ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
+                allRestaurantsToFilter.remove(r);
+            }
+        }
+        String query = (String) sceneView.getSearchField().getCharacters();
+        String[] queryWords = query.split(" ");
+        for (String queryWord : queryWords) {
+            for (Restaurant r : allRestaurantsToFilter) {
+                if (!r.getName().toLowerCase().contains(queryWord.toLowerCase()) && !r.getDescription().toLowerCase().contains(queryWord.toLowerCase())) {
+                    allRestaurantsToFilter.remove(r);
+                }
+            }
+        }
+
+        sceneView.getRestaurants().removeAll();
+        sceneView.getRestaurants().addAll(allRestaurantsToFilter);
+        sceneView.getRestaurantList().getItems().removeAll();
+        sceneView.getRestaurantList().getItems().setAll(sceneView.getRestaurants());
+        sceneView.getRestaurantList().refresh();
 
     }
 
@@ -56,19 +93,23 @@ public class RestaurantLogic {
     }
 
     //  "on action" method for filter combobox --> choose filter conditions
-//    FR3: Filter search results: He can filter the results by the restaurant type, the prize category,
-//    by distance around a certain location, by the average rating
-//    and by free time slots for reservations for specified dates and number of visitors.
-    public void filterRestuarant(ActionEvent event) {
-        updateTableViewAccordingToComboBox();
+    public void filterRestaurant(ActionEvent event) {
+        showFilterDialog();
     }
 
+
     public static List<Restaurant> getAllRestaurants() {
-        List<Restaurant> returnValue = CreateRestaurants.create();
-        //returnValue.add(new Restaurant("Test", "address",CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",06));
-        //returnValue.add(new Restaurant("Lorem Ipsum","address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com",07));
+        List<Restaurant> returnValue = new ArrayList<>();
+        Restaurant test1 = new Restaurant("Test", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test2 = new Restaurant("Lorem Ipsum", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        test1.addReview(new Review(5, "review test 1", new User("Hugh", "Janus")));
+        test2.addReview(new Review(5, "review test 2", new User("Patricia", "Table")));
+        test2.addReview(new Review(5, "amazing place!", new User("Alex", "Corn")));
+        returnValue.add(test1);
+        returnValue.add(test2);
         return returnValue;
     }
+
 
     private void initiateComboBoxForFilter(ComboBox comboBox) {
         ArrayList<String> filterOptions = new ArrayList<>();
@@ -80,59 +121,98 @@ public class RestaurantLogic {
         filterOptions.add("Number of Visitors");
     }
 
-
-    //    ???
-    // "on action" method for "sort" combo box, attributes and the orders
-    // according to different attributes and the orders, ascending or descending.
-    public void sortRestaurat(ActionEvent event) {
-//     restaurantController.getAllRestaurants()(sortingOptions, this::setRestaurant));
-    }
-
-
     private void setRestaurant(List<Restaurant> restaurant) {
         Platform.runLater(() -> restaurantObservableList.setAll(restaurant));
     }
+    // Dialog mit CheckBoxen/Spinner zum Filtern bei der Suche nach Restaurants (Suche nach Namen und Beschreibung)
+    public void showFilterDialog() {
+        Dialog dialog = new Dialog<>();
+        dialog.setTitle("Search filter");
+        dialog.setHeaderText("Please select your search preferences:");
 
-    public void updateTableViewAccordingToComboBox() {
-//         restaurant type, prize category,free time slots,number of visitors
-        FilteredList<Restaurant> filteredList = new FilteredList<>(restaurantObservableList, i -> true);
+        // Dialog Komponenten: checkBoxes schon selected
+        Label labelCuisine = new Label("Cusine Type");
+        CheckBox checkBoxCuisineGerman = new CheckBox("German");
+        checkBoxCuisineGerman.setSelected(searchFilter.isSelectedCuisineTypeGerman());
+        CheckBox checkBoxCuisineItalian = new CheckBox("Italian");
+        checkBoxCuisineItalian.setSelected(searchFilter.isSelectedCuisineTypeItalian());
+        CheckBox checkBoxCuisineChinese = new CheckBox("Chinese");
+        checkBoxCuisineChinese.setSelected(searchFilter.isSelectedCuisineTypeChinese());
+        Label labelPrice = new Label("Price Category");
+        CheckBox checkBoxPriceInexpensive = new CheckBox("Inexpensive");
+        checkBoxPriceInexpensive.setSelected(searchFilter.isSelectedPriceInexpensive());
+        CheckBox checkBoxPriceModerate = new CheckBox("Moderate");
+        checkBoxPriceModerate.setSelected(searchFilter.isSelectedPriceModerate());
+        CheckBox checkBoxPriceExpensive = new CheckBox("Expensive");
+        checkBoxPriceExpensive.setSelected(searchFilter.isSelectedPriceExpensive());
+        CheckBox checkBoxPriceVeryExpensive = new CheckBox("Very Expensive");
+        checkBoxPriceVeryExpensive.setSelected(searchFilter.isSelectedPriceVeryExpensive());
+        Label labelRating = new Label("Minimum Rating");
+        Spinner<Integer> ratingSpinner = new Spinner<>(1, 5, searchFilter.getSelectedRating());
+        Button resetButton = new Button("reset");
+        VBox vBox = new VBox(labelCuisine, checkBoxCuisineGerman, checkBoxCuisineItalian, checkBoxCuisineChinese,
+                new Label(" "), labelPrice, checkBoxPriceInexpensive, checkBoxPriceModerate, checkBoxPriceExpensive,
+                checkBoxPriceVeryExpensive, new Label(" "), labelRating, ratingSpinner, resetButton);
 
-        ComboBox<String> filterOption = new ComboBox();
-        initiateComboBoxForFilter(filterOption);
+        dialog.getDialogPane().setContent(vBox);
 
-        filterOption.setEditable(true);
+        // Dialog Buttons
+        ButtonType buttonTypeOk = new ButtonType("Done", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
+        Button okButton = (Button) dialog.getDialogPane().lookupButton(buttonTypeOk);
 
-        // Add a listener to the textProperty of the combobox editor. The
-        // listener will simply filter the list every time the input is changed
-        // as long as the user hasn't selected an item in the list.
-        filterOption.getEditor().textProperty().addListener((obs, oldValue, newValue) -> {
-            final TextField editor = filterOption.getEditor();
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().add(buttonTypeCancel);
+        Button cancelButton = (Button) dialog.getDialogPane().lookupButton(buttonTypeCancel);
 
-            final String selected = filterOption.getSelectionModel().getSelectedItem();
+        dialog.show();
 
-            // This needs run on the GUI thread to avoid the error described
-            // here: https://bugs.openjdk.java.net/browse/JDK-8081700.
-            Platform.runLater(() -> {
-
-                // If the no item in the list is selected or the selected item
-                // isn't equal to the current input, we refilter the list.
-                if (selected == null || !selected.equals(editor.getText())) {
-
-                    if (selected.equals("Restaurant Type")) {
-                        filteredList.setPredicate(Restaurant -> {
-                            // We return true for any items that meet the condition
-                            return Restaurant.getCuisineType().equals(newValue.toUpperCase());
-                        });
-                    } else if (selected.equals("Price Category")) {
-//                        Todo
-                    }
-                }
-            });
+        // Ok Button action
+        okButton.setOnAction(e -> {
+            searchFilter.refreshFlter();
+            if (checkBoxCuisineGerman.isSelected()) {
+                searchFilter.selectCuisine(CuisineType.GERMAN);
+            }
+            if (checkBoxCuisineItalian.isSelected()) {
+                searchFilter.selectCuisine(CuisineType.ITALIAN);
+            }
+            if (checkBoxCuisineChinese.isSelected()) {
+                searchFilter.selectCuisine(CuisineType.CHINESE);
+            }
+            if (checkBoxPriceInexpensive.isSelected()) {
+                searchFilter.selectPriceCategory(PriceCategory.INEXPENSIVE);
+            }
+            if (checkBoxPriceModerate.isSelected()) {
+                searchFilter.selectPriceCategory(PriceCategory.MODERATE);
+            }
+            if (checkBoxPriceExpensive.isSelected()) {
+                searchFilter.selectPriceCategory(PriceCategory.EXPENSIVE);
+            }
+            if (checkBoxPriceVeryExpensive.isSelected()) {
+                searchFilter.selectPriceCategory(PriceCategory.VERY_EXPENSIVE);
+            }
+            searchFilter.selectRating(ratingSpinner.getValue());
+            dialog.close();
         });
 
+        // Cancel Button Action
+        cancelButton.setOnAction(e -> {
+            dialog.close();
+        });
 
-        TableView<Restaurant> table = new TableView(filteredList);
-//        !!!
-//        sceneController.setRestaurantList(table);
+        resetButton.setOnAction(e -> {
+            checkBoxCuisineGerman.setSelected(true);
+            checkBoxCuisineItalian.setSelected(true);
+            checkBoxCuisineChinese.setSelected(true);
+            checkBoxPriceInexpensive.setSelected(true);
+            checkBoxPriceModerate.setSelected(true);
+            checkBoxPriceExpensive.setSelected(true);
+            checkBoxPriceVeryExpensive.setSelected(true);
+            ratingSpinner.getValueFactory().setValue(1);
+            searchFilter.resetFilter();
+        });
+
     }
+
+
 }

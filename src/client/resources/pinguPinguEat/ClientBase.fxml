@@ -5,21 +5,24 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pinguPinguEat.view.SceneView">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18"
+            fx:controller="pinguPinguEat.view.SceneView">
     <left>
         <VBox BorderPane.alignment="CENTER">
             <children>
                 <HBox spacing="10.0">
                     <children>
-                        <TextField fx:id="searchField" />
+                        <TextField fx:id="searchField"/>
                         <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchAction" text="Search">
                             <opaqueInsets>
-                                <Insets />
+                                <Insets/>
                             </opaqueInsets>
                         </Button>
+                  <Button fx:id="filterButton" mnemonicParsing="false" onAction="#filterAction" text="Filter"/>
                     </children>
                 </HBox>
-                <ListView fx:id="restaurantList" prefHeight="693.0" prefWidth="248.0" />
+                <ListView fx:id="restaurantList" onMousePressed="#switchToSelectedRestaurant" prefHeight="693.0" prefWidth="248.0" />
             </children>
         </VBox>
     </left>

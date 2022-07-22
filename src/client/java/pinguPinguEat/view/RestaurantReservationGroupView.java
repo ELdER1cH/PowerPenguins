@@ -4,10 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.reservationModel.Table;
-import pinguPinguEat.reservationModel.TimeSlot;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.Reservation;
+import pinguPinguEat.reservationElement.Table;
+import pinguPinguEat.reservationElement.TimeSlot;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -92,14 +92,8 @@ public class RestaurantReservationGroupView {
         }
     }
 
-    //TODO catch exceptions
-    private ObservableList<Table> filterNumberOfSeats(ObservableList<Table> tables) {
-        int numberRequested = Integer.valueOf(peopleNumberPicker.getText());
-        tables.removeIf(x -> x.getNumberOfSeats() < numberRequested);
-        return tables;
-    }
 
-
+    //    FR4: Reserve table: A user can see the times when he can reserve a table in the chosen restaurant.
     private TimeSlot getTimeSlot() {
         LocalTime timeSlotTime;
         timeSlotTime = switch(timeChoiceBox.getValue().toString()) {
@@ -112,6 +106,15 @@ public class RestaurantReservationGroupView {
         LocalDate timeSlotDate = datePicker.getValue();
 
         return new TimeSlot(LocalDateTime.of(timeSlotDate, timeSlotTime));
+    }
+
+    //TODO catch exceptions
+
+    //    After clicking on the time, the user sees an overview of all tables in the restaurant.
+    private ObservableList<Table> filterNumberOfSeats(ObservableList<Table> tables) {
+        int numberRequested = Integer.valueOf(peopleNumberPicker.getText());
+        tables.removeIf(x -> x.getNumberOfSeats() < numberRequested);
+        return tables;
     }
 
     private void lackingInputAlert() {

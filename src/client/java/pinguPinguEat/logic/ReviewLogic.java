@@ -4,7 +4,8 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pinguPinguEat.controller.ReviewController;
-import pinguPinguEat.user.Review;
+import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
 import pinguPinguEat.view.RestaurantGroupView;
 
 import java.util.List;
@@ -14,12 +15,12 @@ public class ReviewLogic {
 
     private final ReviewController reviewController;
 
-    private final RestaurantGroupView restaurantGroupController;
+    private final RestaurantGroupView restaurantGroupView;
 
-    public ReviewLogic(RestaurantGroupView restaurantGroupController) {
+    public ReviewLogic(RestaurantGroupView restaurantGroupView) {
         this.reviewObservableList = FXCollections.observableArrayList();
         this.reviewController = new ReviewController();
-        this.restaurantGroupController = restaurantGroupController;
+        this.restaurantGroupView = restaurantGroupView;
         this.reviewController.getAllReviews(this::setReview);
     }
 
@@ -29,11 +30,13 @@ public class ReviewLogic {
      *
      * @param review
      */
-    public void postReview(Review review) {
+    public void postReview(Review review, Restaurant currentRestaurant) {
         reviewController.addReview(review, reviews -> {
-            restaurantGroupController.reviews.clear();
-            restaurantGroupController.reviews.addAll(reviews);
+            restaurantGroupView.reviews.clear();
+            restaurantGroupView.reviews.addAll(reviews);
         });
+        restaurantGroupView.reviews.add(review);
+        currentRestaurant.addReview(review);
     }
 
     //    delete

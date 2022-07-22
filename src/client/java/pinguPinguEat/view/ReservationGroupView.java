@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import pinguPinguEat.logic.ReservationLogic;
-import pinguPinguEat.reservationModel.Reservation;
+import pinguPinguEat.reservationElement.Reservation;
 
 import java.util.Collections;
 import java.util.Comparator;

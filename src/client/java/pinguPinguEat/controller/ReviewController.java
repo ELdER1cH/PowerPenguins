@@ -4,7 +4,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
-import pinguPinguEat.user.Review;
+import pinguPinguEat.userElement.Review;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package de.tum.in.ase.eist.service;
 
 import org.springframework.stereotype.Service;
-import pinguPinguEat.user.Review;
+import pinguPinguEat.userElement.Review;
 
 import java.util.HashMap;
 import java.util.UUID;

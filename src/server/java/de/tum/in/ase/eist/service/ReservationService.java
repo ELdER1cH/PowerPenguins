@@ -1,7 +1,7 @@
 package de.tum.in.ase.eist.service;
 
 import org.springframework.stereotype.Service;
-import pinguPinguEat.reservationModel.Reservation;
+import pinguPinguEat.reservationElement.Reservation;
 
 import java.util.HashMap;
 import java.util.List;

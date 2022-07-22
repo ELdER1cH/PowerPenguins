@@ -24,9 +24,13 @@ configurations {
 
 
 dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     serverImplementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
-    clientImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+    clientImplementation 'org.springframework.boot:spring-boot-starter-webflux:2.7.0'
 
 }
 

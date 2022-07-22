@@ -1,14 +1,14 @@
 package pinguPinguEat.logic;
 
-import pinguPinguEat.reservationModel.ReservationSystem;
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.ReservationSystem;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateRestaurants {
+public class RestaurantFactory {
     public static List<Restaurant> create() {
         List<Restaurant> list = new ArrayList<>();
         list.add(new Restaurant("Steinheil 16", "Steinheilstraße 16",  CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Casual restaurant specializing in schnitzel plates & fried sides, plus beer, wine & cocktails.", new ReservationSystem(4, 6), "11am-1am", "https://www.steinheil16.de/", 1));
