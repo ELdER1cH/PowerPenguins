@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import pinguPinguEat.ClientApplication;
+import pinguPinguEat.logic.RestaurantFactory;
 import pinguPinguEat.logic.RestaurantLogic;
 import pinguPinguEat.logic.SearchFilter;
 import pinguPinguEat.reservationElement.Reservation;
@@ -67,8 +68,8 @@ public class SceneView {
         reservationViewGroup = reservationLoader.load();
 
         //Import Restaurants
-        //restaurants.addAll(RestaurantLogic.getAllRestaurants());
-        //restaurantList.setItems(restaurants);
+        restaurants.addAll(RestaurantFactory.create());
+        restaurantList.setItems(restaurants);
 
 
         reservationGroupView = reservationLoader.getController();
@@ -94,7 +95,7 @@ public class SceneView {
     @FXML
     private StackPane viewStackPane;
 
-    @FXML // fx:id= ???
+    @FXML // fx:id= filterButton
     private Button filterButton;
 
 
@@ -201,7 +202,7 @@ public class SceneView {
     @FXML
     void searchAction(ActionEvent event) {
         // Search Button pressed
-        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+        ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantFactory.create();
         ArrayList<Restaurant> allRestaurantsToRemove = new ArrayList<>();
 
         for (Restaurant r : allRestaurantsToFilter) {
@@ -232,7 +233,7 @@ public class SceneView {
         }
 
         restaurantList.getItems().clear();
-        restaurants.addAll(/*RestaurantLogic.getAllRestaurants()*/allRestaurantsQuery);
+        restaurants.addAll(allRestaurantsQuery);
         restaurantList.setItems(restaurants);
     }
     // Filter Button pressed
