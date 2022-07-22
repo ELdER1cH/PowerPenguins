@@ -1,4 +1,4 @@
-package pinguPinguEat.reservationModel;
+package pinguPinguEat.reservationElement;
 
 public class Table {
     private final int tableNumber;
@@ -15,5 +15,10 @@ public class Table {
 
     public int getNumberOfSeats() {
         return numberOfSeats;
+    }
+
+    @Override
+    public String toString() {
+        return "Table " + getTableNumber() + "\t||\tnumber of seats: " + getNumberOfSeats();
     }
 }

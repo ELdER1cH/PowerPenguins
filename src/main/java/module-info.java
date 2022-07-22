@@ -1,5 +1,5 @@
 module pinguPinguEat {
-    exports pinguPinguEat.restaurants;
-    exports pinguPinguEat.reservationModel;
-    exports pinguPinguEat.user;
+    exports pinguPinguEat.restaurantElement;
+    exports pinguPinguEat.reservationElement;
+    exports pinguPinguEat.userElement;
 }

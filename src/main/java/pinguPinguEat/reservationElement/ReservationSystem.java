@@ -1,4 +1,4 @@
-package pinguPinguEat.reservationModel;
+package pinguPinguEat.reservationElement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,7 @@ public class ReservationSystem {
     private int numberOfTables;
     private final List<Table> tables;
     private final HashMap<TimeSlot, List<Reservation>> reservations;
+
 
     public ReservationSystem(int numberOfSeats, int numberOfTables) {
         this.numberOfSeats = numberOfSeats;
@@ -50,17 +51,35 @@ public class ReservationSystem {
     }
 
     public boolean deleteReservation(Reservation reservation){
-        //TODO implement deleteReservation
-        return false;
+        List<Reservation> currentRes = reservations.get(reservation.getTimeSlot());
+
+        if (currentRes != null && !currentRes.isEmpty()) {
+            currentRes.remove(reservation);
+        }
+
+        return true;
     }
 
     public boolean addReservation(Reservation reservation){
-        //TODO implement addReservation
-        return false;
+        List<Reservation> currentRes = reservations.get(reservation.getTimeSlot());
+
+        if (currentRes == null || currentRes.isEmpty()) {
+            List<Reservation> newRes = new ArrayList<>();
+            newRes.add(reservation);
+            reservations.put(reservation.getTimeSlot(), newRes);
+        }
+        else {
+            currentRes.add(reservation);
+        }
+
+        return true;
     }
 
     public List<Table> getFreeTables(TimeSlot timeSlot){
-        //TODO implement getFreeTables
-        return null;
+        List<Table> freeTables = getTables();
+        // TODO does this work for diff. timeslot objects of the same time?
+        freeTables.removeIf(x -> reservations.get(timeSlot).contains(x));
+
+        return freeTables;
     }
 }

@@ -13,22 +13,26 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import pinguPinguEat.logic.ReviewLogic;
-import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.user.Review;
-import pinguPinguEat.user.User;
+import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
+import pinguPinguEat.userElement.User;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class RestaurantGroupController {
+public class RestaurantGroupView {
     //My Variables
-    public final ObservableList<Review> reviews = FXCollections.observableArrayList();
+    public ObservableList<Review> reviews = FXCollections.observableArrayList();
     public final ObservableList<ImageView> images = FXCollections.observableArrayList();
     public Dialog<Review> dialog;
 
     public ReviewLogic reviewLogic;
 
+    // needed to switch view groups through buttons in the restaurant view
+    private SceneView sceneView;
+    private Restaurant currentRestaurant;
 
     //----------------------------------------------------------------------------------
     //My Functions
@@ -47,7 +51,7 @@ public class RestaurantGroupController {
     private URL location;
 
     @FXML // fx:id="ReviewList"
-    private ListView<Review> ReviewList; // Value injected by FXMLLoader
+    private ListView<Review> reviewList; // Value injected by FXMLLoader
 
     @FXML // fx:id="descriptionLabel"
     private Label descriptionLabel; // Value injected by FXMLLoader
@@ -66,22 +70,22 @@ public class RestaurantGroupController {
      * @param restaurant
      */
     public void updateRestaurant(Restaurant restaurant) {
+        currentRestaurant = restaurant;
         // Sets Name of Restaurant
         this.restaurantNameLabel.setText(restaurant.getName());
 
-        // Sest Text for Side Bar
+        // Set Text for Side Bar
         this.restaurantPriceCategoryLabel.setText(restaurant.getPriceCategory().toString());
         this.restaurantRatingLabel.setText(String.valueOf(restaurant.getAverageRating()));
         this.restaurantTypeLabel.setText(restaurant.getCuisineType().toString());
         this.restaurantLinkLabel.setText(restaurant.getLink());
         this.restaurantOpeningTimesLabel.setText(restaurant.getOpeningTimes());
 
-        // Sets Discription of Restaurant
+        // Set Description of Restaurant
         this.descriptionLabel.setText(restaurant.getDescription());
 
         // Adds all Reviews to Review List
-        this.reviews.addAll(restaurant.getReviews());
-        this.ReviewList.setItems(reviews);
+        resetReviews();
 
 
         // Adds Images from Class -> Sets width for proper Display
@@ -93,6 +97,12 @@ public class RestaurantGroupController {
             images.add(temp);
         }
         this.imageList.setItems(images);
+    }
+
+    private void resetReviews() {
+        reviews.clear();
+        reviews.addAll(currentRestaurant.getReviews());
+        reviewList.setItems(reviews);
     }
 
     @FXML // fx:id="restaurantNameLabel"
@@ -145,7 +155,7 @@ public class RestaurantGroupController {
 
         Optional<Review> result = dialog.showAndWait();
 
-        result.ifPresent(value -> reviewLogic.postReview(value));
+        result.ifPresent(value -> reviewLogic.postReview(value, currentRestaurant));
     }
 
     @FXML // fx:id="restaurantRatingLabel"
@@ -166,14 +176,14 @@ public class RestaurantGroupController {
     }
 
     @FXML
-    void switchToRestaurantReservationView(ActionEvent event) {
-
+    void switchToRestaurantReservationView(ActionEvent event) throws IOException {
+        sceneView.switchToRestaurantReservationView(currentRestaurant, event);
     }
 
     @FXML
         // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert ReviewList != null : "fx:id=\"ReviewList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
+        assert reviewList != null : "fx:id=\"reviewList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert descriptionLabel != null : "fx:id=\"descriptionLabel\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert imageList != null : "fx:id=\"imageList\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
         assert middleVBoxView != null : "fx:id=\"middleVBoxView\" was not injected: check your FXML file 'RestaurantGroupView.fxml'.";
@@ -189,6 +199,7 @@ public class RestaurantGroupController {
     }
 
 
-
-
+    public void setSceneController(SceneView sceneView) {
+        this.sceneView = sceneView;
+    }
 }

@@ -7,22 +7,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import pinguPinguEat.ClientApplication;
 import pinguPinguEat.logic.RestaurantLogic;
-import pinguPinguEat.logic.SearchFilter;
-import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
-import pinguPinguEat.restaurants.Restaurant;
-import pinguPinguEat.user.Review;
-import pinguPinguEat.user.User;
+import pinguPinguEat.reservationElement.Reservation;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
+import pinguPinguEat.userElement.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 
 public class SceneView {
@@ -32,37 +33,41 @@ public class SceneView {
     private FXMLLoader restaurantReservationLoader;
 
     private FXMLLoader restaurantLoader;
-    private RestaurantGroupController restaurantController;
+    private RestaurantGroupView restaurantGroupView;
     private FXMLLoader reservationLoader;
 
-    private ReservationGroupController reservationController;
-    private RestaurantReservationGroupController restaurantReservationController;
+    private ReservationGroupView reservationGroupView;
+    private RestaurantReservationGroupView restaurantReservationGroupView;
 
-    private SearchFilter searchFilter;
+    private RestaurantLogic restaurantLogic;
+
 
     @FXML
     public void initialize() throws IOException {
         //Import Restaurant Group
-        restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("/pinguPinguEat/RestaurantGroupView.fxml"));
+
+        restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
         restaurantViewGroup = restaurantLoader.load();
-        restaurantViewGroup.getChildren().get(0);
-        restaurantController = restaurantLoader.getController();
+        restaurantGroupView = restaurantLoader.getController();
+        restaurantGroupView.setSceneController(this);
 
         //Import Reservation Group
-        reservationLoader = new FXMLLoader(ClientApplication.class.getResource("/pinguPinguEat/ReservationGroupView.fxml"));
+        reservationLoader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
         reservationViewGroup = reservationLoader.load();
 
         //Import Restaurants
         restaurants.addAll(RestaurantLogic.getAllRestaurants());
         restaurantList.setItems(restaurants);
 
-        reservationController = reservationLoader.getController();
-        reservationController.loadList();
 
-        restaurantReservationLoader = new FXMLLoader(ClientApplication.class.getResource("/pinguPinguEat/RestaurantReservationGroupView.fxml"));
-        restaurantReservationController = restaurantReservationLoader.getController();
+        reservationGroupView = reservationLoader.getController();
+        reservationGroupView.loadList();
+
+        restaurantReservationLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantReservationGroupView.fxml"));
         restaurantReservationViewGroup = restaurantReservationLoader.load();
+        restaurantReservationGroupView = restaurantReservationLoader.getController();
 
+        restaurantLogic = new RestaurantLogic();
     }
 
     @FXML
@@ -103,6 +108,25 @@ public class SceneView {
 
     public void switchToRestaurantReservationView(ActionEvent event) throws IOException {
         switchToScene(restaurantReservationViewGroup);
+        Restaurant restaurant = new Restaurant("TUM", "address", CuisineType.GERMAN, PriceCategory.EXPENSIVE, "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   \n" +
+                "\n" +
+                "Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", null, "Mo: 8 - 18\nDi: 8 - 18\n", "www.google.com", 05);
+        restaurant.addReview(new Review(4, "Lorem Ipsum \n dolores", new User("Max", "Master")));
+        restaurant.addImage("pinguPinguEat/img/tum.jpg");
+        restaurant.addImage("pinguPinguEat/img/tum1.jpg");
+        restaurantGroupView.updateRestaurant(restaurant);
+    }
+
+    public void switchToRestaurantReservationView(Restaurant restaurant, ActionEvent event) throws IOException {
+        switchToScene(restaurantReservationViewGroup);
+        restaurantReservationGroupView.setRestaurant(restaurant);
+        restaurantReservationGroupView.updateView();
+    }
+
+    public void switchToSelectedRestaurant() throws IOException {
+        switchToRestaurantView(null);
+        restaurantGroupView.updateRestaurant(restaurantList.getSelectionModel().getSelectedItem());
+
     }
 
     private void switchToScene(Group viewGroup) throws IOException {
@@ -118,6 +142,7 @@ public class SceneView {
     public SceneView() {
         searchFilter = new SearchFilter();
     }
+
 
     @FXML // fx:id="passWordField"
     private TextField passWordField; // Value injected by FXMLLoader
@@ -146,21 +171,23 @@ public class SceneView {
     @FXML
     void loginAction(ActionEvent event) {
         // nichts passiert
+
     }
 
     @FXML
     void onHelloButtonClick(ActionEvent event) {
-        //???
+
     }
 
     @FXML
     void registerAction(ActionEvent event) {
+
         // nichts passiert
+
     }
 
     @FXML
     void searchAction(ActionEvent event) {
-
         // Search Button pressed
         ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
 
@@ -295,6 +322,16 @@ public class SceneView {
     }
 
 
+ @FXML
+    void filterAction(ActionEvent event) {
+        restaurantLogic.filterRestuarant(event);
+    }
+
+    void listViewClickedToSeeDetails(ActionEvent event){
+        restaurantLogic.showRestaurantDetailsByClickingIt(event);
+    }
+
+ 
     public TextField getSearchField() {
         return searchField;
     }

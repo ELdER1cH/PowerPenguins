@@ -9,10 +9,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import pinguPinguEat.controller.RestaurantController;
-import pinguPinguEat.reservationModel.ReservationSystem;
-import pinguPinguEat.restaurants.CuisineType;
-import pinguPinguEat.restaurants.PriceCategory;
-import pinguPinguEat.restaurants.Restaurant;
+
+import pinguPinguEat.reservationElement.ReservationSystem;
+import pinguPinguEat.restaurantElement.CuisineType;
+import pinguPinguEat.restaurantElement.PriceCategory;
+import pinguPinguEat.restaurantElement.Restaurant;
+import pinguPinguEat.userElement.Review;
+import pinguPinguEat.userElement.User;
+import pinguPinguEat.view.MapGroupView;
 import pinguPinguEat.view.SceneView;
 
 import java.util.ArrayList;
@@ -26,11 +30,14 @@ public class RestaurantLogic {
     private final SceneView sceneView;
     private final RestaurantController restaurantController;
 
+    private final MapGroupView mapGroupView;
+
     public RestaurantLogic() {
         this.restaurantController = new RestaurantController();
         this.sceneView = new SceneView();
         this.restaurantObservableList = FXCollections.observableArrayList();
         this.searchResult = new HashMap<>();
+        this.mapGroupView = new MapGroupView();
 
 // !!!
 //        restaurantController.getAllRestaurants(this::setRestaurant);
@@ -43,15 +50,14 @@ public class RestaurantLogic {
         String searchCondition = sceneView.getSearchField().getText();
         // use String.contains() for the name and cuisineType of restaurants.
 
+        mapGroupView.showRestaurantsOnMap();
     }
 
     //    click to see the details of restaurants
     //    FR2: See restaurants details: The user can see pictures,
     //    ratings and comments of the restaurant as well as opening times and a link to the website.
     public void showRestaurantDetailsByClickingIt(ActionEvent event) {
-//    click on Map
-
-//    click on TableView
+//    click on ListView
 
     }
 
@@ -69,6 +75,20 @@ public class RestaurantLogic {
     public void filterRestaurant(ActionEvent event) {
         updateTableViewAccordingToComboBox();
     }
+
+
+    public static List<Restaurant> getAllRestaurants() {
+        List<Restaurant> returnValue = new ArrayList<>();
+        Restaurant test1 = new Restaurant("Test", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 1", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 06);
+        Restaurant test2 = new Restaurant("Lorem Ipsum", "address", CuisineType.GERMAN, PriceCategory.INEXPENSIVE, "Test 2", new ReservationSystem(0, 0), "Mo: 8 - 18", "www.google.com", 07);
+        test1.addReview(new Review(5, "review test 1", new User("Hugh", "Janus")));
+        test2.addReview(new Review(5, "review test 2", new User("Patricia", "Table")));
+        test2.addReview(new Review(5, "amazing place!", new User("Alex", "Corn")));
+        returnValue.add(test1);
+        returnValue.add(test2);
+        return returnValue;
+    }
+
 
     private void initiateComboBoxForFilter(ComboBox comboBox) {
         ArrayList<String> filterOptions = new ArrayList<>();

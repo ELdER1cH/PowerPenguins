@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <Group xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18"
-       fx:controller="pinguPinguEat.view.RestaurantGroupController">
+       fx:controller="pinguPinguEat.view.RestaurantGroupView">
    <children>
       <AnchorPane>
          <children>
@@ -74,7 +74,7 @@
                <right>
                   <VBox BorderPane.alignment="CENTER">
                      <children>
-                        <ListView fx:id="ReviewList" prefHeight="486.0" prefWidth="248.0"/>
+                        <ListView fx:id="reviewList" prefHeight="486.0" prefWidth="248.0"/>
                         <Button fx:id="submitReviewButton" mnemonicParsing="false" onAction="#addReviewAction"
                                 prefHeight="25.0" prefWidth="248.0" text="Add Review"/>
                      </children>

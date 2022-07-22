@@ -1,9 +1,9 @@
 package de.tum.in.ase.eist.service;
 
-import pinguPinguEat.reservationModel.Reservation;
-import pinguPinguEat.reservationModel.Table;
-import pinguPinguEat.reservationModel.TimeSlot;
-import pinguPinguEat.restaurants.Restaurant;
+import pinguPinguEat.reservationElement.Reservation;
+import pinguPinguEat.reservationElement.Table;
+import pinguPinguEat.reservationElement.TimeSlot;
+import pinguPinguEat.restaurantElement.Restaurant;
 
 import java.util.HashMap;
 import java.util.List;
