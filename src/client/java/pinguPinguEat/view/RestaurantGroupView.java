@@ -155,7 +155,7 @@ public class RestaurantGroupView {
 
         Optional<Review> result = dialog.showAndWait();
 
-        result.ifPresent(value -> reviewLogic.postReview(value));
+        result.ifPresent(value -> reviewLogic.postReview(value, currentRestaurant));
     }
 
     @FXML // fx:id="restaurantRatingLabel"

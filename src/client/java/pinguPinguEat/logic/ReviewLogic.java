@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pinguPinguEat.controller.ReviewController;
+import pinguPinguEat.restaurantElement.Restaurant;
 import pinguPinguEat.userElement.Review;
 import pinguPinguEat.view.RestaurantGroupView;
 
@@ -29,11 +30,13 @@ public class ReviewLogic {
      *
      * @param review
      */
-    public void postReview(Review review) {
+    public void postReview(Review review, Restaurant currentRestaurant) {
         reviewController.addReview(review, reviews -> {
             restaurantGroupView.reviews.clear();
             restaurantGroupView.reviews.addAll(reviews);
         });
+        restaurantGroupView.reviews.add(review);
+        currentRestaurant.addReview(review);
     }
 
     //    delete
