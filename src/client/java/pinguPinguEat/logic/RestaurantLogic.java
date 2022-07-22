@@ -236,5 +236,7 @@ public class RestaurantLogic {
 
     }
 
-
+    public SearchFilter getSearchFilter() {
+        return searchFilter;
+    }
 }

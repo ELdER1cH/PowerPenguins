@@ -15,7 +15,6 @@ import javafx.scene.layout.StackPane;
 import pinguPinguEat.ClientApplication;
 import pinguPinguEat.logic.RestaurantFactory;
 import pinguPinguEat.logic.RestaurantLogic;
-import pinguPinguEat.logic.SearchFilter;
 import pinguPinguEat.reservationElement.Reservation;
 import pinguPinguEat.restaurantElement.CuisineType;
 import pinguPinguEat.restaurantElement.PriceCategory;
@@ -46,7 +45,7 @@ public class SceneView {
 
     private RestaurantLogic restaurantLogic;
 
-    private final SearchFilter searchFilter;
+    //private final SearchFilter searchFilter;
 
 
     @FXML
@@ -152,9 +151,9 @@ public class SceneView {
     private Button loginButton; // Value injected by FXMLLoader
     //
 
-    public SceneView() {
-        searchFilter = new SearchFilter();
-    }
+//    public SceneView() {
+//        searchFilter = new SearchFilter();
+//    }
 
 
     @FXML // fx:id="passWordField"
@@ -208,22 +207,24 @@ public class SceneView {
         for (Restaurant r : allRestaurantsToFilter) {
             restaurantGroupView.updateRestaurant(r);
             // inconsistent with filter
-            if ((r.getCuisineType() == CuisineType.GERMAN) && !searchFilter.isSelectedCuisineTypeGerman() ||
-                    (r.getCuisineType() == CuisineType.ITALIAN) && !searchFilter.isSelectedCuisineTypeItalian() ||
-                    (r.getCuisineType() == CuisineType.CHINESE) && !searchFilter.isSelectedCuisineTypeChinese() ||
-                    (r.getPriceCategory() == PriceCategory.INEXPENSIVE) && !searchFilter.isSelectedPriceInexpensive() ||
-                    (r.getPriceCategory() == PriceCategory.MODERATE) && !searchFilter.isSelectedPriceModerate() ||
-                    (r.getPriceCategory() == PriceCategory.EXPENSIVE) && !searchFilter.isSelectedPriceExpensive() ||
-                    (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) && !searchFilter.isSelectedPriceVeryExpensive() ||
-                    ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
+            if (((r.getCuisineType() == CuisineType.GERMAN) && !restaurantLogic.getSearchFilter().isSelectedCuisineTypeGerman()) ||
+                    ((r.getCuisineType() == CuisineType.ITALIAN) && !restaurantLogic.getSearchFilter().isSelectedCuisineTypeItalian()) ||
+                    ((r.getCuisineType() == CuisineType.CHINESE) && !restaurantLogic.getSearchFilter().isSelectedCuisineTypeChinese()) ||
+                    ((r.getPriceCategory() == PriceCategory.INEXPENSIVE) && !restaurantLogic.getSearchFilter().isSelectedPriceInexpensive()) ||
+                    ((r.getPriceCategory() == PriceCategory.MODERATE) && !restaurantLogic.getSearchFilter().isSelectedPriceModerate()) ||
+                    ((r.getPriceCategory() == PriceCategory.EXPENSIVE) && !restaurantLogic.getSearchFilter().isSelectedPriceExpensive()) ||
+                    ((r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) && !restaurantLogic.getSearchFilter().isSelectedPriceVeryExpensive()) ||
+                    ((int) (r.getAverageRating()) + 0.5 < restaurantLogic.getSearchFilter().getSelectedRating())) {
                 allRestaurantsToRemove.add(r);
             }
         }
         allRestaurantsToFilter.removeAll(allRestaurantsToRemove);
 
         String query = searchField.getText();
-        if (query.equals("")) {
+        if (query == null) {
+            restaurants.clear();
             restaurants.addAll(RestaurantFactory.create());
+            restaurantList.getItems().clear();
             restaurantList.setItems(restaurants);
             return;
         }
@@ -238,8 +239,8 @@ public class SceneView {
             }
         }
 
-        restaurantList.getItems().clear();
         restaurants.clear();
+        restaurantList.getItems().clear();
         restaurants.addAll(allRestaurantsQuery);
         restaurantList.setItems(restaurants);
     }
