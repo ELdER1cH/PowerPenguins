@@ -28,6 +28,10 @@ import java.util.ArrayList;
 public class SceneView {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
 
+
+    private FXMLLoader mapLoader;
+    private  MapGroupView mapGroupView;
+
     public static final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
     private FXMLLoader restaurantReservationLoader;
 
@@ -45,6 +49,11 @@ public class SceneView {
 
     @FXML
     public void initialize() throws IOException {
+        //Import Map Group
+        mapLoader = new FXMLLoader(ClientApplication.class.getResource("MapGroupView.fxml"));
+        mapViewGroup = mapLoader.load();
+        mapGroupView = mapLoader.getController();
+
         //Import Restaurant Group
 
         restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
