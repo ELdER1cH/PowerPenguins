@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-
 public class SceneView {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
 
@@ -193,6 +192,7 @@ public class SceneView {
 
         // Search Button pressed
         ArrayList<Restaurant> allRestaurantsToFilter = (ArrayList<Restaurant>) RestaurantLogic.getAllRestaurants();
+        ArrayList<Restaurant> allRestaurantsToRemove = new ArrayList<>();
 
         for (Restaurant r : allRestaurantsToFilter) {
             restaurantGroupView.updateRestaurant(r);
@@ -205,9 +205,10 @@ public class SceneView {
                     (r.getPriceCategory() == PriceCategory.EXPENSIVE) && !searchFilter.isSelectedPriceExpensive() ||
                     (r.getPriceCategory() == PriceCategory.VERY_EXPENSIVE) && !searchFilter.isSelectedPriceVeryExpensive() ||
                     ((int) (r.getAverageRating() + 0.5) < searchFilter.getSelectedRating())) {
-                allRestaurantsToFilter.remove(r);
+                allRestaurantsToRemove.add(r);
             }
         }
+        allRestaurantsToFilter.removeAll(allRestaurantsToRemove);
 
         String query = searchField.getText();
         String[] queryWords = query.split(" ");
@@ -223,9 +224,7 @@ public class SceneView {
         restaurantList.getItems().clear();
         restaurants.addAll(/*RestaurantLogic.getAllRestaurants()*/allRestaurantsQuery);
         restaurantList.setItems(restaurants);
-
     }
-
     // Filter Button pressed
     @FXML
     void filterAction(ActionEvent event) {
