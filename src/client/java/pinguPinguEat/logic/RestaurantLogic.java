@@ -15,7 +15,6 @@ import pinguPinguEat.restaurantElement.PriceCategory;
 import pinguPinguEat.restaurantElement.Restaurant;
 import pinguPinguEat.userElement.Review;
 import pinguPinguEat.userElement.User;
-import pinguPinguEat.view.MapGroupView;
 import pinguPinguEat.view.SceneView;
 
 import java.util.ArrayList;
@@ -29,14 +28,11 @@ public class RestaurantLogic {
     private final SceneView sceneView;
     private final RestaurantController restaurantController;
 
-    private final MapGroupView mapGroupView;
-
     public RestaurantLogic() {
         this.restaurantController = new RestaurantController();
         this.sceneView = new SceneView();
         this.restaurantObservableList = FXCollections.observableArrayList();
         this.searchResult = new HashMap<>();
-        this.mapGroupView = new MapGroupView();
 
 // !!!
 //        restaurantController.getAllRestaurants(this::setRestaurant);
@@ -49,14 +45,15 @@ public class RestaurantLogic {
         String searchCondition = sceneView.getSearchField().getText();
         // use String.contains() for the name and cuisineType of restaurants.
 
-        mapGroupView.showRestaurantsOnMap();
     }
 
     //    click to see the details of restaurants
     //    FR2: See restaurants details: The user can see pictures,
     //    ratings and comments of the restaurant as well as opening times and a link to the website.
     public void showRestaurantDetailsByClickingIt(ActionEvent event) {
-//    click on ListView
+//    click on Map
+
+//    click on TableView
 
     }
 

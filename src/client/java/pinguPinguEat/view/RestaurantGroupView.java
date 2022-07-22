@@ -199,7 +199,7 @@ public class RestaurantGroupView {
     }
 
 
-    public void setSceneController(SceneView sceneView) {
+    public void setSceneView(SceneView sceneView) {
         this.sceneView = sceneView;
     }
 }

@@ -41,7 +41,7 @@ public class SceneView {
 
     private RestaurantLogic restaurantLogic;
 
-    private SearchFilter searchFilter;
+    private final SearchFilter searchFilter;
 
 
     @FXML
@@ -51,7 +51,7 @@ public class SceneView {
         restaurantLoader = new FXMLLoader(ClientApplication.class.getResource("RestaurantGroupView.fxml"));
         restaurantViewGroup = restaurantLoader.load();
         restaurantGroupView = restaurantLoader.getController();
-        restaurantGroupView.setSceneController(this);
+        restaurantGroupView.setSceneView(this);
 
         //Import Reservation Group
         reservationLoader = new FXMLLoader(ClientApplication.class.getResource("ReservationGroupView.fxml"));
