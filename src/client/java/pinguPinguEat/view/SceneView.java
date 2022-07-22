@@ -25,12 +25,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class SceneController {
+public class SceneView {
     public static final ObservableList<Restaurant> restaurants = FXCollections.observableArrayList();
 
     public static final ObservableList<Reservation> reservations = FXCollections.observableArrayList();
     private FXMLLoader restaurantReservationLoader;
-  
+
     private FXMLLoader restaurantLoader;
     private RestaurantGroupController restaurantController;
     private FXMLLoader reservationLoader;
@@ -115,7 +115,7 @@ public class SceneController {
     private Button loginButton; // Value injected by FXMLLoader
     //
 
-    public SceneController() {
+    public SceneView() {
         searchFilter = new SearchFilter();
     }
 
