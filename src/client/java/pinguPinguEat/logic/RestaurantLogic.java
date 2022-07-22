@@ -65,7 +65,6 @@ public class RestaurantLogic {
         test3.addReview(new Review(1, "very rude servants", new User("Melanie", "mel3636")));
         test1.addReview(new Review(4, "pretty good", new User("Steph", "amazingPerson")));
 
-
         returnValue.add(test1);
         returnValue.add(test2);
         returnValue.add(test3);
