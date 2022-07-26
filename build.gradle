@@ -29,9 +29,7 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.junit.jupiter:junit-jupiter:5.8.2' {
-        excludes
-    }
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     serverImplementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
     clientImplementation 'org.springframework.boot:spring-boot-starter-webflux:2.7.0'
 
